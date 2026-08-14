@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thanos-state-machine"
-version = "0.1.1"
+version = "0.2.0"
 description = "The Infinity Saga as an exploitation state machine: offender-side campaign model + guardian-side search over 14,000,605 futures."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,6 +21,9 @@ strange-search = "thanos_state_machine.simulate:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+thanos_state_machine = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

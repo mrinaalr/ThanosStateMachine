@@ -48,8 +48,10 @@ number is a measure over policies, not a prophecy.
 pip install -e ".[dev]"
 strange-report            # exact analysis: win lines, failure modes
 strange-search            # 14,000,605 Monte Carlo futures (~10s)
-pytest                    # invariants: calibration, backbone, honesty
+pytest                    # invariants: calibration, backbone, honesty, TTL parity
 ```
+
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **0.2.0** (slow path to 1.0.0).
 
 ## Layout
 
@@ -67,6 +69,7 @@ docs/
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)
   campaign.mermaid      machine diagram (regenerate: scripts/export_mermaid.py)
 SECURITY.md      dual-use threat model for two-sided (offender+defender) ESMs
+CHANGELOG.md     release notes + criteria for 1.0.0
 tests/
 ```
 

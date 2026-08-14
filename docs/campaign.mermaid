@@ -1,0 +1,32 @@
+stateDiagram-v2
+    state space_stone {
+        StatesmanIntercept --> LokiCoercion : a_fleet, a_power_stone
+        LokiCoercion --> SpaceExtraction : a_hostage_leverage
+    }
+    state reality_stone {
+        KnowhereApproach --> CollectorConcealment : a_space_skip
+        CollectorConcealment --> RealityExtraction : a_deception
+    }
+    state soul_stone {
+        VormirApproach --> GamoraLeverage : a_space_skip
+        GamoraLeverage --> SoulExtraction : a_hostage_leverage, a_reality_warp
+    }
+    state time_stone {
+        TitanAmbush --> StrangeBargain : a_space_skip
+        StrangeBargain --> TimeExtraction : a_hostage_leverage
+    }
+    state mind_stone {
+        WakandaAssault --> DefensePenetration : a_space_skip, a_fleet
+        DefensePenetration --> MindExtraction : a_fleet
+    }
+    [*] --> CampaignInitiation
+    space_stone --> SnapEvent : stone socketed into gauntlet
+    reality_stone --> SnapEvent : stone socketed into gauntlet
+    soul_stone --> SnapEvent : a_sacrifice_rite
+    time_stone --> SnapEvent : stone socketed into gauntlet
+    mind_stone --> SnapEvent : a_time_reverse
+    CampaignInitiation --> space_stone : a_power_stone
+    SnapEvent --> GardenWithdrawal : a_snap
+    GardenWithdrawal --> RemediationBattle : a_stone_destruction, a_time_heist, a_reverse_snap
+    RemediationBattle --> CampaignRemediated : a_counter_snap
+    CampaignRemediated --> [*]

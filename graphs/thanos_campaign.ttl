@@ -1,0 +1,169 @@
+# Thanos campaign expressed in the CaseNoesis trajectory vocabulary.
+#
+# Deliberately does NOT use uco-observable / case-investigation classes:
+# this is a fictional kinetic campaign, and the point of the exercise is
+# that the traj: layer alone should carry it. Where it can't, that is a
+# finding — see docs/ONTOLOGY.md.
+#
+# Source material (prov:wasDerivedFrom): Avengers: Infinity War (2018),
+# Avengers: Endgame (2019). No day-level times are fabricated; intervals
+# are film-scoped.
+
+@prefix traj: <https://casenoesis.org/ontology/trajectory#> .
+@prefix tsm:  <https://github.com/mrinaalr/ThanosStateMachine#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# ---------------------------------------------------------------------------
+# Source documents
+# ---------------------------------------------------------------------------
+
+tsm:src-infinity-war a prov:Entity ;
+    rdfs:label "Avengers: Infinity War (2018), Marvel Studios" .
+
+tsm:src-endgame a prov:Entity ;
+    rdfs:label "Avengers: Endgame (2019), Marvel Studios" .
+
+# ---------------------------------------------------------------------------
+# Exogenous prior acquisition (mirrors elder_scheme.ttl's
+# target-acquisition activity: feeds s0, is not a state)
+# ---------------------------------------------------------------------------
+
+tsm:activity-xandar a prov:Activity ;
+    rdfs:label "Power Stone acquisition (Xandar); exogenous, pre-s0" ;
+    prov:wasDerivedFrom tsm:src-infinity-war .
+
+# ---------------------------------------------------------------------------
+# Campaign-layer states
+# ---------------------------------------------------------------------------
+
+tsm:CampaignInitiation a traj:State ;
+    traj:phaseLabel "InitialContactPhase" ; traj:layer "campaign" .
+
+tsm:SnapEvent a traj:State ;
+    traj:phaseLabel "ExploitationPhase" ; traj:layer "campaign" ;
+    rdfs:comment "Terminal harm event of the 2018 trajectory; interior state of the 2018-2023 composite trajectory." .
+
+tsm:GardenWithdrawal a traj:State ;
+    traj:phaseLabel "MaintenancePhase" ; traj:layer "campaign" ;
+    rdfs:comment "Stone destruction as harm maintenance: making the completed exploitation irreversible." .
+
+tsm:RemediationBattle a traj:State ; traj:layer "campaign" .
+tsm:CampaignRemediated a traj:State ; traj:layer "campaign" .
+
+# ---------------------------------------------------------------------------
+# One stone layer written out in full (space); remaining layers follow the
+# identical Approach/Coercion/Extraction pattern and are asserted compactly.
+# ---------------------------------------------------------------------------
+
+tsm:StatesmanIntercept a traj:State ;
+    traj:phaseLabel "InitialContactPhase" ; traj:layer "space" .
+tsm:LokiCoercion a traj:State ;
+    traj:phaseLabel "ConditioningPhase" ; traj:layer "space" ;
+    rdfs:comment "Hostage leverage: Thor's life against the Tesseract." .
+tsm:SpaceExtraction a traj:State ;
+    traj:phaseLabel "ExploitationPhase" ; traj:layer "space" .
+
+tsm:KnowhereApproach a traj:State ; traj:phaseLabel "InitialContactPhase" ; traj:layer "reality" .
+tsm:CollectorConcealment a traj:State ; traj:phaseLabel "ConditioningPhase" ; traj:layer "reality" .
+tsm:RealityExtraction a traj:State ; traj:phaseLabel "ExploitationPhase" ; traj:layer "reality" .
+
+tsm:VormirApproach a traj:State ; traj:phaseLabel "InitialContactPhase" ; traj:layer "soul" .
+tsm:GamoraLeverage a traj:State ; traj:phaseLabel "ConditioningPhase" ; traj:layer "soul" ;
+    rdfs:comment "Affordance accumulation: Reality Stone (prior extraction) defeats Gamora's suicide attempt." .
+tsm:SoulExtraction a traj:State ; traj:phaseLabel "ExploitationPhase" ; traj:layer "soul" .
+
+tsm:TitanAmbush a traj:State ; traj:phaseLabel "InitialContactPhase" ; traj:layer "time" .
+tsm:StrangeBargain a traj:State ; traj:phaseLabel "ConditioningPhase" ; traj:layer "time" ;
+    rdfs:comment "Hostage leverage: Stark's life against the Eye of Agamotto." .
+tsm:TimeExtraction a traj:State ; traj:phaseLabel "ExploitationPhase" ; traj:layer "time" .
+
+tsm:WakandaAssault a traj:State ; traj:phaseLabel "InitialContactPhase" ; traj:layer "mind" .
+tsm:DefensePenetration a traj:State ; traj:phaseLabel "ConditioningPhase" ; traj:layer "mind" .
+tsm:MindExtraction a traj:State ; traj:phaseLabel "ExploitationPhase" ; traj:layer "mind" ;
+    rdfs:comment "Affordance accumulation: Time Stone reverses the Mind Stone's destruction." .
+
+# ---------------------------------------------------------------------------
+# Actions / affordances
+# ---------------------------------------------------------------------------
+
+tsm:a_fleet a traj:Action ; rdfs:label "Sanctuary II / Outrider armies" .
+tsm:a_black_order a traj:Action ; rdfs:label "delegated acquisition (Children of Thanos)" .
+tsm:a_hostage_leverage a traj:Action ; rdfs:label "coerce stone-holder via hostage" .
+tsm:a_deception a traj:Action ; rdfs:label "staged scene (Knowhere illusion)" .
+tsm:a_sacrifice_rite a traj:Action ; rdfs:label "Vormir exchange" .
+tsm:a_power_stone a traj:Action ; tsm:affordance true ; rdfs:label "Power Stone (exogenous prior acquisition)" .
+tsm:a_space_skip a traj:Action ; tsm:affordance true ; rdfs:label "portal arrival (Space Stone)" .
+tsm:a_reality_warp a traj:Action ; tsm:affordance true ; rdfs:label "local reality rewrite (Reality Stone)" .
+tsm:a_time_reverse a traj:Action ; tsm:affordance true ; rdfs:label "event rewind (Time Stone)" .
+tsm:a_snap a traj:Action ; rdfs:label "terminal harm event" .
+tsm:a_stone_destruction a traj:Action ; rdfs:label "destroy stones; harm made irreversible" .
+tsm:a_time_heist a traj:Action ; tsm:guardianIntervention true ; rdfs:label "quantum-tunnel retrieval of past stones" .
+tsm:a_reverse_snap a traj:Action ; tsm:guardianIntervention true ; rdfs:label "Hulk snap: restore the erased" .
+tsm:a_counter_snap a traj:Action ; tsm:guardianIntervention true ; rdfs:label "Stark snap: erase the 2014 force" .
+
+# ---------------------------------------------------------------------------
+# Transitions (space layer in full; spine transitions; others analogous)
+# ---------------------------------------------------------------------------
+
+tsm:t-init-space a traj:Transition ;
+    traj:fromState tsm:CampaignInitiation ; traj:toState tsm:StatesmanIntercept ;
+    traj:enactsAction tsm:a_fleet, tsm:a_power_stone ;
+    prov:wasDerivedFrom tsm:src-infinity-war .
+
+tsm:t-space-coerce a traj:Transition ;
+    traj:fromState tsm:StatesmanIntercept ; traj:toState tsm:LokiCoercion ;
+    traj:enactsAction tsm:a_hostage_leverage .
+
+tsm:t-space-extract a traj:Transition ;
+    traj:fromState tsm:LokiCoercion ; traj:toState tsm:SpaceExtraction ;
+    traj:trigger "Loki yields the Tesseract" .
+
+tsm:t-soul-coerce a traj:Transition ;
+    traj:fromState tsm:VormirApproach ; traj:toState tsm:GamoraLeverage ;
+    traj:enactsAction tsm:a_hostage_leverage, tsm:a_reality_warp ;
+    rdfs:comment "Edge labelled by an affordance unlocked in a SIBLING layer: the layered extension permits this; nothing in traj: requires A to be static." .
+
+tsm:t-mind-extract a traj:Transition ;
+    traj:fromState tsm:DefensePenetration ; traj:toState tsm:MindExtraction ;
+    traj:enactsAction tsm:a_time_reverse .
+
+tsm:t-snap a traj:Transition ;
+    traj:fromState tsm:MindExtraction ; traj:toState tsm:SnapEvent ;
+    traj:enactsAction tsm:a_snap ;
+    prov:wasDerivedFrom tsm:src-infinity-war .
+
+tsm:t-garden a traj:Transition ;
+    traj:fromState tsm:SnapEvent ; traj:toState tsm:GardenWithdrawal ;
+    traj:enactsAction tsm:a_stone_destruction ;
+    prov:wasDerivedFrom tsm:src-endgame .
+
+tsm:t-remediation a traj:Transition ;
+    traj:fromState tsm:GardenWithdrawal ; traj:toState tsm:RemediationBattle ;
+    traj:enactsAction tsm:a_time_heist, tsm:a_reverse_snap ;
+    prov:wasDerivedFrom tsm:src-endgame .
+
+tsm:t-final a traj:Transition ;
+    traj:fromState tsm:RemediationBattle ; traj:toState tsm:CampaignRemediated ;
+    traj:enactsAction tsm:a_counter_snap ;
+    prov:wasDerivedFrom tsm:src-endgame .
+
+# ---------------------------------------------------------------------------
+# Trajectories
+# ---------------------------------------------------------------------------
+
+# The 2018 trajectory, as it looked when the credits rolled on Infinity War:
+tsm:trajectory-2018 a traj:Trajectory ;
+    rdfs:label "Stone campaign through the Snap" ;
+    traj:terminalState tsm:SnapEvent ;
+    traj:terminalPolarity "completed" ;
+    prov:wasDerivedFrom tsm:src-infinity-war .
+
+# The 2018-2023 composite trajectory, after Endgame:
+tsm:trajectory-2018-2023 a traj:Trajectory ;
+    rdfs:label "Stone campaign through the Snap, its maintenance, and its reversal" ;
+    traj:terminalState tsm:CampaignRemediated ;
+    traj:terminalPolarity "remediated" ;
+    rdfs:comment "STRESS FINDING: not expressible in the binary completed/disrupted range of traj:terminalPolarity. The harm state was reached AND subsequently reversed. Elder-scheme polarity assumes disruption happens before completion; this case falsifies that assumption at the vocabulary level." ;
+    prov:wasDerivedFrom tsm:src-endgame .

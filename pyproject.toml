@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thanos-state-machine"
+version = "0.1.0"
+description = "The Infinity Saga as an exploitation state machine: offender-side campaign model + guardian-side search over 14,000,605 futures."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mrinaal Ramachandran" }]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+strange-report = "thanos_state_machine.search:strange_report_cli"
+strange-search = "thanos_state_machine.simulate:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

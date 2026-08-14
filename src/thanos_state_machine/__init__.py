@@ -32,6 +32,17 @@ from .exploitation import (
     validate_against_rewards,
     validate_guardian_interdiction_coverage,
 )
+from .futures import (
+    FailureKind,
+    Future,
+    PurePolicy,
+    SnapOutcome,
+    WorldState,
+    atlas_report,
+    enumerate_futures,
+    expected_permanent_deaths,
+    policy_space,
+)
 from .machine import Phase, Polarity, StateMachine, Trajectory
 from .reward import (
     DEFAULT_MOTIVATION,
@@ -87,7 +98,16 @@ __all__ = [
     "strange_report",
     "rollout",
     "strange_search",
+    "FailureKind",
+    "Future",
+    "PurePolicy",
+    "SnapOutcome",
+    "WorldState",
+    "atlas_report",
+    "enumerate_futures",
+    "expected_permanent_deaths",
+    "policy_space",
     "__version__",
 ]
 
-__version__ = "2.0.1"
+__version__ = "2.1.0"

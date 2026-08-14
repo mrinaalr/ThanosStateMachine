@@ -17,13 +17,17 @@ from thanos_state_machine import (
     rollout,                  # single-future tree walk
     DEFAULT_MOTIVATION,       # goal G + purpose quotes + preference weights
     build_edge_rewards,       # multi-channel R per offender edge
-    accumulate_rewards,       # canon-path RewardAccount (accepts motiv=)
+    accumulate_rewards,       # canon-path RewardAccount (accepts motiv=, validate_motiv=)
+    validate_motivation_profile,  # enactment must dominate capability
     defender_leverage_notes,  # guardian read of R channels
     reward_report,            # human-readable motivation / R ledger
     BenefitSource,            # victim_sourced | victim_targeted | none
     classify_campaign_edges,  # benefit-source per benefit-bearing edge
     exploitation_predicate,   # SEP test: goal benefit victim-sourced?
+    trajectory_verdict,       # generic SEP verdict for any annotated path
     campaign_verdict,         # ExploitationVerdict for this campaign
+    guardian_interdiction_shapes,  # tree nodes → extraction/enactment/maintenance
+    validate_against_rewards, # parity with build_edge_rewards()
     exploitation_report,      # human-readable boundary analysis
     Phase, Polarity,          # enums
     StateMachine, Trajectory, # ESM containers

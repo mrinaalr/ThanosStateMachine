@@ -70,6 +70,7 @@ def test_stark_spare_is_instrumental_not_competing_goal():
 def test_canon_path_reaches_full_progress_and_nonzero_grief():
     acct = accumulate_rewards()
     assert acct.progress == Fraction(1)
+    assert acct.goal_attainment == Fraction(1)
     assert acct.personal_cost == Fraction(-1)
     assert acct.lock_in == Fraction(1)
     assert acct.utility > 0

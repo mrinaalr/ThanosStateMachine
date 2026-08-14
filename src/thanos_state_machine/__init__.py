@@ -16,10 +16,14 @@ from .campaign import (
 )
 from .exploitation import (
     BenefitSource,
+    InterdictionShape,
     campaign_verdict,
     classify_campaign_edges,
     exploitation_predicate,
     exploitation_report,
+    guardian_interdiction_shapes,
+    trajectory_verdict,
+    validate_against_rewards,
 )
 from .machine import Phase, Polarity, StateMachine, Trajectory
 from .reward import (
@@ -28,6 +32,7 @@ from .reward import (
     build_edge_rewards,
     defender_leverage_notes,
     reward_report,
+    validate_motivation_profile,
 )
 from .search import failure_modes, strange_report
 from .simulate import rollout, strange_search
@@ -47,11 +52,16 @@ __all__ = [
     "build_edge_rewards",
     "defender_leverage_notes",
     "reward_report",
+    "validate_motivation_profile",
     "BenefitSource",
+    "InterdictionShape",
     "campaign_verdict",
     "classify_campaign_edges",
     "exploitation_predicate",
     "exploitation_report",
+    "guardian_interdiction_shapes",
+    "trajectory_verdict",
+    "validate_against_rewards",
     "failure_modes",
     "strange_report",
     "rollout",
@@ -59,4 +69,4 @@ __all__ = [
     "__version__",
 ]
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"

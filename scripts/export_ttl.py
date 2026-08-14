@@ -46,7 +46,7 @@ STATE_COMMENTS = {
     ),
     "GardenWithdrawal": (
         "Stone destruction as harm maintenance: making the completed "
-        "exploitation irreversible."
+        "harm irreversible."
     ),
     "LokiCoercion": "Hostage leverage: Thor's life against the Tesseract.",
     "GamoraLeverage": (

@@ -115,6 +115,18 @@ DEFAULT_MOTIVATION = MotivationProfile(
 )
 
 
+def validate_motivation_profile(motiv: MotivationProfile) -> None:
+    """Enactment must strictly dominate full capability under these weights.
+
+    Without this, a complete unsnapped gauntlet can outrank the Snap —
+    collapsing capability and enactment back into one scalar."""
+    if motiv.w_goal_attainment * Fraction(1) <= motiv.w_progress * Fraction(1):
+        raise ValueError(
+            "w_goal_attainment must exceed w_progress so enactment strictly "
+            "dominates capability (see test_snap_dominates_gauntlet)"
+        )
+
+
 STONE_FRACTION = Fraction(1, 6)
 
 
@@ -305,7 +317,11 @@ def accumulate_rewards(
     path: list[tuple[str, str]] | None = None,
     rewards: dict[tuple[str, str], EdgeReward] | None = None,
     motiv: MotivationProfile = DEFAULT_MOTIVATION,
+    *,
+    validate_motiv: bool = True,
 ) -> RewardAccount:
+    if validate_motiv:
+        validate_motivation_profile(motiv)
     rewards = rewards if rewards is not None else build_edge_rewards()
     path = path if path is not None else canon_offender_path()
     edges: list[EdgeReward] = []

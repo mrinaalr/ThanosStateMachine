@@ -1,8 +1,9 @@
 """The Thanos campaign, instantiated two ways.
 
-1. ``build_machine()`` — the offender-side Exploitation State Machine:
-   one campaign-level harm trajectory composed of five per-stone offense
-   sub-trajectories (layered extension). Ontology-facing; mirrors
+1. ``build_machine()`` — the offender-side offense/harm state machine
+   (parent of the CaseNoesis ESM specialization; see docs/FORMALISM.md
+   §5): one campaign-level harm trajectory composed of five per-stone
+   offense sub-trajectories (layered extension). Ontology-facing; mirrors
    graphs/thanos_campaign.ttl.
 
 2. ``build_decision_tree()`` — the guardian-side decision problem: the

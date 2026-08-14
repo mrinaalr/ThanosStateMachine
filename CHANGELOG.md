@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-08-14
+
+### Added
+
+- `trajectory_verdict()` — generic SEP predicate over any annotated
+  trajectory; `campaign_verdict()` is now a thin wrapper.
+- `guardian_interdiction_shapes()` — maps Strange's decision nodes to
+  extraction / enactment / maintenance interdiction shapes.
+- `validate_against_rewards()` — parity check between benefit
+  classifications and the reward ledger.
+- `validate_motivation_profile()` — guards the enactment-dominates-
+  capability invariant; `accumulate_rewards(..., validate_motiv=)`.
+
+### Changed
+
+- `campaign_verdict().rationale` is derived from edge kinds, not hardcoded.
+- Power Stone opening edge classified as `BenefitSource.NONE` (exogenous).
+- TTL + module docstrings: "completed harm" wording; offense/harm parent
+  formalism vs ESM specialization (FORMALISM §5 glossary).
+- `docs/DEFENDER_READ.md`: capability ≠ enactment Wakanda window.
+
 ## [1.2.0] - 2026-08-14
 
 ### Added

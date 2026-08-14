@@ -1,8 +1,14 @@
-"""Generic exploitation-state-machine primitives.
+"""Generic offense/harm state-machine primitives.
 
-Deliberately mirrors the ESM tuple M = (S, A, T, R_G, s0, F) used by
-CaseNoesis, plus the layered-trajectory extension: a campaign is one
-harm event composed of multiple offense (sub-)trajectories.
+Deliberately mirrors the CaseNoesis tuple M = (S, A, T, R_G, s0, F) —
+the parent offense/harm formalism from which the exploitation-state-
+machine (ESM) specialization adds the SEP extraction predicate (see
+docs/FORMALISM.md §5). Includes the layered-trajectory extension: a
+campaign is one harm event composed of multiple offense sub-trajectories.
+
+Note: ``Phase.EXPLOITATION`` is Cornish crime-script backbone vocabulary
+(contact → conditioning → exploitation → maintenance), not the SEP
+"exploitation" predicate.
 """
 
 from __future__ import annotations

@@ -5,11 +5,6 @@ campaign modeled as an offender-centric trajectory and the Avengers'
 response as a search over the guardian policy space — the 14,000,605
 futures, of which exactly one wins.
 
-(Why "offense/harm" and not "exploitation"? Because under the SEP
-definition the Snap turns out not to be exploitation — see
-[docs/FORMALISM.md](docs/FORMALISM.md) and the exploitation-predicate
-module. The boundary is a finding, not a caveat.)
-
 Canon scope: *Infinity War* + *Endgame*. All probabilities are
 calibrated, not measured; the calibration rule and its consequences are
 in [docs/FORMALISM.md](docs/FORMALISM.md).
@@ -32,7 +27,7 @@ came out of the exercise are listed at the end of
 environments) are candidate changes to the real vocabulary.
 
 This repo is also a side project in agentic development: built
-end-to-end with frontier agentic tooling (including Cursor), outside my
+end-to-end with frontier agentic tooling, outside my
 research obligations, as a low-stakes way to see what these workflows
 can do.
 
@@ -59,7 +54,7 @@ is-it-exploitation        # SEP boundary test: source vs target (verdict: not ex
 pytest                    # invariants: calibration, backbone, honesty, TTL parity, reward
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.2.0**.
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.2.1**.
 Public API: [docs/API.md](docs/API.md). Motive: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
 Defender read: [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md).
 

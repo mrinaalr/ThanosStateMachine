@@ -124,6 +124,12 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
 
 ## 5. Is this actually exploitation?
 
+**Vocabulary note:** ``Phase.EXPLOITATION`` in the machine is Cornish
+crime-script backbone (contact → conditioning → exploitation →
+maintenance). The SEP *exploitation predicate* in this section is a
+separate test: whether the victim is the *source* of the offender's
+benefit. The Snap sits in ExploitationPhase but fails the SEP test.
+
 Under the definition the research works from (Zwolinski, Ferguson &
 Wertheimer, "Exploitation", *SEP*), **no — and that is the finding.**
 To exploit is to take unfair advantage: A benefits, at B's expense,

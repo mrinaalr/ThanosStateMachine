@@ -5,6 +5,10 @@
 # that the traj: layer alone should carry it. Where it can't, that is a
 # finding — see docs/ONTOLOGY.md.
 #
+# Structural states/actions/transitions mirror
+# thanos_state_machine.campaign.build_machine(). Parity is enforced by
+# tests/test_ttl_parity.py. Research commentary lives on selected nodes.
+#
 # Source material (prov:wasDerivedFrom): Avengers: Infinity War (2018),
 # Avengers: Endgame (2019). No day-level times are fabricated; intervals
 # are film-scoped.
@@ -53,8 +57,7 @@ tsm:RemediationBattle a traj:State ; traj:layer "campaign" .
 tsm:CampaignRemediated a traj:State ; traj:layer "campaign" .
 
 # ---------------------------------------------------------------------------
-# One stone layer written out in full (space); remaining layers follow the
-# identical Approach/Coercion/Extraction pattern and are asserted compactly.
+# Per-stone layers: Approach / Coercion / Extraction
 # ---------------------------------------------------------------------------
 
 tsm:StatesmanIntercept a traj:State ;
@@ -104,44 +107,88 @@ tsm:a_reverse_snap a traj:Action ; tsm:guardianIntervention true ; rdfs:label "H
 tsm:a_counter_snap a traj:Action ; tsm:guardianIntervention true ; rdfs:label "Stark snap: erase the 2014 force" .
 
 # ---------------------------------------------------------------------------
-# Transitions (space layer in full; spine transitions; others analogous)
+# Transitions — 1:1 with build_machine()
 # ---------------------------------------------------------------------------
 
 tsm:t-init-space a traj:Transition ;
     traj:fromState tsm:CampaignInitiation ; traj:toState tsm:StatesmanIntercept ;
-    traj:enactsAction tsm:a_fleet, tsm:a_power_stone ;
+    traj:enactsAction tsm:a_power_stone ;
+    traj:trigger "Xandar complete (exogenous)" ;
     prov:wasDerivedFrom tsm:src-infinity-war .
 
-tsm:t-space-coerce a traj:Transition ;
+tsm:t-space-approach a traj:Transition ;
     traj:fromState tsm:StatesmanIntercept ; traj:toState tsm:LokiCoercion ;
+    traj:enactsAction tsm:a_fleet, tsm:a_power_stone, tsm:a_black_order .
+
+tsm:t-space-coerce a traj:Transition ;
+    traj:fromState tsm:LokiCoercion ; traj:toState tsm:SpaceExtraction ;
     traj:enactsAction tsm:a_hostage_leverage .
 
-tsm:t-space-extract a traj:Transition ;
-    traj:fromState tsm:LokiCoercion ; traj:toState tsm:SpaceExtraction ;
-    traj:trigger "Loki yields the Tesseract" .
+tsm:t-space-socket a traj:Transition ;
+    traj:fromState tsm:SpaceExtraction ; traj:toState tsm:SnapEvent ;
+    traj:trigger "stone socketed into gauntlet" .
+
+tsm:t-reality-approach a traj:Transition ;
+    traj:fromState tsm:KnowhereApproach ; traj:toState tsm:CollectorConcealment ;
+    traj:enactsAction tsm:a_space_skip .
+
+tsm:t-reality-coerce a traj:Transition ;
+    traj:fromState tsm:CollectorConcealment ; traj:toState tsm:RealityExtraction ;
+    traj:enactsAction tsm:a_deception .
+
+tsm:t-reality-socket a traj:Transition ;
+    traj:fromState tsm:RealityExtraction ; traj:toState tsm:SnapEvent ;
+    traj:trigger "stone socketed into gauntlet" .
+
+tsm:t-soul-approach a traj:Transition ;
+    traj:fromState tsm:VormirApproach ; traj:toState tsm:GamoraLeverage ;
+    traj:enactsAction tsm:a_space_skip .
 
 tsm:t-soul-coerce a traj:Transition ;
-    traj:fromState tsm:VormirApproach ; traj:toState tsm:GamoraLeverage ;
+    traj:fromState tsm:GamoraLeverage ; traj:toState tsm:SoulExtraction ;
     traj:enactsAction tsm:a_hostage_leverage, tsm:a_reality_warp ;
     rdfs:comment "Edge labelled by an affordance unlocked in a SIBLING layer: the layered extension permits this; nothing in traj: requires A to be static." .
 
-tsm:t-mind-extract a traj:Transition ;
-    traj:fromState tsm:DefensePenetration ; traj:toState tsm:MindExtraction ;
-    traj:enactsAction tsm:a_time_reverse .
+tsm:t-soul-extract a traj:Transition ;
+    traj:fromState tsm:SoulExtraction ; traj:toState tsm:SnapEvent ;
+    traj:enactsAction tsm:a_sacrifice_rite ;
+    traj:trigger "stone socketed into gauntlet" .
 
-tsm:t-snap a traj:Transition ;
+tsm:t-time-approach a traj:Transition ;
+    traj:fromState tsm:TitanAmbush ; traj:toState tsm:StrangeBargain ;
+    traj:enactsAction tsm:a_space_skip .
+
+tsm:t-time-coerce a traj:Transition ;
+    traj:fromState tsm:StrangeBargain ; traj:toState tsm:TimeExtraction ;
+    traj:enactsAction tsm:a_hostage_leverage .
+
+tsm:t-time-socket a traj:Transition ;
+    traj:fromState tsm:TimeExtraction ; traj:toState tsm:SnapEvent ;
+    traj:trigger "stone socketed into gauntlet" .
+
+tsm:t-mind-approach a traj:Transition ;
+    traj:fromState tsm:WakandaAssault ; traj:toState tsm:DefensePenetration ;
+    traj:enactsAction tsm:a_space_skip, tsm:a_fleet, tsm:a_black_order .
+
+tsm:t-mind-coerce a traj:Transition ;
+    traj:fromState tsm:DefensePenetration ; traj:toState tsm:MindExtraction ;
+    traj:enactsAction tsm:a_fleet .
+
+tsm:t-mind-socket a traj:Transition ;
     traj:fromState tsm:MindExtraction ; traj:toState tsm:SnapEvent ;
-    traj:enactsAction tsm:a_snap ;
+    traj:enactsAction tsm:a_time_reverse ;
+    traj:trigger "stone socketed into gauntlet" ;
     prov:wasDerivedFrom tsm:src-infinity-war .
 
-tsm:t-garden a traj:Transition ;
+tsm:t-snap a traj:Transition ;
     traj:fromState tsm:SnapEvent ; traj:toState tsm:GardenWithdrawal ;
-    traj:enactsAction tsm:a_stone_destruction ;
+    traj:enactsAction tsm:a_snap ;
     prov:wasDerivedFrom tsm:src-endgame .
 
-tsm:t-remediation a traj:Transition ;
+tsm:t-garden a traj:Transition ;
     traj:fromState tsm:GardenWithdrawal ; traj:toState tsm:RemediationBattle ;
-    traj:enactsAction tsm:a_time_heist, tsm:a_reverse_snap ;
+    traj:enactsAction tsm:a_stone_destruction, tsm:a_time_heist, tsm:a_reverse_snap ;
+    traj:trigger "guardian remediation, five years later" ;
     prov:wasDerivedFrom tsm:src-endgame .
 
 tsm:t-final a traj:Transition ;

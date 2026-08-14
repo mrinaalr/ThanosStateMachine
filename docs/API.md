@@ -27,6 +27,11 @@ from thanos_state_machine import (
     validate_motivation_profile,  # enactment must dominate capability
     defender_leverage_notes,  # guardian read of R channels
     reward_report,            # human-readable motivation / R ledger
+    enumerate_futures,        # all 16 absorbing outcomes, exact mass + world-state
+    policy_space,             # all 324 pure guardian policies
+    expected_permanent_deaths,
+    atlas_report,
+    FailureKind, SnapOutcome, Future, WorldState, PurePolicy,
     BenefitSource,            # victim_sourced | victim_targeted | none
     BenefitAnatomy,           # the 3 facts a classification is derived from
     derive_benefit_source,    # anatomy -> BenefitSource (the stated rule)
@@ -51,8 +56,8 @@ from thanos_state_machine import (
 | `strange-search` | sample futures (``-n``, ``--seed``, ``--policy``; default seed 42 → 1 win under uniform) |
 | `thanos-reward` | motivation + multi-channel reward ledger + defender notes |
 | `is-it-exploitation` | SEP source-vs-target boundary test on the campaign |
+| `futures-atlas` | exact enumeration of all 16 outcomes + 324 policies |
 
-Also: [docs/DEFENDER_READ.md](DEFENDER_READ.md), [docs/THANOS_PURPOSE.md](THANOS_PURPOSE.md).
 
 
 ## Regenerate derived artifacts

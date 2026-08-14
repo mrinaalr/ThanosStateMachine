@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-08-14
+
+The 14,000,605, enumerated instead of sampled — and a deletion pass.
+
+### Added
+
+- `futures.py` + `futures-atlas` CLI — the exact atlas. All 16 absorbing
+  outcomes with exact mass, a world-state (named permanent deaths, Snap
+  disposition), and a failure classification (`FailureKind`); plus
+  `policy_space()` enumerating all 324 pure guardian policies. The Monte
+  Carlo samples from precisely this object; a test asserts they agree.
+- Two results the sampler could only suggest, now pinned as tests:
+  - **Only one of 324 pure policies is non-null.** Strange's line is not
+    the *best* policy, it is the only one that is not measure-zero;
+    every other policy loses with probability 1.
+  - **No future averts the Snap.** `SnapOutcome` has no `AVERTED`
+    member and the outcome space never needs one — Law 4 (denial is
+    displacement) stated over outcomes rather than asserted in prose.
+- `expected_permanent_deaths()`: ~2.09 under uniform play; the winning
+  line costs six named deaths.
+
+### Removed
+
+- `docs/THANOS_PURPOSE.md` and `docs/DEFENDER_READ.md`. Both restated
+  content whose single source of truth is code (`THANOS_PURPOSE_QUOTES`,
+  `ThanosGoal`, `defender_leverage_notes()`). The two genuinely unique
+  paragraphs — the Vormir local-negativity finding and the
+  claimed-vs-calibrated accuracy note — moved into FORMALISM §1.
+  Documentation prose is down ~17% with nothing lost.
+
+### Changed
+
+- README rewritten tight: results first, no duplicated argument.
+- FORMALISM §2 gains the atlas; §4 gains "enumerate the policy space
+  before optimizing over it" — if almost every interdiction policy fails
+  outright, ranking them by expected value describes noise.
+
 ## [2.0.1] - 2026-08-14
 
 ### Fixed
@@ -128,7 +165,7 @@ Major bump: a public enum member was renamed.
 
 ### Added
 
-- Defender leverage notes + [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md)
+- Defender leverage notes + `docs/DEFENDER_READ.md`
   (Strange's policy ↔ Thanos `R_G`; playbook for later similar-shaped threats)
 
 ## [1.1.0] - 2026-08-14
@@ -138,7 +175,7 @@ Major bump: a public enum member was renamed.
 - Multi-channel offender reward `R_G` (`reward.py`): `Δprogress`,
   `personal_cost`, `lock_in`, with preference-weighted utility
 - Film-grounded motivation profile + purpose quotes
-  ([docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md))
+  (`docs/THANOS_PURPOSE.md`)
 - `thanos-reward` CLI; Gamora / Stark / Garden channel tests
 
 ### Changed
@@ -223,7 +260,8 @@ First stable release of the Infinity-Saga stress test.
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.1...v2.0.0
 [1.2.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.0...v1.2.1

@@ -16,8 +16,8 @@ is a search over interdiction points on its transitions.
   extraction unlocks a capability that labels later transitions (Reality
   on Vormir; Time in Wakanda).
 - **T** — affordance-labeled transitions, including cross-layer labels.
-- **R_G** — multi-channel, goal-conditioned reward (see
-  [THANOS_PURPOSE.md](THANOS_PURPOSE.md)). Channels:
+- **R_G** — multi-channel, goal-conditioned reward (`reward.py`; goal
+  statement and motive quotes live there, not in a doc). Channels:
   - `Δprogress` toward G (stone sockets; Power exogenous at open) —
     this is *capability*, not the goal,
   - `personal_cost` ≤ 0 (Vormir / Gamora),
@@ -31,6 +31,22 @@ is a search over interdiction points on its transitions.
 - **s0** — CampaignInitiation. Power Stone (Xandar) is exogenous, feeding
   s0.
 - **F** — {SnapEvent (completed), CampaignRemediated (remediated)}.
+
+**Vormir stress finding.** Under the default weights the Gamora
+sacrifice + Soul socket package is *locally negative*. He takes it
+anyway, because without Soul stone progress caps at 5/6 and G is
+unreachable. So either grief is weighted lower than we set it, or choice
+is not local-greedy: edges are taken for **path enablement**, not
+immediate utility. A scalar R scoring only the next edge cannot hold
+that beat.
+
+**What is claimed, and how firmly.** G and the means (stones → Snap →
+destroy) are high-confidence: stated on screen, and the plot spine. The
+channel *shape* (progress / grief / lock-in / enactment) fits the beats.
+The numeric weights are a **calibrated illustration, not a measured
+psyche** — dials chosen so the model can show the Gamora paradox.
+Progress uses exact `Fraction(1,6)` so six stones sum to 1 on every
+platform.
 
 ## 2. Guardian side: the decision tree Strange searched
 
@@ -71,6 +87,34 @@ policies*, not about fate.
 
 The 14,000,605 is a probability denominator, not a leaf count — the tree
 has 16 leaves. Strange sampled futures; he did not enumerate leaves.
+
+### The atlas (`futures.py`)
+
+The choice space is finite, so the futures do not need sampling. There
+are 3·3·3·2·2·3 = **324 pure guardian policies**, and 16 absorbing
+outcomes; `enumerate_futures()` gives each one exact mass, a world-state
+(named permanent deaths, what happened to the Snap), and a failure
+classification. `simulate.py` samples from precisely this object; the
+two agree by test.
+
+Two results fall out that the Monte Carlo could only ever suggest:
+
+- **Only one policy is non-null.** Of 324 pure policies, exactly one has
+  nonzero win probability. Strange's line is not the *best* policy — it
+  is the only one that is not measure-zero. Every other policy loses
+  with probability 1, so "optimal play" is a degenerate notion here:
+  there is nothing to optimize over, only one thread to find.
+- **No future averts the Snap.** Across all 16 outcomes the Snap is
+  enacted, enacted later by force, enacted twice, or enacted-and-
+  reversed. `SnapOutcome` has no `AVERTED` member and the test proves
+  the outcome space never needs one. Law 4 stated over outcomes rather
+  than asserted in prose.
+
+Failure mass concentrates hard: 66.7% `unwarned` (both losing branches
+at the first node), 16.7% `capability_gap`, 13.0% `denial_displacement`.
+The remediation-stage failures carry ~0.5% between them — by the time
+you reach them, the mass is long gone. E[named permanent deaths] under
+uniform play ≈ 2.09, and the winning line costs six.
 
 ## 3. The four laws, stress-tested against canon
 
@@ -123,6 +167,12 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
 6. **The exploitation predicate.** See §5: this case shows
    "exploitation" is a testable predicate over trajectories, not a name
    for the machine.
+7. **Enumerate the policy space before optimizing over it.** Here 323 of
+   324 pure guardian policies are measure-zero, which makes "the optimal
+   policy" a misleading frame — the real object is *which policies are
+   viable at all*. For a real kill-chain analysis the same check comes
+   first: if almost every interdiction policy fails outright, ranking
+   them by expected value describes noise.
 
 ## 5. Is this actually exploitation?
 

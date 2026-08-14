@@ -49,11 +49,12 @@ number is a measure over policies, not a prophecy.
 pip install -e ".[dev]"
 strange-report            # exact analysis: win lines, failure modes
 strange-search            # 14,000,605 Monte Carlo futures (~10s)
-pytest                    # invariants: calibration, backbone, honesty, TTL parity
+thanos-reward             # motivation + multi-channel R (Gamora / Stark / Garden)
+pytest                    # invariants: calibration, backbone, honesty, TTL parity, reward
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.0.0**.
-Public API: [docs/API.md](docs/API.md).
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.1.0**.
+Public API: [docs/API.md](docs/API.md). Thanos motive record: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
 
 ## Layout
 
@@ -63,10 +64,12 @@ src/thanos_state_machine/
   campaign.py    the Thanos machine + the guardian decision tree
   search.py      exact DP: probabilities, the winning line, failure modes
   simulate.py    vectorized Monte Carlo over 14,000,605 futures
+  reward.py      Thanos motivation + multi-channel R_G
 graphs/
   thanos_campaign.ttl   CaseNoesis traj: twin (regen: scripts/export_ttl.py)
 docs/
   API.md         frozen public surface for 1.0.0
+  THANOS_PURPOSE.md  statement of purpose + reward channels (film quotes)
   RESEARCH_CONTEXT.md   what the underlying research is and how this fits
   FORMALISM.md   the model, the calibration, the four laws vs. canon
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)

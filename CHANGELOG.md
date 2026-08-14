@@ -7,13 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### After 1.0.0 (optional / research)
+### After 1.1.0 (optional)
 
-- Upstream `remediated` / `unlockedBy` into CaseNoesis
 - Guardian/roster concept for multi-agent coalitions (ONTOLOGY.md §5)
 - PyPI publish if distribution beyond Git matters
 
-Still out of scope: CASE/UCO imports; real defender-side parameterization.
+## [1.1.0] - 2026-08-14
+
+### Added
+
+- Multi-channel offender reward `R_G` (`reward.py`): `Δprogress`,
+  `personal_cost`, `lock_in`, with preference-weighted utility
+- Film-grounded motivation profile + purpose quotes
+  ([docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md))
+- `thanos-reward` CLI; Gamora / Stark / Garden channel tests
+
+### Changed
+
+- Formalism `R_G` section now describes channels, not a scalar stub
+- Version bump 1.0.0 → 1.1.0
 
 ## [1.0.0] - 2026-08-14
 
@@ -92,7 +104,8 @@ First stable release of the Infinity-Saga stress test.
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.1.1...v0.2.0

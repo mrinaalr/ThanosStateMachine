@@ -13,6 +13,12 @@ from .campaign import (
     winning_line,
 )
 from .machine import Phase, Polarity, StateMachine, Trajectory
+from .reward import (
+    DEFAULT_MOTIVATION,
+    accumulate_rewards,
+    build_edge_rewards,
+    reward_report,
+)
 from .search import failure_modes, strange_report
 from .simulate import rollout, strange_search
 
@@ -26,6 +32,10 @@ __all__ = [
     "Polarity",
     "StateMachine",
     "Trajectory",
+    "DEFAULT_MOTIVATION",
+    "accumulate_rewards",
+    "build_edge_rewards",
+    "reward_report",
     "failure_modes",
     "strange_report",
     "rollout",
@@ -33,4 +43,4 @@ __all__ = [
     "__version__",
 ]
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"

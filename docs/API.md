@@ -15,6 +15,10 @@ from thanos_state_machine import (
     strange_report,           # human-readable exact analysis (str)
     strange_search,           # Monte Carlo win count (default n=STRANGE_FUTURES)
     rollout,                  # single-future tree walk
+    DEFAULT_MOTIVATION,       # goal G + purpose quotes + preference weights
+    build_edge_rewards,       # multi-channel R per offender edge
+    accumulate_rewards,       # canon-path RewardAccount
+    reward_report,            # human-readable motivation / R ledger
     Phase, Polarity,          # enums
     StateMachine, Trajectory, # ESM containers
 )
@@ -26,6 +30,7 @@ from thanos_state_machine import (
 |---|---|
 | `strange-report` | exact DP report to stdout |
 | `strange-search` | sample futures (``-n``, ``--seed``; default seed 42 → 1 win) |
+| `thanos-reward` | motivation + multi-channel reward ledger |
 
 ## Regenerate derived artifacts
 

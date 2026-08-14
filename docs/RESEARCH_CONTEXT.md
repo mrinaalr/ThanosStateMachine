@@ -3,7 +3,7 @@
 This repository is a side project. It exists to stress-test the formal
 machinery of an ongoing research program on the mechanics of
 technology-mediated exploitation. This document orients a reader —
-someone cloning the repo, a collaborator, a committee — on what that
+someone cloning the repo, a collaborator, and other interested parties - on what the
 program is and where ThanosStateMachine fits. It contains only public
 research framing; nothing operational, and no working numbers from any
 real case.

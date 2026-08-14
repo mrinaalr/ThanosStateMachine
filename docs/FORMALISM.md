@@ -8,28 +8,24 @@ is a search over interdiction points on its transitions.
 
 ## 1. Offender side: M = (S, A, T, R_G, s0, F)
 
-Following the CaseNoesis exploitation state machine, with the layered
-trajectory extension carrying most of the weight:
-
-- **S** — offense-phase states, in two kinds of layer: five per-stone
-  offense sub-trajectories (space, reality, soul, time, mind), each with
-  the pattern *Approach → Coercion → Extraction*, plus a campaign layer
-  (*CampaignInitiation → SnapEvent → GardenWithdrawal → RemediationBattle
-  → CampaignRemediated*).
-- **A** — offender actions and affordances. The interesting deviation
-  from the elder-fraud instantiation: **A is not static.** Each
-  extraction unlocks an affordance that labels later transitions
-  (Reality defeats Gamora on Vormir; Time reverses the Mind Stone's
-  destruction in Wakanda). Affordance accumulation is representable in
-  the `traj:` vocabulary but absent from prior instantiations.
-- **T** — affordance-labeled transitions, including cross-layer labels
-  (a sibling layer's extraction enables this layer's coercion).
-- **R_G** — goal-conditioned progress toward the Snap; G = {balance the
-  universe}, fixed. Denial branches never modify g, only trajectory cost
-  (Law 4 by construction).
-- **s0** — CampaignInitiation. Power Stone acquisition (Xandar) is
-  exogenous, modeled as a prior activity feeding s0 — exactly as the
-  elder scheme models purchased victim lists.
+- **S** — offense-phase states: five per-stone sub-trajectories (space,
+  reality, soul, time, mind), each *Approach → Coercion → Extraction*,
+  plus a campaign layer (*CampaignInitiation → SnapEvent →
+  GardenWithdrawal → RemediationBattle → CampaignRemediated*).
+- **A** — offender actions and affordances. **A is not static:** each
+  extraction unlocks a capability that labels later transitions (Reality
+  on Vormir; Time in Wakanda).
+- **T** — affordance-labeled transitions, including cross-layer labels.
+- **R_G** — multi-channel, goal-conditioned reward (see
+  [THANOS_PURPOSE.md](THANOS_PURPOSE.md)). Channels:
+  - `Δprogress` toward G (stone sockets; Power exogenous at open),
+  - `personal_cost` ≤ 0 (Vormir / Gamora),
+  - `lock_in` (Garden stone-destruction).
+  Scalar utility collapses channels with fixed weights so destiny still
+  ranks the path; the Gamora beat is only visible if channels stay
+  separate. G itself never rewrites under denial — only path cost does.
+- **s0** — CampaignInitiation. Power Stone (Xandar) is exogenous, feeding
+  s0.
 - **F** — {SnapEvent (completed), CampaignRemediated (remediated)}.
 
 ## 2. Guardian side: the decision tree Strange searched

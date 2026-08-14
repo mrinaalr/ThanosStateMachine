@@ -1,8 +1,10 @@
-"""ThanosStateMachine: the Infinity Saga as an exploitation state machine.
+"""ThanosStateMachine: the Infinity Saga as an offense/harm state machine.
 
-Offender-side ESM (Thanos's layered stone campaign) + guardian-side
-decision tree (the 14,000,605 futures). A zero-sensitivity stress test of
-the CaseNoesis exploitation-state-machine formalism.
+Offender-centric campaign trajectory (Thanos's layered stone campaign) +
+guardian-side decision tree (the 14,000,605 futures). A zero-sensitivity
+stress test of the CaseNoesis exploitation-state-machine formalism —
+including where the *exploitation* label stops applying (see
+``exploitation``).
 """
 
 from .campaign import (
@@ -11,6 +13,13 @@ from .campaign import (
     build_decision_tree,
     build_machine,
     winning_line,
+)
+from .exploitation import (
+    BenefitSource,
+    campaign_verdict,
+    classify_campaign_edges,
+    exploitation_predicate,
+    exploitation_report,
 )
 from .machine import Phase, Polarity, StateMachine, Trajectory
 from .reward import (
@@ -38,6 +47,11 @@ __all__ = [
     "build_edge_rewards",
     "defender_leverage_notes",
     "reward_report",
+    "BenefitSource",
+    "campaign_verdict",
+    "classify_campaign_edges",
+    "exploitation_predicate",
+    "exploitation_report",
     "failure_modes",
     "strange_report",
     "rollout",
@@ -45,4 +59,4 @@ __all__ = [
     "__version__",
 ]
 
-__version__ = "1.1.1"
+__version__ = "1.2.0"

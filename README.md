@@ -1,9 +1,14 @@
 # ThanosStateMachine
 
-The Infinity Saga as an exploitation state machine: Thanos's stone
-campaign modeled as the offender-side ESM, and the Avengers' response as
-a search over the guardian policy space — the 14,000,605 futures, of
-which exactly one wins.
+The Infinity Saga as an offense/harm state machine: Thanos's stone
+campaign modeled as an offender-centric trajectory and the Avengers'
+response as a search over the guardian policy space — the 14,000,605
+futures, of which exactly one wins.
+
+(Why "offense/harm" and not "exploitation"? Because under the SEP
+definition the Snap turns out not to be exploitation — see
+[docs/FORMALISM.md](docs/FORMALISM.md) and the exploitation-predicate
+module. The boundary is a finding, not a caveat.)
 
 Canon scope: *Infinity War* + *Endgame*. All probabilities are
 calibrated, not measured; the calibration rule and its consequences are
@@ -50,10 +55,11 @@ pip install -e ".[dev]"
 strange-report            # exact analysis: win lines, failure modes
 strange-search            # 14,000,605 Monte Carlo futures (~10s)
 thanos-reward             # motivation + multi-channel R (Gamora / Stark / Garden)
+is-it-exploitation        # SEP boundary test: source vs target (verdict: not exploitation)
 pytest                    # invariants: calibration, backbone, honesty, TTL parity, reward
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.1.1**.
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.2.0**.
 Public API: [docs/API.md](docs/API.md). Motive: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
 Defender read: [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md).
 
@@ -66,6 +72,7 @@ src/thanos_state_machine/
   search.py      exact DP: probabilities, the winning line, failure modes
   simulate.py    vectorized Monte Carlo over 14,000,605 futures
   reward.py      Thanos motivation + multi-channel R_G
+  exploitation.py  SEP predicate: is the victim a source or a target?
 graphs/
   thanos_campaign.ttl   CaseNoesis traj: twin (regen: scripts/export_ttl.py)
 docs/

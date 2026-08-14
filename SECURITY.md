@@ -1,9 +1,12 @@
 # Security & dual-use considerations
 
 This repo models a fictional adversary (Thanos) *and* a fictional
-defender coalition (the Avengers), with the adversary reaching the harm
-state, and it searches the defender's policy space for evasion and
-success. That is a different posture from the offender-centric
+defender coalition (the Avengers): the adversary reaches the harm state,
+and the model searches the defender's policy space for the interventions
+that *succeed* — the rare policies that disrupt and ultimately remediate
+the harm — while every other policy lets the adversary's trajectory run
+to completion (adversary success, i.e. evasion of the defense). That is
+a different posture from the offender-centric
 exploitation state machine (ESM) in the underlying research, which
 models offenders in order to show defenders *where to intervene*. The
 difference is worth taking seriously rather than waving away, so this

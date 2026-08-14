@@ -103,6 +103,10 @@ class MotivationProfile:
     w_progress: Fraction = Fraction(1)
     w_personal_cost: Fraction = Fraction(1, 5)  # cost already ≤ 0
     w_lock_in: Fraction = Fraction(1, 2)
+    # Enactment must strictly dominate any capability subtotal:
+    # w_goal_attainment * 1 > w_progress * 1 (a full, unsnapped gauntlet
+    # is worth less than the Snap itself). See test_snap_dominates_gauntlet.
+    w_goal_attainment: Fraction = Fraction(2)
 
 
 DEFAULT_MOTIVATION = MotivationProfile(
@@ -116,13 +120,21 @@ STONE_FRACTION = Fraction(1, 6)
 
 @dataclass(frozen=True)
 class EdgeReward:
-    """Immediate reward on a transition, split by channel."""
+    """Immediate reward on a transition, split by channel.
+
+    ``delta_progress`` is capability (stones toward a working gauntlet);
+    ``goal_attainment`` is enactment (the cull actually happening). They
+    are separate channels because they are separate facts: a guardian
+    can leave capability at 1 and attainment at 0 — that gap is the
+    Wakanda interdiction window.
+    """
 
     source: str
     target: str
     delta_progress: Fraction = Fraction(0)
     personal_cost: Fraction = Fraction(0)
     lock_in: Fraction = Fraction(0)
+    goal_attainment: Fraction = Fraction(0)
     beat: str = ""
     quote: str = ""
 
@@ -131,27 +143,33 @@ class EdgeReward:
             motiv.w_progress * self.delta_progress
             + motiv.w_personal_cost * self.personal_cost
             + motiv.w_lock_in * self.lock_in
+            + motiv.w_goal_attainment * self.goal_attainment
         )
 
 
 @dataclass(frozen=True)
 class RewardAccount:
-    """Cumulative channels along a path."""
+    """Cumulative channels along a path, priced by ``motiv``."""
 
     progress: Fraction
     personal_cost: Fraction
     lock_in: Fraction
     edges: tuple[EdgeReward, ...]
+    # Added in 1.2.0 after `edges` and defaulted, so existing positional
+    # and keyword construction keeps working (API.md froze the surface).
+    goal_attainment: Fraction = Fraction(0)
+    motiv: MotivationProfile = DEFAULT_MOTIVATION
 
     @property
     def utility(self) -> Fraction:
-        return sum((e.utility() for e in self.edges), Fraction(0))
+        return sum((e.utility(self.motiv) for e in self.edges), Fraction(0))
 
     def as_dict(self) -> dict[str, float]:
         return {
             "progress": float(self.progress),
             "personal_cost": float(self.personal_cost),
             "lock_in": float(self.lock_in),
+            "goal_attainment": float(self.goal_attainment),
             "utility": float(self.utility),
         }
 
@@ -242,8 +260,10 @@ def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
         ),
         EdgeReward(
             "SnapEvent", "GardenWithdrawal",
+            goal_attainment=Fraction(1),
             beat="The Snap — G enacted with a full gauntlet "
-                 "('perfectly balanced')",
+                 "('perfectly balanced'). Attainment is booked HERE, not "
+                 "at the last socket: capability != enactment.",
             quote="Perfectly balanced, as all things should be.",
         ),
         EdgeReward(
@@ -284,6 +304,7 @@ def canon_offender_path() -> list[tuple[str, str]]:
 def accumulate_rewards(
     path: list[tuple[str, str]] | None = None,
     rewards: dict[tuple[str, str], EdgeReward] | None = None,
+    motiv: MotivationProfile = DEFAULT_MOTIVATION,
 ) -> RewardAccount:
     rewards = rewards if rewards is not None else build_edge_rewards()
     path = path if path is not None else canon_offender_path()
@@ -296,7 +317,9 @@ def accumulate_rewards(
         progress=sum((e.delta_progress for e in edges), Fraction(0)),
         personal_cost=sum((e.personal_cost for e in edges), Fraction(0)),
         lock_in=sum((e.lock_in for e in edges), Fraction(0)),
+        goal_attainment=sum((e.goal_attainment for e in edges), Fraction(0)),
         edges=tuple(edges),
+        motiv=motiv,
     )
 
 
@@ -331,6 +354,14 @@ def defender_leverage_notes() -> list[tuple[str, str]]:
             "Titan / instrumental bargains",
             "Stark-spare is payment for Time Stone, not a second goal. Do "
             "not plan on his respect. Bargains that advance G will be taken.",
+        ),
+        (
+            "capability ≠ enactment (the Wakanda window)",
+            "progress=1 does not mean the harm happened: goal_attainment "
+            "stays 0 until the Snap edge. The gap between last socket and "
+            "enactment is the final interdiction window — thin in canon "
+            "(seconds), but nonzero, and the only window where denial "
+            "still prevents rather than merely reprices.",
         ),
         (
             "Snap → Garden / lock_in",
@@ -368,12 +399,14 @@ def reward_report() -> str:
     lines.append("")
     lines.append(
         f"Preference weights: progress={motiv.w_progress}, "
-        f"personal_cost={motiv.w_personal_cost}, lock_in={motiv.w_lock_in}"
+        f"personal_cost={motiv.w_personal_cost}, lock_in={motiv.w_lock_in}, "
+        f"goal_attainment={motiv.w_goal_attainment}"
     )
     lines.append("")
     lines.append("Canon path — edges where channels move:")
     for e in acct.edges:
-        if e.delta_progress or e.personal_cost or e.lock_in or e.quote:
+        if (e.delta_progress or e.personal_cost or e.lock_in
+                or e.goal_attainment or e.quote):
             bits = []
             if e.delta_progress:
                 bits.append(f"Δprogress={e.delta_progress}")
@@ -381,7 +414,9 @@ def reward_report() -> str:
                 bits.append(f"personal_cost={e.personal_cost}")
             if e.lock_in:
                 bits.append(f"lock_in={e.lock_in}")
-            bits.append(f"u={e.utility()}")
+            if e.goal_attainment:
+                bits.append(f"goal_attainment={e.goal_attainment}")
+            bits.append(f"u={e.utility(motiv)}")
             lines.append(f"  {e.source} -> {e.target}: " + ", ".join(bits))
             if e.beat:
                 lines.append(f"      {e.beat}")
@@ -392,17 +427,22 @@ def reward_report() -> str:
         f"Cumulative: progress={acct.progress}  "
         f"personal_cost={acct.personal_cost}  "
         f"lock_in={acct.lock_in}  "
+        f"goal_attainment={acct.goal_attainment}  "
         f"utility={acct.utility}"
     )
     lines.append("")
     lines.append(
-        "Read: stone progress reaches 1 when the Mind Stone sockets; "
-        "the Snap *enacts* G; personal_cost is almost entirely Vormir; "
-        "lock_in is the Garden. Full-path utility stays positive. The "
-        "Vormir package alone is locally negative under default grief "
-        "weight — he takes it because Soul enables every completing path "
-        "(without it progress ≤ 5/6). Channels keep the hurt visible; "
-        "path-enablement explains the choice scalar greed cannot."
+        "Read: stone progress reaches 1 when the Mind Stone sockets — "
+        "that is CAPABILITY, not the goal. goal_attainment books at the "
+        "Snap itself: a full, unsnapped gauntlet scores progress=1, "
+        "attainment=0, and its utility subtotal is strictly below the "
+        "Snap's contribution (w_goal > w_progress). personal_cost is "
+        "almost entirely Vormir; lock_in is the Garden. Full-path "
+        "utility stays positive. The Vormir package alone is locally "
+        "negative under default grief weight — he takes it because Soul "
+        "enables every completing path (without it progress ≤ 5/6). "
+        "Channels keep the hurt visible; path-enablement explains the "
+        "choice scalar greed cannot."
     )
     lines.append("")
     lines.append("Defender read (for Strange's policy + later coalitions):")

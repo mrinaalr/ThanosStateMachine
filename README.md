@@ -12,8 +12,10 @@ in [docs/FORMALISM.md](docs/FORMALISM.md).
 ## Why
 
 A zero-sensitivity stress test of the exploitation-state-machine
-formalism from [CaseNoesis](https://casenoesis.up.railway.app/) and
-[*Affordances for Harm*](https://doi.org/10.5281/zenodo.21347781):
+formalism from an ongoing research program on the mechanics of
+technology-mediated exploitation
+([context](docs/RESEARCH_CONTEXT.md); [CaseNoesis](https://casenoesis.up.railway.app/);
+[*Affordances for Harm*](https://doi.org/10.5281/zenodo.21347781)):
 a fully observable fictional "case record" with a canon-provided ground
 truth (1 win in 14,000,605) against which the layered-trajectory
 vocabulary, the four empirical laws, and kill-chain analysis can be
@@ -60,12 +62,16 @@ src/thanos_state_machine/
 graphs/
   thanos_campaign.ttl   the campaign in CaseNoesis traj: vocabulary
 docs/
+  RESEARCH_CONTEXT.md   what the underlying research is and how this fits
   FORMALISM.md   the model, the calibration, the four laws vs. canon
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)
   campaign.mermaid      machine diagram (regenerate: scripts/export_mermaid.py)
 SECURITY.md      dual-use threat model for two-sided (offender+defender) ESMs
 tests/
 ```
+
+New here? [docs/RESEARCH_CONTEXT.md](docs/RESEARCH_CONTEXT.md) explains
+the research program this project stress-tests.
 
 ## Dual-use note
 

@@ -27,8 +27,9 @@ came out of the exercise are listed at the end of
 environments) are candidate changes to the real vocabulary.
 
 This repo is also a side project in agentic development: built
-end-to-end with frontier agentic tooling, outside my research
-obligations, as a low-stakes way to see what these workflows can do.
+end-to-end with frontier agentic tooling (including Cursor), outside my
+research obligations, as a low-stakes way to see what these workflows
+can do.
 
 ## Results
 
@@ -51,7 +52,8 @@ strange-search            # 14,000,605 Monte Carlo futures (~10s)
 pytest                    # invariants: calibration, backbone, honesty, TTL parity
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **0.2.0** (slow path to 1.0.0).
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **0.3.0** (slow path to 1.0.0).
+Public API: [docs/API.md](docs/API.md).
 
 ## Layout
 
@@ -62,12 +64,13 @@ src/thanos_state_machine/
   search.py      exact DP: probabilities, the winning line, failure modes
   simulate.py    vectorized Monte Carlo over 14,000,605 futures
 graphs/
-  thanos_campaign.ttl   the campaign in CaseNoesis traj: vocabulary
+  thanos_campaign.ttl   CaseNoesis traj: twin (regen: scripts/export_ttl.py)
 docs/
+  API.md         frozen public surface for 1.0.0
   RESEARCH_CONTEXT.md   what the underlying research is and how this fits
   FORMALISM.md   the model, the calibration, the four laws vs. canon
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)
-  campaign.mermaid      machine diagram (regenerate: scripts/export_mermaid.py)
+  campaign.mermaid      machine diagram (regen: scripts/export_mermaid.py)
 SECURITY.md      dual-use threat model for two-sided (offender+defender) ESMs
 CHANGELOG.md     release notes + criteria for 1.0.0
 tests/

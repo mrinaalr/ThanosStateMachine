@@ -11,18 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Ship 1.0.0 when these hold — not before:
 
-- [ ] Public API frozen (`__all__` + short API note in README)
-- [ ] Offender TTL regenerated from `build_machine()` (or parity-tested) on every release
-- [ ] CI green on `main` (unit + calibration + seed-42 search)
-- [ ] SECURITY.md dual-use norm unchanged and still accurate
-- [ ] No orphan actions / no Python↔TTL structural drift
-- [ ] Version tagged and changelog cut
+- [x] Public API frozen (`__all__` + [docs/API.md](docs/API.md))
+- [x] Offender TTL regenerated from `build_machine()` (`scripts/export_ttl.py`) + parity-tested
+- [x] CI green on `main` (unit + calibration + seed-42 search)
+- [x] SECURITY.md dual-use norm unchanged and still accurate
+- [x] No orphan actions / no Python↔TTL structural drift
+- [ ] Version tagged and changelog cut as **1.0.0**
 
 Out of scope for 1.0.0 (research follow-ons, not repo blockers):
 
 - Upstreaming `remediated` / `unlockedBy` into CaseNoesis
 - CASE/UCO imports (deliberately excluded; see docs/ONTOLOGY.md)
 - Real defender-side parameterization
+
+## [0.3.0] - 2026-08-14
+
+### Added
+
+- [docs/API.md](docs/API.md) — frozen public surface
+- `scripts/export_ttl.py` — regenerate `graphs/thanos_campaign.ttl` from
+  `build_machine()`, including proposed `tsm:unlockedBy` links
+- Exporter round-trip + `unlockedBy` tests
+- Contact-phase failure-mass invariant (`2/3` die at first choice under
+  uniform play)
+
+### Changed
+
+- Campaign TTL is now generated (hand commentary preserved via exporter
+  overlays); version bump 0.2.0 → 0.3.0
 
 ## [0.2.0] - 2026-08-14
 
@@ -65,7 +81,8 @@ Out of scope for 1.0.0 (research follow-ons, not repo blockers):
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/mrinaalr/ThanosStateMachine/releases/tag/v0.1.0

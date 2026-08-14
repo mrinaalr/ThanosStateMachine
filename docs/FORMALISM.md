@@ -49,7 +49,7 @@ the win is remediation, not prevention.
 | titan_decision | choice | 3 | Strange trades the Time Stone for Stark |
 | wakanda_strike | choice | 2 | Thor aims for the chest |
 | garden_ambush | choice | 2 | decapitation; stones confirmed destroyed |
-| quantum_rat | chance | 20736/14000605 | the rat frees Lang |
+| quantum_rat | chance | 10368/14000605 | the rat frees Lang |
 | heist_assignment | choice | 3 | canon team split |
 | tesseract_recovery | chance | 1/2 | the 1970 detour works |
 | gauntlet_keepaway | chance | 1/4 | the gauntlet stays moving |
@@ -61,13 +61,16 @@ Calibration rule: all branchings and chance weights are fixed at
 natural values first; the one probability canon does not constrain — the
 rat opening the quantum van — absorbs the residual so that
 
-P(win | uniform policy) = (1/324) · (1/64) · p_rat = **1/14,000,605** exactly,
+P(win | uniform policy) = (1/324) · (1/32) · p_rat = **1/14,000,605** exactly,
 
-giving p_rat = 20736/14000605 ≈ 1/675. Under optimal (Strange) play the
+where 1/32 = (1/2)(1/2)(1/4)(1/2) is the product of the four non-rat
+chance nodes (Nidavellir, Tesseract mishap, gauntlet keepaway, Stark
+seizure). The rat absorbs the residual, giving
+p_rat = 10368/14000605 ≈ **1 in 1,350**. Under optimal (Strange) play the
 choice factor collapses and P(win) = 324/14,000,605 ≈ **1 in 43,212**:
-even perfect decisions leave the outcome hostage to four coin flips and
-a rodent. Strange's number is a statement about the *measure over
-policies*, not about fate.
+even perfect decisions leave the outcome hostage to five chance nodes —
+four fixed coin flips and the rat. Strange's number is a statement about
+the *measure over policies*, not about fate.
 
 The 14,000,605 is a probability denominator, not a leaf count — the tree
 has 16 leaves. Strange sampled futures; he did not enumerate leaves.

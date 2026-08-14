@@ -39,9 +39,9 @@ P(win | optimal guardian policy) = 324/14,000,605 (~1 in 43,212)
 14,000,605 sampled futures (seed 42) -> observed wins: 1
 ```
 
-Even perfect play leaves the outcome hostage to four coin flips and a
-rat with a 1-in-675 chance of stepping on the right button. Strange's
-number is a measure over policies, not a prophecy.
+Even perfect play leaves the outcome hostage to five chance nodes — four
+coin flips and a rat with a ~1-in-1,350 chance of stepping on the right
+button. Strange's number is a measure over policies, not a prophecy.
 
 ## Quickstart
 

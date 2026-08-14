@@ -22,6 +22,19 @@ def test_calibration_is_exact():
     assert analytic_win_probability(policy="uniform") == Fraction(1, STRANGE_FUTURES)
 
 
+def test_rat_calibration_factorization():
+    """Lock the doc factorization: (1/324)(1/32)p_rat = 1/STRANGE_FUTURES."""
+    from thanos_state_machine.campaign import _p_rat
+
+    fixed_chance = Fraction(1)
+    for node in build_decision_tree():
+        if isinstance(node, ChanceNode) and node.name != "quantum_rat":
+            fixed_chance *= node.p_continue
+    assert fixed_chance == Fraction(1, 32)
+    assert _p_rat() == Fraction(10368, STRANGE_FUTURES)
+    assert Fraction(1, 324) * fixed_chance * _p_rat() == Fraction(1, STRANGE_FUTURES)
+
+
 def test_optimal_win_probability_is_exact():
     assert analytic_win_probability(policy="optimal") == Fraction(324, STRANGE_FUTURES)
 

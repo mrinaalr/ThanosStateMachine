@@ -64,3 +64,20 @@ def test_ttl_states_and_actions_cover_machine():
 
     py_enacted = {a for t in m.transitions for a in t.actions}
     assert ttl_enacted == py_enacted
+
+
+def test_export_ttl_roundtrip_matches_checked_in_graph():
+    """Checked-in TTL must be the exporter output (no silent hand drift)."""
+    import sys
+
+    sys.path.insert(0, str(TTL_PATH.parents[1] / "scripts"))
+    from export_ttl import to_ttl  # type: ignore
+
+    assert to_ttl() == TTL_PATH.read_text()
+
+
+def test_unlocked_by_marks_dynamic_affordances():
+    text = TTL_PATH.read_text()
+    assert "tsm:a_reality_warp" in text and "tsm:unlockedBy tsm:RealityExtraction" in text
+    assert "tsm:a_time_reverse" in text and "tsm:unlockedBy tsm:TimeExtraction" in text
+    assert "tsm:a_space_skip" in text and "tsm:unlockedBy tsm:SpaceExtraction" in text

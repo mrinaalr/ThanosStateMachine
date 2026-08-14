@@ -105,6 +105,13 @@ def test_composite_backbone_spans_layers():
         }
 
 
+def test_contact_phase_failure_dominates_uniform_mass():
+    """Research signal: under uniform play, ~2/3 of futures die at first choice."""
+    first = [f for f in failure_modes() if f.node == "statesman_response"]
+    mass = sum((f.mass_uniform for f in first), Fraction(0))
+    assert mass == Fraction(2, 3)
+
+
 def test_vectorized_search_matches_tree_rollouts():
     """The chunked conjunction counter must agree with honest tree walks."""
     n = 200_000

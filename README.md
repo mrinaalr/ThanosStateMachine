@@ -63,8 +63,23 @@ docs/
   FORMALISM.md   the model, the calibration, the four laws vs. canon
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)
   campaign.mermaid      machine diagram (regenerate: scripts/export_mermaid.py)
+SECURITY.md      dual-use threat model for two-sided (offender+defender) ESMs
 tests/
 ```
+
+## Dual-use note
+
+This repo models both an offender *and* a defender, with the offender
+reaching the harm state — a different posture from the offender-centric
+ESM in the underlying research. [SECURITY.md](SECURITY.md) works through
+whether that creates adversarial risk. Short version: the risk lives in
+*defender-side parameters*, never in the framework or its structure, and
+this repo sits at zero-risk by construction (its defender side is public
+canon, its probabilities calibrated not measured, no real entity
+modeled). The document extends the utility-asymmetry argument from
+*CaseLinker: Scaling Considerations* (Tech Report #3) from aggregation
+risk to two-sided-modeling risk, and fixes the publishable-structure /
+non-publishable-parameterization boundary as a norm.
 
 ## The one line
 

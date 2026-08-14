@@ -17,7 +17,7 @@ rat") for the calibration rule P_uniform(win) = 1/14,000,605.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from fractions import Fraction
 
 from .machine import (
@@ -89,8 +89,11 @@ def build_machine() -> StateMachine:
         m.add_transition(Transition(extraction, "SnapEvent", extraction_actions,
                                     trigger="stone socketed into gauntlet"))
 
+    # a_black_order: delegated acquisition while Thanos is elsewhere or
+    # boarding with the Children of Thanos (Statesman / Wakanda).
     stone_layer("space", "StatesmanIntercept", "LokiCoercion", "SpaceExtraction",
-                ("a_fleet", "a_power_stone"), ("a_hostage_leverage",), ())
+                ("a_fleet", "a_power_stone", "a_black_order"),
+                ("a_hostage_leverage",), ())
     stone_layer("reality", "KnowhereApproach", "CollectorConcealment", "RealityExtraction",
                 ("a_space_skip",), ("a_deception",), ())
     stone_layer("soul", "VormirApproach", "GamoraLeverage", "SoulExtraction",
@@ -99,7 +102,8 @@ def build_machine() -> StateMachine:
     stone_layer("time", "TitanAmbush", "StrangeBargain", "TimeExtraction",
                 ("a_space_skip",), ("a_hostage_leverage",), ())
     stone_layer("mind", "WakandaAssault", "DefensePenetration", "MindExtraction",
-                ("a_space_skip", "a_fleet"), ("a_fleet",), ("a_time_reverse",))
+                ("a_space_skip", "a_fleet", "a_black_order"),
+                ("a_fleet",), ("a_time_reverse",))
 
     m.add_transition(Transition("CampaignInitiation", "StatesmanIntercept",
                                 ("a_power_stone",), trigger="Xandar complete (exogenous)"))

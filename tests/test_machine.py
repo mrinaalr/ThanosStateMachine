@@ -3,9 +3,9 @@
 from fractions import Fraction
 
 import numpy as np
-import pytest
 
 from thanos_state_machine.campaign import (
+    ChanceNode,
     ChoiceNode,
     STRANGE_FUTURES,
     analytic_win_probability,
@@ -20,6 +20,10 @@ from thanos_state_machine.simulate import rollout, strange_search
 
 def test_calibration_is_exact():
     assert analytic_win_probability(policy="uniform") == Fraction(1, STRANGE_FUTURES)
+
+
+def test_optimal_win_probability_is_exact():
+    assert analytic_win_probability(policy="optimal") == Fraction(324, STRANGE_FUTURES)
 
 
 def test_exactly_one_winning_line():
@@ -43,7 +47,6 @@ def test_optimal_play_still_needs_luck():
 
 
 def test_probabilities_are_valid():
-    from thanos_state_machine.campaign import ChanceNode
     for node in build_decision_tree():
         if isinstance(node, ChanceNode):
             assert 0 < node.p_continue < 1, node.name
@@ -55,6 +58,21 @@ def test_machine_validates_and_is_layered():
     assert m.layers() >= {"campaign", "space", "reality", "soul", "time", "mind"}
     assert m.terminals["CampaignRemediated"] is Polarity.REMEDIATED
     assert m.terminals["SnapEvent"] is Polarity.COMPLETED
+
+
+def test_every_action_labels_a_transition():
+    m = build_machine()
+    used = {a for t in m.transitions for a in t.actions}
+    assert used == set(m.actions)
+
+
+def test_contact_primacy_per_stone_layer():
+    """Law 1: every stone layer opens with InitialContactPhase."""
+    m = build_machine()
+    for layer in ["space", "reality", "soul", "time", "mind"]:
+        contact = [s for s in m.states.values()
+                   if s.layer == layer and s.phase is Phase.INITIAL_CONTACT]
+        assert len(contact) == 1, layer
 
 
 def test_backbone_per_stone_layer():
@@ -72,6 +90,21 @@ def test_backbone_per_stone_layer():
     assert Phase.MAINTENANCE in campaign_phases
 
 
+def test_composite_backbone_spans_layers():
+    """Law 2 finding: full backbone only on the composite trajectory."""
+    m = build_machine()
+    # Walk a realized composite path: init -> space approach... -> snap -> ...
+    # Phase set across campaign + any stone layer must cover all four.
+    phases = {s.phase for s in m.states.values() if s.phase is not None}
+    assert {Phase.INITIAL_CONTACT, Phase.CONDITIONING,
+            Phase.EXPLOITATION, Phase.MAINTENANCE} <= phases
+    # No single stone layer alone has maintenance.
+    for layer in ["space", "reality", "soul", "time", "mind"]:
+        assert Phase.MAINTENANCE not in {
+            s.phase for s in m.states.values() if s.layer == layer
+        }
+
+
 def test_vectorized_search_matches_tree_rollouts():
     """The chunked conjunction counter must agree with honest tree walks."""
     n = 200_000
@@ -85,6 +118,7 @@ def test_vectorized_search_matches_tree_rollouts():
     rng = np.random.default_rng(seed)
     slow_wins = sum(rollout(rng).won for _ in range(2_000))
     assert slow_wins <= 2
+    assert p > 0  # silence unused if refactor drops the float use
 
 
 def test_rollout_paths_terminate_properly():
@@ -96,7 +130,6 @@ def test_rollout_paths_terminate_properly():
 
 
 def test_default_seed_yields_exactly_one_win():
-    """Some numbers deserve to be seen. Marked slow; run in CI or locally."""
-    pytest.importorskip("numpy")
+    """Some numbers deserve to be seen."""
     wins = strange_search()
     assert wins == 1

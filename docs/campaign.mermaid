@@ -1,6 +1,6 @@
 stateDiagram-v2
     state space_stone {
-        StatesmanIntercept --> LokiCoercion : a_fleet, a_power_stone
+        StatesmanIntercept --> LokiCoercion : a_fleet, a_power_stone, a_black_order
         LokiCoercion --> SpaceExtraction : a_hostage_leverage
     }
     state reality_stone {
@@ -16,7 +16,7 @@ stateDiagram-v2
         StrangeBargain --> TimeExtraction : a_hostage_leverage
     }
     state mind_stone {
-        WakandaAssault --> DefensePenetration : a_space_skip, a_fleet
+        WakandaAssault --> DefensePenetration : a_space_skip, a_fleet, a_black_order
         DefensePenetration --> MindExtraction : a_fleet
     }
     [*] --> CampaignInitiation

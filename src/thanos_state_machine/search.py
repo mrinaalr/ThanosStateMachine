@@ -12,7 +12,6 @@ from dataclasses import dataclass
 from fractions import Fraction
 
 from .campaign import (
-    Branch,
     ChanceNode,
     ChoiceNode,
     Node,

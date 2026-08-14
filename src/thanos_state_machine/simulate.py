@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
-from fractions import Fraction
 
 import numpy as np
 

@@ -53,8 +53,9 @@ thanos-reward             # motivation + multi-channel R (Gamora / Stark / Garde
 pytest                    # invariants: calibration, backbone, honesty, TTL parity, reward
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.1.0**.
-Public API: [docs/API.md](docs/API.md). Thanos motive record: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.1.1**.
+Public API: [docs/API.md](docs/API.md). Motive: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
+Defender read: [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md).
 
 ## Layout
 

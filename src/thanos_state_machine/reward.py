@@ -5,11 +5,15 @@ channels separate — progress toward the cull vs personal cost vs
 instrumental bargains — is that a single scalar erases the Gamora beat:
 he advances the goal *and* is wounded. Scalar R can rank the edge; it
 cannot narrate why the ranking hurt.
+
+Progress uses ``Fraction`` so six stones sum to exactly 1 on every
+platform (float ``6*(1/6)`` failed CI equality checks).
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
+from fractions import Fraction
 
 from .machine import StateMachine
 
@@ -84,7 +88,6 @@ class ThanosGoal:
         "Randomly erase half of all life so the remainder can thrive on "
         "finite resources — 'balance' as he defines it."
     )
-    # Instrumental subgoal on the path to G (not a competing terminal goal).
     means: str = (
         "Assemble all six Infinity Stones, enact the Snap, then destroy "
         "the stones so the outcome cannot be undone."
@@ -97,11 +100,9 @@ class MotivationProfile:
 
     goal: ThanosGoal
     quotes: tuple[PurposeQuote, ...]
-    # Preferences over reward channels when collapsing to a ranking.
-    # Progress dominates; personal cost is felt but does not veto destiny.
-    w_progress: float = 1.0
-    w_personal_cost: float = 0.20  # cost already ≤ 0
-    w_lock_in: float = 0.50        # maintenance / irreversibility
+    w_progress: Fraction = Fraction(1)
+    w_personal_cost: Fraction = Fraction(1, 5)  # cost already ≤ 0
+    w_lock_in: Fraction = Fraction(1, 2)
 
 
 DEFAULT_MOTIVATION = MotivationProfile(
@@ -110,33 +111,22 @@ DEFAULT_MOTIVATION = MotivationProfile(
 )
 
 
-# ---------------------------------------------------------------------------
-# Multi-channel edge rewards
-# ---------------------------------------------------------------------------
-
-# Six stones; Power is exogenous (pre-s0), so the machine starts at 1/6.
-STONE_FRACTION = 1.0 / 6.0
+STONE_FRACTION = Fraction(1, 6)
 
 
 @dataclass(frozen=True)
 class EdgeReward:
-    """Immediate reward on a transition, split by channel.
-
-    ``delta_progress`` — movement toward G (stone socket, Snap, etc.).
-    ``personal_cost`` — grief / attachment loss (≤ 0); Vormir.
-    ``lock_in`` — making a completed goal harder to reverse (Garden).
-    """
+    """Immediate reward on a transition, split by channel."""
 
     source: str
     target: str
-    delta_progress: float = 0.0
-    personal_cost: float = 0.0
-    lock_in: float = 0.0
+    delta_progress: Fraction = Fraction(0)
+    personal_cost: Fraction = Fraction(0)
+    lock_in: Fraction = Fraction(0)
     beat: str = ""
     quote: str = ""
 
-    def utility(self, motiv: MotivationProfile = DEFAULT_MOTIVATION) -> float:
-        """Scalar ranking under Thanos's stated preference weights."""
+    def utility(self, motiv: MotivationProfile = DEFAULT_MOTIVATION) -> Fraction:
         return (
             motiv.w_progress * self.delta_progress
             + motiv.w_personal_cost * self.personal_cost
@@ -148,40 +138,32 @@ class EdgeReward:
 class RewardAccount:
     """Cumulative channels along a path."""
 
-    progress: float
-    personal_cost: float
-    lock_in: float
+    progress: Fraction
+    personal_cost: Fraction
+    lock_in: Fraction
     edges: tuple[EdgeReward, ...]
 
     @property
-    def utility(self) -> float:
-        return sum(e.utility() for e in self.edges)
+    def utility(self) -> Fraction:
+        return sum((e.utility() for e in self.edges), Fraction(0))
 
     def as_dict(self) -> dict[str, float]:
         return {
-            "progress": self.progress,
-            "personal_cost": self.personal_cost,
-            "lock_in": self.lock_in,
-            "utility": self.utility,
+            "progress": float(self.progress),
+            "personal_cost": float(self.personal_cost),
+            "lock_in": float(self.lock_in),
+            "utility": float(self.utility),
         }
 
 
 def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
-    """Canon-labeled rewards for offender-relevant edges.
-
-    Guardian remediation edges are omitted (not Thanos's R). Extractions
-    that only socket a stone get +STONE_FRACTION progress. The Snap pushes
-    progress to completion (remaining mass). Vormir alone carries personal
-    cost. The Titan bargain notes Stark spared as *payment*, not mercy as
-    terminal value.
-    """
+    """Canon-labeled rewards for offender-relevant edges."""
     rows: list[EdgeReward] = [
         EdgeReward(
             "CampaignInitiation", "StatesmanIntercept",
             delta_progress=STONE_FRACTION,
             beat="Power Stone already held (Xandar, exogenous); campaign opens at 1/6",
         ),
-        # Space
         EdgeReward(
             "StatesmanIntercept", "LokiCoercion",
             beat="fleet / Black Order boarding",
@@ -195,7 +177,6 @@ def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
             delta_progress=STONE_FRACTION,
             beat="Space Stone socketed",
         ),
-        # Reality
         EdgeReward(
             "KnowhereApproach", "CollectorConcealment",
             beat="portal in; Reality Stone held by the Collector",
@@ -209,14 +190,13 @@ def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
             delta_progress=STONE_FRACTION,
             beat="Reality Stone socketed",
         ),
-        # Soul — the load-bearing motivation beat
         EdgeReward(
             "VormirApproach", "GamoraLeverage",
             beat="brings Gamora; Red Skull names the price",
         ),
         EdgeReward(
             "GamoraLeverage", "SoulExtraction",
-            personal_cost=-1.0,
+            personal_cost=Fraction(-1),
             beat="sacrifices Gamora — goal advances only on the next edge; "
                  "grief is booked here",
             quote="I ignored my destiny once. I cannot do that again. "
@@ -225,12 +205,10 @@ def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
         EdgeReward(
             "SoulExtraction", "SnapEvent",
             delta_progress=STONE_FRACTION,
-            personal_cost=0.0,  # cost already taken on the sacrifice edge
             beat="Soul Stone socketed; mourning deferred",
             quote="Today, I lost more than you can know. But now is no "
                   "time to mourn.",
         ),
-        # Time — Stark spared as instrumental bargain
         EdgeReward(
             "TitanAmbush", "StrangeBargain",
             beat="Ambush on Titan; Strange opens the bargain space",
@@ -248,7 +226,6 @@ def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
             delta_progress=STONE_FRACTION,
             beat="Time Stone socketed",
         ),
-        # Mind
         EdgeReward(
             "WakandaAssault", "DefensePenetration",
             beat="Black Order / Outriders press Wakanda",
@@ -263,19 +240,15 @@ def build_edge_rewards() -> dict[tuple[str, str], EdgeReward]:
             beat="Mind Stone socketed — gauntlet complete on this edge "
                  "in the layered reading",
         ),
-        # Campaign spine after full set
         EdgeReward(
             "SnapEvent", "GardenWithdrawal",
-            delta_progress=0.0,  # stones already at 1.0; this edge *enacts* G
             beat="The Snap — G enacted with a full gauntlet "
                  "('perfectly balanced')",
             quote="Perfectly balanced, as all things should be.",
         ),
         EdgeReward(
             "GardenWithdrawal", "RemediationBattle",
-            # Offender half of this edge is stone destruction; heist/reverse
-            # are guardian. We still book lock_in for the destruction intent.
-            lock_in=1.0,
+            lock_in=Fraction(1),
             beat="Destroys the stones to make the cull irreversible",
             quote="I used the stones to destroy the stones. It nearly "
                   "killed me. But the work is done. It always will be.",
@@ -320,9 +293,9 @@ def accumulate_rewards(
             raise KeyError(f"no EdgeReward for {key[0]}->{key[1]}")
         edges.append(rewards[key])
     return RewardAccount(
-        progress=sum(e.delta_progress for e in edges),
-        personal_cost=sum(e.personal_cost for e in edges),
-        lock_in=sum(e.lock_in for e in edges),
+        progress=sum((e.delta_progress for e in edges), Fraction(0)),
+        personal_cost=sum((e.personal_cost for e in edges), Fraction(0)),
+        lock_in=sum((e.lock_in for e in edges), Fraction(0)),
         edges=tuple(edges),
     )
 
@@ -336,6 +309,45 @@ def validate_rewards_against_machine(m: StateMachine | None = None) -> None:
     for key in build_edge_rewards():
         if key not in known:
             raise ValueError(f"reward on missing edge {key}")
+
+
+def defender_leverage_notes() -> list[tuple[str, str]]:
+    """What a guardian coalition should read off Thanos's R channels."""
+    return [
+        (
+            "contact / early stones",
+            "G is fixed; denying one stone only reprices the path. Hit "
+            "before the gauntlet is full — same lesson as Strange's first-node "
+            "failure mass.",
+        ),
+        (
+            "Vormir / attachment",
+            "Only edge with personal_cost < 0. He will still pay it if Soul "
+            "is required for G. Leverage is scarce: you need an alternative "
+            "completing path for him to refuse, or you exploit the grief "
+            "after the fact (he is slower, not stopped).",
+        ),
+        (
+            "Titan / instrumental bargains",
+            "Stark-spare is payment for Time Stone, not a second goal. Do "
+            "not plan on his respect. Bargains that advance G will be taken.",
+        ),
+        (
+            "Snap → Garden / lock_in",
+            "After enactment, R shifts to irreversibility. Denial is too "
+            "late; only remediation (reverse the completed harm) remains — "
+            "exactly the Endgame shape.",
+        ),
+        (
+            "Next titan with a similar R shape",
+            "If a later villain keeps (fixed G, stone-like means, "
+            "attachment cost, lock_in maintenance), reuse this map: contest "
+            "means early, treat attachment costs as costly-not-vetoes, never "
+            "trust instrumental mercy, budget for remediation if lock_in "
+            "lands. Doom-class threats can share the *shape* even when lore "
+            "and powers differ.",
+        ),
+    ]
 
 
 def reward_report() -> str:
@@ -364,12 +376,12 @@ def reward_report() -> str:
         if e.delta_progress or e.personal_cost or e.lock_in or e.quote:
             bits = []
             if e.delta_progress:
-                bits.append(f"Δprogress={e.delta_progress:+.4f}")
+                bits.append(f"Δprogress={e.delta_progress}")
             if e.personal_cost:
-                bits.append(f"personal_cost={e.personal_cost:+.2f}")
+                bits.append(f"personal_cost={e.personal_cost}")
             if e.lock_in:
-                bits.append(f"lock_in={e.lock_in:+.2f}")
-            bits.append(f"u={e.utility():+.4f}")
+                bits.append(f"lock_in={e.lock_in}")
+            bits.append(f"u={e.utility()}")
             lines.append(f"  {e.source} -> {e.target}: " + ", ".join(bits))
             if e.beat:
                 lines.append(f"      {e.beat}")
@@ -377,14 +389,14 @@ def reward_report() -> str:
                 lines.append(f'      "{e.quote}"')
     lines.append("")
     lines.append(
-        f"Cumulative: progress={acct.progress:.4f}  "
-        f"personal_cost={acct.personal_cost:.2f}  "
-        f"lock_in={acct.lock_in:.2f}  "
-        f"utility={acct.utility:.4f}"
+        f"Cumulative: progress={acct.progress}  "
+        f"personal_cost={acct.personal_cost}  "
+        f"lock_in={acct.lock_in}  "
+        f"utility={acct.utility}"
     )
     lines.append("")
     lines.append(
-        "Read: stone progress reaches 1.0 when the Mind Stone sockets; "
+        "Read: stone progress reaches 1 when the Mind Stone sockets; "
         "the Snap *enacts* G; personal_cost is almost entirely Vormir; "
         "lock_in is the Garden. Full-path utility stays positive. The "
         "Vormir package alone is locally negative under default grief "
@@ -392,6 +404,10 @@ def reward_report() -> str:
         "(without it progress ≤ 5/6). Channels keep the hurt visible; "
         "path-enablement explains the choice scalar greed cannot."
     )
+    lines.append("")
+    lines.append("Defender read (for Strange's policy + later coalitions):")
+    for where, note in defender_leverage_notes():
+        lines.append(f"  [{where}] {note}")
     return "\n".join(lines)
 
 

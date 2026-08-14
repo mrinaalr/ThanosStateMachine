@@ -7,10 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### After 1.1.0 (optional)
+## [1.1.1] - 2026-08-14
 
-- Guardian/roster concept for multi-agent coalitions (ONTOLOGY.md §5)
-- PyPI publish if distribution beyond Git matters
+### Fixed
+
+- CI: exact `Fraction` stone progress (float `6*(1/6)` failed equality on
+  some runners); pytest `--tb=short`, `fail-fast: false`
+
+### Added
+
+- Defender leverage notes + [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md)
+  (Strange's policy ↔ Thanos `R_G`; playbook for later similar-shaped threats)
 
 ## [1.1.0] - 2026-08-14
 
@@ -104,7 +111,8 @@ First stable release of the Infinity-Saga stress test.
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.2.0...v0.3.0

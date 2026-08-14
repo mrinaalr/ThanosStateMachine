@@ -17,6 +17,7 @@ from .reward import (
     DEFAULT_MOTIVATION,
     accumulate_rewards,
     build_edge_rewards,
+    defender_leverage_notes,
     reward_report,
 )
 from .search import failure_modes, strange_report
@@ -35,6 +36,7 @@ __all__ = [
     "DEFAULT_MOTIVATION",
     "accumulate_rewards",
     "build_edge_rewards",
+    "defender_leverage_notes",
     "reward_report",
     "failure_modes",
     "strange_report",
@@ -43,4 +45,4 @@ __all__ = [
     "__version__",
 ]
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"

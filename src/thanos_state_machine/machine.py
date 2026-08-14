@@ -6,9 +6,16 @@ machine (ESM) specialization adds the SEP extraction predicate (see
 docs/FORMALISM.md §5). Includes the layered-trajectory extension: a
 campaign is one harm event composed of multiple offense sub-trajectories.
 
-Note: ``Phase.EXPLOITATION`` is Cornish crime-script backbone vocabulary
-(contact → conditioning → exploitation → maintenance), not the SEP
-"exploitation" predicate.
+Backbone vocabulary note: the third phase is ``HARM_EXECUTION``
+("HarmExecutionPhase"), not "ExploitationPhase". Cornish's crime-script
+backbone runs contact → conditioning → *exploitation* → maintenance, and
+CaseNoesis inherits that name — but "exploitation" there means *the
+offense is executed*, which collides with the SEP sense (the victim is
+the source of the offender's benefit). This repo renames the phase to
+what it actually denotes so the backbone stays neutral about whether a
+trajectory is exploitative; that question belongs to the predicate in
+``exploitation.py``. Proposed as an upstream vocabulary change; see
+docs/FORMALISM.md §5 and docs/ONTOLOGY.md.
 """
 
 from __future__ import annotations
@@ -22,7 +29,7 @@ class Phase(str, Enum):
 
     INITIAL_CONTACT = "InitialContactPhase"
     CONDITIONING = "ConditioningPhase"
-    EXPLOITATION = "ExploitationPhase"
+    HARM_EXECUTION = "HarmExecutionPhase"
     MAINTENANCE = "MaintenancePhase"
 
 

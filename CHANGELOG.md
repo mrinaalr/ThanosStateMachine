@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-08-14
+
+Major bump: a public enum member was renamed.
+
+### Changed — BREAKING
+
+- `Phase.EXPLOITATION` → **`Phase.HARM_EXECUTION`**, value
+  `"ExploitationPhase"` → **`"HarmExecutionPhase"`** (emitted as
+  `traj:phaseLabel` in the TTL). Cornish's backbone calls the third
+  phase "exploitation" meaning only *the offense is executed*; that
+  collides with the SEP sense (victim as *source* of the benefit), and
+  the collision made the Snap read as exploitation by construction —
+  it occupies the third phase, so it got the label, despite failing the
+  SEP test. The backbone is now neutral and the exploitation question
+  belongs to the predicate. Proposed upstream; deliberate divergence
+  from current CaseNoesis vocabulary, so consumers matching the old
+  string will not match these graphs. See ONTOLOGY.md §5.
+
+### Added
+
+- `BenefitAnatomy` + `derive_benefit_source()`: edge classifications are
+  now **derived from a stated rule**, not asserted per-edge.
+  Extraction = a *preexisting* object changes hands and keeps its value
+  without the victim; destruction = the benefit *is* the victim's
+  absence. This is what separates the fatal Mind Stone taking
+  (extraction) from the Snap (destruction) — lethality does not, since
+  both kill.
+- `validate_derivation()` guard: every edge must carry an anatomy and
+  its `kind` must equal what the rule derives, so a label cannot drift
+  from the criterion.
+- Derivation shown in `is-it-exploitation` output; truth-table and
+  elder-fraud-shape tests (`tests/test_benefit_anatomy.py`).
+
 ## [1.2.1] - 2026-08-14
 
 ### Added
@@ -162,7 +195,9 @@ First stable release of the Infinity-Saga stress test.
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.1...v2.0.0
+[1.2.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.0.0...v1.1.0

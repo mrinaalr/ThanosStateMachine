@@ -54,7 +54,7 @@ is-it-exploitation        # SEP boundary test: source vs target (verdict: not ex
 pytest                    # invariants: calibration, backbone, honesty, TTL parity, reward
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.2.1**.
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **2.0.0**.
 Public API: [docs/API.md](docs/API.md). Motive: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
 Defender read: [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md).
 

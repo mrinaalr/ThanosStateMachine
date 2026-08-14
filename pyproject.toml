@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thanos-state-machine"
-version = "1.2.1"
+version = "2.0.0"
 description = "The Infinity Saga as an offense/harm state machine: offender-centric campaign trajectory + guardian-side search over 14,000,605 futures."
 readme = "README.md"
 requires-python = ">=3.10"

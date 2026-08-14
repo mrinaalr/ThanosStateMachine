@@ -15,6 +15,7 @@ from .campaign import (
     winning_line,
 )
 from .exploitation import (
+    BenefitAnatomy,
     BenefitSource,
     InterdictionShape,
     campaign_verdict,
@@ -53,7 +54,9 @@ __all__ = [
     "defender_leverage_notes",
     "reward_report",
     "validate_motivation_profile",
+    "BenefitAnatomy",
     "BenefitSource",
+    "derive_benefit_source",
     "InterdictionShape",
     "campaign_verdict",
     "classify_campaign_edges",
@@ -69,4 +72,4 @@ __all__ = [
     "__version__",
 ]
 
-__version__ = "1.2.1"
+__version__ = "2.0.0"

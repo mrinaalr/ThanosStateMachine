@@ -84,7 +84,7 @@ def test_backbone_per_stone_layer():
         phases = {m.states[s.name].phase for s in m.states.values()
                   if s.layer == layer}
         assert {Phase.INITIAL_CONTACT, Phase.CONDITIONING,
-                Phase.EXPLOITATION} <= phases
+                Phase.HARM_EXECUTION} <= phases
     campaign_phases = {s.phase for s in m.states.values()
                        if s.layer == "campaign"}
     assert Phase.MAINTENANCE in campaign_phases
@@ -97,7 +97,7 @@ def test_composite_backbone_spans_layers():
     # Phase set across campaign + any stone layer must cover all four.
     phases = {s.phase for s in m.states.values() if s.phase is not None}
     assert {Phase.INITIAL_CONTACT, Phase.CONDITIONING,
-            Phase.EXPLOITATION, Phase.MAINTENANCE} <= phases
+            Phase.HARM_EXECUTION, Phase.MAINTENANCE} <= phases
     # No single stone layer alone has maintenance.
     for layer in ["space", "reality", "soul", "time", "mind"]:
         assert Phase.MAINTENANCE not in {

@@ -64,7 +64,7 @@ def build_machine() -> StateMachine:
 
     # -- campaign layer -----------------------------------------------------
     m.add_state(State("CampaignInitiation", Phase.INITIAL_CONTACT, "campaign"))
-    m.add_state(State("SnapEvent", Phase.EXPLOITATION, "campaign"))
+    m.add_state(State("SnapEvent", Phase.HARM_EXECUTION, "campaign"))
     m.add_state(State("GardenWithdrawal", Phase.MAINTENANCE, "campaign"))
     m.add_state(State("RemediationBattle", None, "campaign"))  # guardian-driven
     m.add_state(State("CampaignRemediated", None, "campaign"))
@@ -83,7 +83,7 @@ def build_machine() -> StateMachine:
                     extraction_actions: tuple[str, ...]) -> None:
         m.add_state(State(approach, Phase.INITIAL_CONTACT, layer))
         m.add_state(State(coercion, Phase.CONDITIONING, layer))
-        m.add_state(State(extraction, Phase.EXPLOITATION, layer))
+        m.add_state(State(extraction, Phase.HARM_EXECUTION, layer))
         m.add_transition(Transition(approach, coercion, approach_actions))
         m.add_transition(Transition(coercion, extraction, coercion_actions))
         # extraction feeds back into the campaign spine

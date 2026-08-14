@@ -124,11 +124,17 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
 
 ## 5. Is this actually exploitation?
 
-**Vocabulary note:** ``Phase.EXPLOITATION`` in the machine is Cornish
-crime-script backbone (contact → conditioning → exploitation →
-maintenance). The SEP *exploitation predicate* in this section is a
-separate test: whether the victim is the *source* of the offender's
-benefit. The Snap sits in ExploitationPhase but fails the SEP test.
+**Vocabulary note:** the backbone's third phase is
+``HarmExecutionPhase``, not ``ExploitationPhase``. Cornish's crime
+script runs contact → conditioning → *exploitation* → maintenance, and
+CaseNoesis inherits that name — but there "exploitation" just means *the
+offense is executed*, which collides with the SEP sense (the victim is
+the *source* of the offender's benefit). Keeping one word for two ideas
+made the Snap look like exploitation by construction: it occupies the
+third phase, so it was labelled exploitation, even though it fails the
+SEP test. Renaming the phase to what it denotes leaves the backbone
+neutral on that question and hands it to the predicate below. Proposed
+as an upstream vocabulary change.
 
 Under the definition the research works from (Zwolinski, Ferguson &
 Wertheimer, "Exploitation", *SEP*), **no — and that is the finding.**

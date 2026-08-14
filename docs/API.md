@@ -22,6 +22,8 @@ from thanos_state_machine import (
     defender_leverage_notes,  # guardian read of R channels
     reward_report,            # human-readable motivation / R ledger
     BenefitSource,            # victim_sourced | victim_targeted | none
+    BenefitAnatomy,           # the 3 facts a classification is derived from
+    derive_benefit_source,    # anatomy -> BenefitSource (the stated rule)
     classify_campaign_edges,  # benefit-source per benefit-bearing edge
     exploitation_predicate,   # SEP test: goal benefit victim-sourced?
     trajectory_verdict,       # generic SEP verdict for any annotated path
@@ -61,5 +63,10 @@ pytest                             # includes TTL↔machine parity
   model, not experiments.
 - ``RewardAccount.goal_attainment`` was added in 1.2.0 *after* ``edges`` and
   defaulted, so 1.0.0-era construction still works.
+- **2.0.0 breaking:** ``Phase.EXPLOITATION`` → ``Phase.HARM_EXECUTION``
+  (``"ExploitationPhase"`` → ``"HarmExecutionPhase"``). The backbone no longer
+  presumes the SEP verdict; ``exploitation.py`` decides it. See ONTOLOGY.md §5.
+- ``EdgeBenefit.kind`` is *derived* from ``EdgeBenefit.anatomy``; do not set it
+  by hand (``validate_derivation()`` enforces this).
 - Defender-side *parameters* stay canon-calibrated fiction; see SECURITY.md.
 """

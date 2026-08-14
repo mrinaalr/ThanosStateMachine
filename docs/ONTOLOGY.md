@@ -53,7 +53,19 @@ does not secretly depend on its cyber substrate.
    policy analysis. Trying to materialize the tree in triples would be a
    category error — worth stating as a modeling norm before someone
    does it to a real corpus.
-5. **Multi-agent guardian coalitions.** `traj:` has no first-class
+5. **The backbone's third phase is misnamed upstream.** CaseNoesis
+   inherits Cornish's `ExploitationPhase`, where "exploitation" means
+   only *the offense is executed*. That collides with the SEP sense —
+   the victim as *source* of the offender's benefit — and the collision
+   is not harmless: the Snap occupies the third phase, so it reads as
+   exploitation by construction, even though it fails the SEP test.
+   This repo emits `traj:phaseLabel "HarmExecutionPhase"` instead,
+   leaving the backbone neutral and delegating the exploitation
+   question to an explicit predicate. **Proposed upstream rename**; note
+   this is a deliberate divergence from the current CaseNoesis
+   vocabulary, so a consumer matching on the old string will not match
+   these graphs.
+6. **Multi-agent guardian coalitions.** `traj:` has no first-class
    guardian/roster concept; interventions here are just actions with a
    `guardianIntervention` flag. Fine for one campaign; thin for the
    general kill-chain program, where *who can act at which transition*

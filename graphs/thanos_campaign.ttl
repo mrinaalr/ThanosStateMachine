@@ -46,7 +46,7 @@ tsm:CampaignInitiation a traj:State ;
     traj:phaseLabel "InitialContactPhase" ; traj:layer "campaign" .
 
 tsm:SnapEvent a traj:State ;
-    traj:phaseLabel "ExploitationPhase" ; traj:layer "campaign" ; rdfs:comment "Terminal harm event of the 2018 trajectory; interior state of the 2018-2023 composite trajectory." .
+    traj:phaseLabel "HarmExecutionPhase" ; traj:layer "campaign" ; rdfs:comment "Terminal harm event of the 2018 trajectory; interior state of the 2018-2023 composite trajectory." .
 
 tsm:GardenWithdrawal a traj:State ;
     traj:phaseLabel "MaintenancePhase" ; traj:layer "campaign" ; rdfs:comment "Stone destruction as harm maintenance: making the completed harm irreversible." .
@@ -64,7 +64,7 @@ tsm:LokiCoercion a traj:State ;
     traj:phaseLabel "ConditioningPhase" ; traj:layer "space" ; rdfs:comment "Hostage leverage: Thor's life against the Tesseract." .
 
 tsm:SpaceExtraction a traj:State ;
-    traj:phaseLabel "ExploitationPhase" ; traj:layer "space" .
+    traj:phaseLabel "HarmExecutionPhase" ; traj:layer "space" .
 
 tsm:KnowhereApproach a traj:State ;
     traj:phaseLabel "InitialContactPhase" ; traj:layer "reality" .
@@ -73,7 +73,7 @@ tsm:CollectorConcealment a traj:State ;
     traj:phaseLabel "ConditioningPhase" ; traj:layer "reality" .
 
 tsm:RealityExtraction a traj:State ;
-    traj:phaseLabel "ExploitationPhase" ; traj:layer "reality" .
+    traj:phaseLabel "HarmExecutionPhase" ; traj:layer "reality" .
 
 tsm:VormirApproach a traj:State ;
     traj:phaseLabel "InitialContactPhase" ; traj:layer "soul" .
@@ -82,7 +82,7 @@ tsm:GamoraLeverage a traj:State ;
     traj:phaseLabel "ConditioningPhase" ; traj:layer "soul" ; rdfs:comment "Affordance accumulation: Reality Stone (prior extraction) defeats Gamora's suicide attempt." .
 
 tsm:SoulExtraction a traj:State ;
-    traj:phaseLabel "ExploitationPhase" ; traj:layer "soul" .
+    traj:phaseLabel "HarmExecutionPhase" ; traj:layer "soul" .
 
 tsm:TitanAmbush a traj:State ;
     traj:phaseLabel "InitialContactPhase" ; traj:layer "time" .
@@ -91,7 +91,7 @@ tsm:StrangeBargain a traj:State ;
     traj:phaseLabel "ConditioningPhase" ; traj:layer "time" ; rdfs:comment "Hostage leverage: Stark's life against the Eye of Agamotto." .
 
 tsm:TimeExtraction a traj:State ;
-    traj:phaseLabel "ExploitationPhase" ; traj:layer "time" .
+    traj:phaseLabel "HarmExecutionPhase" ; traj:layer "time" .
 
 tsm:WakandaAssault a traj:State ;
     traj:phaseLabel "InitialContactPhase" ; traj:layer "mind" .
@@ -100,7 +100,7 @@ tsm:DefensePenetration a traj:State ;
     traj:phaseLabel "ConditioningPhase" ; traj:layer "mind" .
 
 tsm:MindExtraction a traj:State ;
-    traj:phaseLabel "ExploitationPhase" ; traj:layer "mind" ; rdfs:comment "Affordance accumulation: Time Stone reverses the Mind Stone's destruction." .
+    traj:phaseLabel "HarmExecutionPhase" ; traj:layer "mind" ; rdfs:comment "Affordance accumulation: Time Stone reverses the Mind Stone's destruction." .
 
 # ---------------------------------------------------------------------------
 # Actions / affordances

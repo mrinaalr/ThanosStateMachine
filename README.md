@@ -52,7 +52,7 @@ strange-search            # 14,000,605 Monte Carlo futures (~10s)
 pytest                    # invariants: calibration, backbone, honesty, TTL parity
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **0.3.0** (slow path to 1.0.0).
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **1.0.0**.
 Public API: [docs/API.md](docs/API.md).
 
 ## Layout
@@ -72,7 +72,7 @@ docs/
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)
   campaign.mermaid      machine diagram (regen: scripts/export_mermaid.py)
 SECURITY.md      dual-use threat model for two-sided (offender+defender) ESMs
-CHANGELOG.md     release notes + criteria for 1.0.0
+CHANGELOG.md     release notes
 tests/
 ```
 

@@ -7,22 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Toward 1.0.0
+### After 1.0.0 (optional / research)
 
-Ship 1.0.0 when these hold — not before:
+- Upstream `remediated` / `unlockedBy` into CaseNoesis
+- Guardian/roster concept for multi-agent coalitions (ONTOLOGY.md §5)
+- PyPI publish if distribution beyond Git matters
 
-- [x] Public API frozen (`__all__` + [docs/API.md](docs/API.md))
-- [x] Offender TTL regenerated from `build_machine()` (`scripts/export_ttl.py`) + parity-tested
-- [x] CI green on `main` (unit + calibration + seed-42 search)
-- [x] SECURITY.md dual-use norm unchanged and still accurate
-- [x] No orphan actions / no Python↔TTL structural drift
-- [ ] Version tagged and changelog cut as **1.0.0**
+Still out of scope: CASE/UCO imports; real defender-side parameterization.
 
-Out of scope for 1.0.0 (research follow-ons, not repo blockers):
+## [1.0.0] - 2026-08-14
 
-- Upstreaming `remediated` / `unlockedBy` into CaseNoesis
-- CASE/UCO imports (deliberately excluded; see docs/ONTOLOGY.md)
-- Real defender-side parameterization
+First stable release of the Infinity-Saga stress test.
+
+### 1.0.0 criteria (met)
+
+- Public API frozen (`__all__` + [docs/API.md](docs/API.md))
+- Offender TTL regenerated from `build_machine()` + parity-tested
+- CI green on `main`
+- SECURITY.md dual-use norm intact
+- No orphan actions / no Python↔TTL structural drift
+- Version tagged and changelog cut
+
+### Notes
+
+- Same calibrated identities as 0.3.0: `P(win|uniform) = 1/14,000,605`,
+  `P(win|optimal) = 324/14,000,605`, seed 42 → one observed win.
+- Research findings (`remediated`, dynamic affordances / `unlockedBy`,
+  composite backbone) are part of the shipped model, not drafts.
 
 ## [0.3.0] - 2026-08-14
 
@@ -81,7 +92,8 @@ Out of scope for 1.0.0 (research follow-ons, not repo blockers):
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.1.0...v0.1.1

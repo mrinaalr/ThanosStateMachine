@@ -18,9 +18,13 @@ is a search over interdiction points on its transitions.
 - **T** — affordance-labeled transitions, including cross-layer labels.
 - **R_G** — multi-channel, goal-conditioned reward (see
   [THANOS_PURPOSE.md](THANOS_PURPOSE.md)). Channels:
-  - `Δprogress` toward G (stone sockets; Power exogenous at open),
+  - `Δprogress` toward G (stone sockets; Power exogenous at open) —
+    this is *capability*, not the goal,
   - `personal_cost` ≤ 0 (Vormir / Gamora),
-  - `lock_in` (Garden stone-destruction).
+  - `lock_in` (Garden stone-destruction),
+  - `goal_attainment` (the Snap itself — *enactment*, booked only on
+    the `SnapEvent → GardenWithdrawal` edge, and weighted to strictly
+    dominate any capability subtotal).
   Scalar utility collapses channels with fixed weights so destiny still
   ranks the path; the Gamora beat is only visible if channels stay
   separate. G itself never rewrites under denial — only path cost does.
@@ -108,3 +112,62 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
    66.7% of all futures die at the earliest interdiction point. Early
    transitions dominate outcome mass, which is the Bellman-side argument
    for contact-phase intervention.
+5. **Capability is not enactment.** `Δprogress` and `goal_attainment`
+   are separate channels because they are separate facts. A full,
+   unsnapped gauntlet scores `progress = 1, attainment = 0`. The gap
+   between the last socket and the Snap is the final window in which
+   denial still *prevents* rather than merely reprices — thin in canon,
+   but the only one of its kind on the path.
+6. **The exploitation predicate.** See §5: this case shows
+   "exploitation" is a testable predicate over trajectories, not a name
+   for the machine.
+
+## 5. Is this actually exploitation?
+
+Under the definition the research works from (Zwolinski, Ferguson &
+Wertheimer, "Exploitation", *SEP*), **no — and that is the finding.**
+To exploit is to take unfair advantage: A benefits, at B's expense,
+where B is the *source* of the gain. Exploitation is extractive; A
+draws benefit *from* B and leaves B worse off than fair treatment would.
+
+The Snap fails that test. Thanos's benefit — "balance" — comes from the
+victims' *removal*, not from anything drawn out of them. B's death
+*triggers* the benefit; it is not *transferred into* it. Nothing is
+extracted; the victims are erased. That is omnicide, not exploitation.
+(Compare an arsonist's euphoria at a fire: the benefit causally depends
+on the owner's loss, but nothing of the owner's is taken up into it.)
+
+The criterion this yields is computable, and the repo implements it in
+`thanos_state_machine.exploitation`:
+
+> Is the victim a **source** of the offender's benefit (exploitation),
+> or a **target** of its elimination (destructive harm)?
+
+A trajectory is *exploitative* iff its **goal-realizing** benefit is
+victim-sourced. Running it on the campaign (`is-it-exploitation`)
+returns `False`: the goal-realizing edge (`SnapEvent →
+GardenWithdrawal`) is victim-targeted. But all five stone acquisitions
+*are* victim-sourced — something is drawn out of a specific holder
+(the Tesseract out of Loki, the Soul Stone out of Gamora's life, the
+Time Stone out of Strange's bargain, the Mind Stone out of Vision's
+head). So the campaign is an offense/harm trajectory that *contains*
+exploitation-shaped sub-patterns.
+
+Consequences for the research:
+
+- **"Exploitation" is a predicate, not a label.** Nothing in the tuple
+  `M = (S, A, T, R_G, s0, F)` checks whether A extracts unfair benefit
+  from B. The machinery is an offense/harm-trajectory formalism;
+  exploitation selects a subset of trajectories over it.
+- **Backbone specificity.** The backbone appears here even though this
+  is *not* exploitation — evidence that Backbone Invariance is a
+  property of goal-directed offense generally, not of exploitation
+  specifically. That narrows what the law actually claims.
+- **A hierarchy, in Cornish's sense.** Crime scripts link
+  hierarchically (universal → protoscript → track). The same move fits
+  here: a generic goal-dependent offense machine as parent, with the
+  ESM as the specialization that adds the extraction predicate.
+- **Sorting power.** Source-vs-target cleanly separates
+  sweatshop/fraud/CSEA (victim as source) from genocide/omnicide/terror
+  (victim as target) — a line worth stating explicitly in the mechanics
+  work.

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thanos-state-machine"
-version = "1.1.1"
-description = "The Infinity Saga as an exploitation state machine: offender-side campaign model + guardian-side search over 14,000,605 futures."
+version = "1.2.0"
+description = "The Infinity Saga as an offense/harm state machine: offender-centric campaign trajectory + guardian-side search over 14,000,605 futures."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -19,6 +19,7 @@ dev = ["pytest>=7"]
 strange-report = "thanos_state_machine.search:strange_report_cli"
 strange-search = "thanos_state_machine.simulate:main"
 thanos-reward = "thanos_state_machine.reward:reward_report_cli"
+is-it-exploitation = "thanos_state_machine.exploitation:exploitation_report_cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]

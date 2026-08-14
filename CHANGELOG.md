@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-14
+
+### Added
+
+- `exploitation.py` — computable SEP boundary predicate (*is the victim a
+  **source** of the offender's benefit, or a **target** of its
+  elimination?*) plus `is-it-exploitation` CLI. Verdict on this campaign:
+  **not an exploitation trajectory** — the goal-realizing edge (the Snap)
+  is victim-targeted, though all five stone acquisitions are
+  victim-sourced. See FORMALISM §5.
+- `goal_attainment` reward channel: capability (`Δprogress`) and
+  enactment are now separate facts. A full, unsnapped gauntlet scores
+  `progress=1, attainment=0` — the gap is the last window where denial
+  prevents rather than reprices. Weighted to strictly dominate any
+  capability subtotal.
+- Defender leverage note for that window; tests for both additions.
+
+### Changed
+
+- Tagline: "exploitation state machine" → "offense/harm state machine",
+  since the SEP test says the campaign is not exploitation.
+- `accumulate_rewards(..., motiv=)` now threads preference weights
+  through to `RewardAccount.utility` (previously custom weights were
+  silently ignored at accumulation).
+
+### Fixed
+
+- SECURITY.md intro attributed "evasion" to the defender's policy space;
+  evasion is adversary-side. The search is for defender *success*.
+
 ## [1.1.1] - 2026-08-14
 
 ### Fixed
@@ -111,7 +141,8 @@ First stable release of the Infinity-Saga stress test.
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v0.3.0...v1.0.0

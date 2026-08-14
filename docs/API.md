@@ -18,6 +18,7 @@ from thanos_state_machine import (
     DEFAULT_MOTIVATION,       # goal G + purpose quotes + preference weights
     build_edge_rewards,       # multi-channel R per offender edge
     accumulate_rewards,       # canon-path RewardAccount
+    defender_leverage_notes,  # guardian read of R channels
     reward_report,            # human-readable motivation / R ledger
     Phase, Polarity,          # enums
     StateMachine, Trajectory, # ESM containers
@@ -30,7 +31,10 @@ from thanos_state_machine import (
 |---|---|
 | `strange-report` | exact DP report to stdout |
 | `strange-search` | sample futures (``-n``, ``--seed``; default seed 42 → 1 win) |
-| `thanos-reward` | motivation + multi-channel reward ledger |
+| `thanos-reward` | motivation + multi-channel reward ledger + defender notes |
+
+Also: [docs/DEFENDER_READ.md](DEFENDER_READ.md), [docs/THANOS_PURPOSE.md](THANOS_PURPOSE.md).
+
 
 ## Regenerate derived artifacts
 

@@ -79,7 +79,7 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
   one.
 - **Law 2 (Backbone Invariance)** — holds, but only under the layered
   reading, and that is a real finding. No single layer contains the full
-  backbone: stone layers have contact/conditioning/exploitation but no
+  backbone: stone layers have contact/conditioning/harm execution but no
   maintenance; the campaign layer's maintenance phase (GardenWithdrawal
   — destroying the stones to make the harm irreversible) has no contact
   phase of its own. Backbone invariance survives **only as a property of
@@ -105,8 +105,10 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
    mid-trajectory (a compromised account enables the next contact).
 3. **Guardian side as a first-class object.** Kill-chain analysis (AfH
    Q3) becomes computable once the guardian policy space is explicit:
-   interdiction leverage per transition is just sensitivity of P(win)
-   to the node's parameters.
+   interdiction leverage per transition is sensitivity of P(win) to the
+   node's parameters — implemented as ``interdiction_leverage()`` in
+   ``search.py``, with guardian-to-offender anchors in
+   ``guardian_offender_anchors()``.
 4. **A caution about optimal-path claims.** Under uniform play the two
    most massive failure modes sit at the *first* node (the warning) —
    66.7% of all futures die at the earliest interdiction point. Early
@@ -124,17 +126,8 @@ has 16 leaves. Strange sampled futures; he did not enumerate leaves.
 
 ## 5. Is this actually exploitation?
 
-**Vocabulary note:** the backbone's third phase is
-``HarmExecutionPhase``, not ``ExploitationPhase``. Cornish's crime
-script runs contact → conditioning → *exploitation* → maintenance, and
-CaseNoesis inherits that name — but there "exploitation" just means *the
-offense is executed*, which collides with the SEP sense (the victim is
-the *source* of the offender's benefit). Keeping one word for two ideas
-made the Snap look like exploitation by construction: it occupies the
-third phase, so it was labelled exploitation, even though it fails the
-SEP test. Renaming the phase to what it denotes leaves the backbone
-neutral on that question and hands it to the predicate below. Proposed
-as an upstream vocabulary change.
+Vocabulary: the backbone's third phase is ``HarmExecutionPhase``, not
+``ExploitationPhase`` — see [ONTOLOGY.md](ONTOLOGY.md) §5.
 
 Under the definition the research works from (Zwolinski, Ferguson &
 Wertheimer, "Exploitation", *SEP*), **no — and that is the finding.**
@@ -152,8 +145,15 @@ on the owner's loss, but nothing of the owner's is taken up into it.)
 The criterion this yields is computable, and the repo implements it in
 `thanos_state_machine.exploitation`:
 
-> Is the victim a **source** of the offender's benefit (exploitation),
+> Is the victim a **source** of the offender's benefit (extraction),
 > or a **target** of its elimination (destructive harm)?
+
+Each edge's classification is **derived** from a stated
+``BenefitAnatomy`` (transferred object, preexisting, value survives
+victim) via ``derive_benefit_source()`` — not asserted per-edge. The
+hard case that pins the rule: the Mind Stone taking kills Vision but is
+still extraction (the stone predates him); the Snap kills billions and
+is destruction (nothing transfers; benefit *is* absence).
 
 A trajectory is *exploitative* iff its **goal-realizing** benefit is
 victim-sourced. Running it on the campaign (`is-it-exploitation`)

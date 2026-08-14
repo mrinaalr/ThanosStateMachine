@@ -9,11 +9,17 @@ from thanos_state_machine import (
     __version__,
     build_machine,            # offender-side ESM
     build_decision_tree,      # guardian decision nodes (ordered)
-    analytic_win_probability, # Fraction; policy in {"uniform","optimal"}
+    analytic_win_probability, # Fraction; GuardianPolicy.UNIFORM | OPTIMAL
     winning_line,             # [(node, surviving_label), ...]
+    GuardianPolicy,           # UNIFORM | OPTIMAL
+    GuardianAnchor,           # guardian node ↔ offender machine link
+    guardian_offender_anchors,
+    validate_guardian_anchors,
+    interdiction_leverage,    # per-node reach / loss / continue mass
+    absorbing_outcome_count,  # failure modes + win (16)
     failure_modes,            # exact loss masses under uniform play
     strange_report,           # human-readable exact analysis (str)
-    strange_search,           # Monte Carlo win count (default n=STRANGE_FUTURES)
+    strange_search,           # Monte Carlo win count (policy=, seed=)
     rollout,                  # single-future tree walk
     DEFAULT_MOTIVATION,       # goal G + purpose quotes + preference weights
     build_edge_rewards,       # multi-channel R per offender edge
@@ -28,8 +34,9 @@ from thanos_state_machine import (
     exploitation_predicate,   # SEP test: goal benefit victim-sourced?
     trajectory_verdict,       # generic SEP verdict for any annotated path
     campaign_verdict,         # ExploitationVerdict for this campaign
-    guardian_interdiction_shapes,  # tree nodes → extraction/enactment/maintenance
+    guardian_interdiction_shapes,  # tree nodes → extraction/enactment/maintenance/remediation
     validate_against_rewards, # parity with build_edge_rewards()
+    validate_guardian_interdiction_coverage,
     exploitation_report,      # human-readable boundary analysis
     Phase, Polarity,          # enums
     StateMachine, Trajectory, # ESM containers
@@ -41,7 +48,7 @@ from thanos_state_machine import (
 | command | module |
 |---|---|
 | `strange-report` | exact DP report to stdout |
-| `strange-search` | sample futures (``-n``, ``--seed``; default seed 42 → 1 win) |
+| `strange-search` | sample futures (``-n``, ``--seed``, ``--policy``; default seed 42 → 1 win under uniform) |
 | `thanos-reward` | motivation + multi-channel reward ledger + defender notes |
 | `is-it-exploitation` | SEP source-vs-target boundary test on the campaign |
 

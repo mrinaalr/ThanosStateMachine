@@ -1,7 +1,8 @@
 """Cross-module parity: reward ledger ↔ SEP benefit classifications."""
 
-import pytest
 from fractions import Fraction
+
+import pytest
 
 from thanos_state_machine.exploitation import (
     GOAL_REALIZING_EDGE,
@@ -13,9 +14,9 @@ from thanos_state_machine.exploitation import (
     validate_against_rewards,
 )
 from thanos_state_machine.reward import (
+    THANOS_PURPOSE_QUOTES,
     MotivationProfile,
     ThanosGoal,
-    THANOS_PURPOSE_QUOTES,
     accumulate_rewards,
     build_edge_rewards,
     validate_motivation_profile,
@@ -61,8 +62,9 @@ def test_campaign_verdict_matches_generic_api():
     )
 
 
-def test_wakanda_node_interdicts_enactment():
+def test_heist_assignment_interdicts_remediation():
     shapes = {row.node: row.shapes for row in guardian_interdiction_shapes()}
+    assert "remediation" in shapes["heist_assignment"]
     assert "enactment" in shapes["wakanda_strike"]
     assert "extraction" in shapes["statesman_response"]
 

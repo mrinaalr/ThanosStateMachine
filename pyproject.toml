@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thanos-state-machine"
-version = "2.0.0"
+version = "2.0.1"
 description = "The Infinity Saga as an offense/harm state machine: offender-centric campaign trajectory + guardian-side search over 14,000,605 futures."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -13,7 +13,7 @@ authors = [{ name = "Mrinaal Ramachandran" }]
 dependencies = ["numpy>=1.24"]
 
 [project.optional-dependencies]
-dev = ["pytest>=7"]
+dev = ["pytest>=7", "ruff>=0.4"]
 
 [project.scripts]
 strange-report = "thanos_state_machine.search:strange_report_cli"
@@ -29,3 +29,11 @@ thanos_state_machine = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]

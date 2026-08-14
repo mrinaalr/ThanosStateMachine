@@ -19,6 +19,7 @@ rat") for the calibration rule P_uniform(win) = 1/14,000,605.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import Enum
 from fractions import Fraction
 
 from .machine import (
@@ -32,6 +33,97 @@ from .machine import (
 )
 
 STRANGE_FUTURES = 14_000_605  # futures seen on Titan; exactly one win
+
+
+class GuardianPolicy(str, Enum):
+    """Guardian policy over the decision tree."""
+
+    UNIFORM = "uniform"  # random branch at each choice (Strange's measure)
+    OPTIMAL = "optimal"  # always pick the surviving branch; chance remains
+
+
+@dataclass(frozen=True)
+class GuardianAnchor:
+    """Link a guardian decision node to offender-side machine coordinates."""
+
+    node: str
+    offender_states: tuple[str, ...] = ()
+    offender_edges: tuple[tuple[str, str], ...] = ()
+    note: str = ""
+
+
+def guardian_offender_anchors() -> tuple[GuardianAnchor, ...]:
+    """Map guardian tree nodes to offender-machine interdiction points.
+
+    FORMALISM §1–§2: the tree is a search over transitions on the ESM.
+    Choice nodes are guardian decisions; chance nodes are exogenous
+    environment (forge, rat, heist luck). Anchors are validated in tests.
+    """
+    return (
+        GuardianAnchor(
+            "statesman_response",
+            ("StatesmanIntercept",),
+            (("CampaignInitiation", "StatesmanIntercept"),),
+            "First contact — space stone layer opens",
+        ),
+        GuardianAnchor(
+            "nidavellir_forge",
+            note="Exogenous: Stormbreaker enables garden_ambush confirmation",
+        ),
+        GuardianAnchor(
+            "knowhere_response",
+            ("KnowhereApproach", "GamoraLeverage"),
+            (("KnowhereApproach", "CollectorConcealment"),
+             ("GamoraLeverage", "SoulExtraction")),
+            "Reality approach + Soul-path leverage",
+        ),
+        GuardianAnchor(
+            "titan_decision",
+            ("StrangeBargain",),
+            (("TitanAmbush", "StrangeBargain"),
+             ("StrangeBargain", "TimeExtraction")),
+            "Time Stone bargain under hostage leverage",
+        ),
+        GuardianAnchor(
+            "wakanda_strike",
+            ("MindExtraction", "SnapEvent"),
+            (("DefensePenetration", "MindExtraction"),
+             ("MindExtraction", "SnapEvent")),
+            "Final capability socket → enactment window (Snap pending)",
+        ),
+        GuardianAnchor(
+            "garden_ambush",
+            ("GardenWithdrawal",),
+            (("SnapEvent", "GardenWithdrawal"),
+             ("GardenWithdrawal", "RemediationBattle")),
+            "Post-Snap maintenance / stone destruction",
+        ),
+        GuardianAnchor(
+            "quantum_rat",
+            note="Exogenous: five-year gap; tunnel discovery",
+        ),
+        GuardianAnchor(
+            "heist_assignment",
+            ("RemediationBattle",),
+            (("GardenWithdrawal", "RemediationBattle"),),
+            "Guardian remediation — time-heist team assignment",
+        ),
+        GuardianAnchor(
+            "tesseract_recovery",
+            note="Exogenous: 2012 heist mishap / Pym particles",
+        ),
+        GuardianAnchor(
+            "gauntlet_keepaway",
+            ("RemediationBattle",),
+            note="Battlefield keepaway before the counter-snap",
+        ),
+        GuardianAnchor(
+            "stark_seizure",
+            ("CampaignRemediated",),
+            (("RemediationBattle", "CampaignRemediated"),),
+            "Terminal counter-snap — campaign remediated",
+        ),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -117,6 +209,23 @@ def build_machine() -> StateMachine:
 
     m.validate()
     return m
+
+
+def validate_guardian_anchors(m: StateMachine | None = None) -> None:
+    """Every anchored state/edge must exist on the offender machine."""
+    m = m if m is not None else build_machine()
+    known_states = set(m.states)
+    known_edges = {(t.source, t.target) for t in m.transitions}
+    tree_nodes = {n.name for n in build_decision_tree()}
+    for anchor in guardian_offender_anchors():
+        if anchor.node not in tree_nodes:
+            raise ValueError(f"anchor references unknown tree node {anchor.node!r}")
+        for s in anchor.offender_states:
+            if s not in known_states:
+                raise ValueError(f"anchor {anchor.node}: unknown state {s!r}")
+        for e in anchor.offender_edges:
+            if e not in known_edges:
+                raise ValueError(f"anchor {anchor.node}: unknown edge {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -231,19 +340,23 @@ def build_decision_tree() -> list[Node]:
     ]
 
 
-def analytic_win_probability(tree: list[Node] | None = None,
-                             policy: str = "uniform") -> Fraction:
-    """Exact P(win) under a policy in {"uniform", "optimal"}.
+def analytic_win_probability(
+    tree: list[Node] | None = None,
+    policy: GuardianPolicy | str = GuardianPolicy.UNIFORM,
+) -> Fraction:
+    """Exact P(win) under a guardian policy.
 
-    uniform: guardians pick uniformly at choice nodes (Strange's measure).
-    optimal: guardians always pick the surviving branch; only chance
-    remains. There is exactly one surviving leaf either way.
+    UNIFORM: pick uniformly at choice nodes (Strange's measure).
+    OPTIMAL: always pick the surviving branch; only chance remains.
+    There is exactly one surviving leaf either way.
     """
     tree = tree if tree is not None else build_decision_tree()
+    if isinstance(policy, str):
+        policy = GuardianPolicy(policy)
     p = Fraction(1)
     for node in tree:
         if isinstance(node, ChoiceNode):
-            if policy == "uniform":
+            if policy is GuardianPolicy.UNIFORM:
                 p *= Fraction(1, len(node.branches))
         else:
             p *= node.p_continue

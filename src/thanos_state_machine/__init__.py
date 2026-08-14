@@ -9,9 +9,13 @@ including where the *exploitation* label stops applying (see
 
 from .campaign import (
     STRANGE_FUTURES,
+    GuardianAnchor,
+    GuardianPolicy,
     analytic_win_probability,
     build_decision_tree,
     build_machine,
+    guardian_offender_anchors,
+    validate_guardian_anchors,
     winning_line,
 )
 from .exploitation import (
@@ -20,11 +24,13 @@ from .exploitation import (
     InterdictionShape,
     campaign_verdict,
     classify_campaign_edges,
+    derive_benefit_source,
     exploitation_predicate,
     exploitation_report,
     guardian_interdiction_shapes,
     trajectory_verdict,
     validate_against_rewards,
+    validate_guardian_interdiction_coverage,
 )
 from .machine import Phase, Polarity, StateMachine, Trajectory
 from .reward import (
@@ -35,14 +41,23 @@ from .reward import (
     reward_report,
     validate_motivation_profile,
 )
-from .search import failure_modes, strange_report
+from .search import (
+    absorbing_outcome_count,
+    failure_modes,
+    interdiction_leverage,
+    strange_report,
+)
 from .simulate import rollout, strange_search
 
 __all__ = [
     "STRANGE_FUTURES",
+    "GuardianAnchor",
+    "GuardianPolicy",
     "analytic_win_probability",
     "build_decision_tree",
     "build_machine",
+    "guardian_offender_anchors",
+    "validate_guardian_anchors",
     "winning_line",
     "Phase",
     "Polarity",
@@ -65,11 +80,14 @@ __all__ = [
     "guardian_interdiction_shapes",
     "trajectory_verdict",
     "validate_against_rewards",
+    "validate_guardian_interdiction_coverage",
+    "absorbing_outcome_count",
     "failure_modes",
+    "interdiction_leverage",
     "strange_report",
     "rollout",
     "strange_search",
     "__version__",
 ]
 
-__version__ = "2.0.0"
+__version__ = "2.0.1"

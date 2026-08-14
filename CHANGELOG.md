@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-08-14
+
+### Fixed
+
+- ``derive_benefit_source`` was listed in ``__all__`` / API but not exported
+  from ``__init__.py``.
+
+### Added
+
+- ``GuardianPolicy`` enum (``UNIFORM`` | ``OPTIMAL``) — typed policy surface
+  for ``analytic_win_probability``, ``rollout``, and ``strange_search``.
+- ``interdiction_leverage()`` — per-node reach / loss / continue mass under a
+  guardian policy (FORMALISM §4 contact-primacy argument, now computable).
+- ``guardian_offender_anchors()`` + ``validate_guardian_anchors()`` — explicit
+  link between guardian tree nodes and offender-machine coordinates.
+- ``absorbing_outcome_count()`` — verifies the 16 absorbing outcomes
+  (15 failure modes + 1 win).
+- ``validate_guardian_interdiction_coverage()`` — every choice node must carry
+  an interdiction shape; ``heist_assignment`` tagged ``remediation``.
+- Monte Carlo ``--policy optimal`` CLI flag; integer-safe Bernoulli sampling
+  (no float threshold drift on chance nodes).
+- ``tests/test_public_api.py``, ``tests/test_defender.py``; ruff in CI.
+
+### Changed
+
+- ``strange_report()`` includes interdiction leverage summary; no longer
+  recomputes ``failure_modes()`` twice.
+
 ## [2.0.0] - 2026-08-14
 
 Major bump: a public enum member was renamed.
@@ -195,7 +223,8 @@ First stable release of the Infinity-Saga stress test.
 - `graphs/thanos_campaign.ttl`, formalism/ontology docs, mermaid export
 - Invariant tests
 
-[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.1...v2.0.0
 [1.2.1]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/mrinaalr/ThanosStateMachine/compare/v1.1.1...v1.2.0

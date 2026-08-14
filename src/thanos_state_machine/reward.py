@@ -17,7 +17,6 @@ from fractions import Fraction
 
 from .machine import StateMachine
 
-
 # ---------------------------------------------------------------------------
 # Statement of purpose (film-attributed lines; public dialogue)
 # ---------------------------------------------------------------------------

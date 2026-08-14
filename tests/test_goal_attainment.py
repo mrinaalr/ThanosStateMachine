@@ -4,9 +4,9 @@ from fractions import Fraction
 
 from thanos_state_machine.reward import (
     DEFAULT_MOTIVATION,
+    THANOS_PURPOSE_QUOTES,
     MotivationProfile,
     ThanosGoal,
-    THANOS_PURPOSE_QUOTES,
     accumulate_rewards,
     build_edge_rewards,
     canon_offender_path,

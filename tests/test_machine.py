@@ -5,9 +5,9 @@ from fractions import Fraction
 import numpy as np
 
 from thanos_state_machine.campaign import (
+    STRANGE_FUTURES,
     ChanceNode,
     ChoiceNode,
-    STRANGE_FUTURES,
     analytic_win_probability,
     build_decision_tree,
     build_machine,
@@ -77,7 +77,7 @@ def test_contact_primacy_per_stone_layer():
 
 def test_backbone_per_stone_layer():
     """Law 2 check at the sub-trajectory level: contact -> conditioning ->
-    exploitation present in every stone layer (maintenance lives at the
+    harm execution present in every stone layer (maintenance lives at the
     campaign level: GardenWithdrawal). See docs/FORMALISM.md."""
     m = build_machine()
     for layer in ["space", "reality", "soul", "time", "mind"]:

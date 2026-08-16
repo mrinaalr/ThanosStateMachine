@@ -39,7 +39,17 @@ from thanos_state_machine import (
     validate_guardian_interdiction_coverage,
     exploitation_report,      # human-readable boundary analysis
     Phase, Polarity,          # enums
-    StateMachine, Trajectory, # ESM containers
+    StateMachine, Trajectory, # ontology-view containers
+    # --- the executable tuple (2.1.0) ---
+    build_thanos_tuple,       # M = (S, A, T, R_G, s0, F), validated
+    OffenseMachine,           # the tuple: transition(), admissible_actions(), ...
+    CampaignState,            # s = (position, keyring)
+    CampaignTrajectory,       # sigma, with account() and ledger()
+    TupleEdge,                # one entry of T, carrying its R_G row
+    STONES,                   # X, in canon acquisition order
+    tuple_report,             # full spec + the realized run (str)
+    validate_tuple_against_machine,  # label parity with build_machine()
+    validate_tuple_against_ledger,   # channel parity with accumulate_rewards()
 )
 ```
 
@@ -51,6 +61,7 @@ from thanos_state_machine import (
 | `strange-search` | sample futures (``-n``, ``--seed``, ``--policy``; default seed 42 → 1 win under uniform) |
 | `thanos-reward` | motivation + multi-channel reward ledger + defender notes |
 | `is-it-exploitation` | SEP source-vs-target boundary test on the campaign |
+| `thanos-tuple` | full M = (S, A, T, R_G, s0, F) spec, the realized s0→F run, and the experiments over it |
 
 Also: [docs/DEFENDER_READ.md](DEFENDER_READ.md), [docs/THANOS_PURPOSE.md](THANOS_PURPOSE.md).
 
@@ -60,7 +71,8 @@ Also: [docs/DEFENDER_READ.md](DEFENDER_READ.md), [docs/THANOS_PURPOSE.md](THANOS
 ```bash
 python scripts/export_mermaid.py   # -> docs/campaign.mermaid
 python scripts/export_ttl.py       # -> graphs/thanos_campaign.ttl
-pytest                             # includes TTL↔machine parity
+python scripts/export_tuple.py     # -> graphs/thanos_tuple.json
+pytest                             # includes TTL↔machine and tuple↔ledger parity
 ```
 
 ## Stability promise
@@ -75,5 +87,13 @@ pytest                             # includes TTL↔machine parity
   presumes the SEP verdict; ``exploitation.py`` decides it. See ONTOLOGY.md §5.
 - ``EdgeBenefit.kind`` is *derived* from ``EdgeBenefit.anatomy``; do not set it
   by hand (``validate_derivation()`` enforces this).
+- **2.1.0 additive:** ``formalism`` is a new view, not a replacement.
+  ``build_machine()`` stays the ontology twin and the TTL's source of truth;
+  ``build_thanos_tuple()`` is the executable one. Their labels and their
+  reward totals are kept in parity by test, so neither can drift.
+- Tuple ``EdgeReward`` rows are *taken from* ``build_edge_rewards()``, never
+  redefined. Two rows are re-attached to the edge that performs the act (the
+  exogenous Power grant; the enactment edge into ``SnapEvent``); the totals
+  are unchanged and pinned to ``accumulate_rewards()``.
 - Defender-side *parameters* stay canon-calibrated fiction; see SECURITY.md.
 """

@@ -51,10 +51,11 @@ strange-report            # exact analysis: win lines, failure modes
 strange-search            # 14,000,605 Monte Carlo futures (~10s)
 thanos-reward             # motivation + multi-channel R (Gamora / Stark / Garden)
 is-it-exploitation        # SEP boundary test: source vs target (verdict: not exploitation)
+thanos-tuple              # the full M = (S, A, T, R_G, s0, F) spec + the realized run
 pytest                    # invariants: calibration, backbone, honesty, TTL parity, reward
 ```
 
-Version history: [CHANGELOG.md](CHANGELOG.md). Current: **2.0.1**.
+Version history: [CHANGELOG.md](CHANGELOG.md). Current: **2.1.0**.
 Public API: [docs/API.md](docs/API.md). Motive: [docs/THANOS_PURPOSE.md](docs/THANOS_PURPOSE.md).
 Defender read: [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md).
 
@@ -62,14 +63,16 @@ Defender read: [docs/DEFENDER_READ.md](docs/DEFENDER_READ.md).
 
 ```
 src/thanos_state_machine/
-  machine.py     generic ESM primitives (S, A, T, R_G, s0, F; layers)
+  machine.py     ontology-view primitives (states, actions, edges, layers)
   campaign.py    the Thanos machine + the guardian decision tree
   search.py      exact DP: probabilities, the winning line, failure modes
   simulate.py    vectorized Monte Carlo over 14,000,605 futures
   reward.py      Thanos motivation + multi-channel R_G
   exploitation.py  SEP predicate: is the victim a source or a target?
+  formalism.py   M = (S, A, T, R_G, s0, F) as one executable, walkable object
 graphs/
   thanos_campaign.ttl   CaseNoesis traj: twin (regen: scripts/export_ttl.py)
+  thanos_tuple.json     the tuple, language-neutral (regen: scripts/export_tuple.py)
 docs/
   API.md         frozen public surface for 1.0.0
   THANOS_PURPOSE.md  statement of purpose + reward channels (film quotes)

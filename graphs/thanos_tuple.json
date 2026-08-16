@@ -1,0 +1,2071 @@
+{
+  "tuple": "M = (S, A, T, R_G, s0, F)",
+  "goal": {
+    "id": "universal_balance_cull",
+    "statement": "Randomly erase half of all life so the remainder can thrive on finite resources \u2014 'balance' as he defines it.",
+    "means": "Assemble all six Infinity Stones, enact the Snap, then destroy the stones so the outcome cannot be undone."
+  },
+  "stones": [
+    "power",
+    "space",
+    "reality",
+    "soul",
+    "time",
+    "mind"
+  ],
+  "S": [
+    {
+      "label": "CampaignInitiation[-]",
+      "position": "CampaignInitiation",
+      "keyring": [],
+      "progress": "0"
+    },
+    {
+      "label": "CampaignRemediated[-]",
+      "position": "CampaignRemediated",
+      "keyring": [],
+      "progress": "0"
+    },
+    {
+      "label": "CollectorConcealment[P+Sp]",
+      "position": "CollectorConcealment",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "CollectorConcealment[P+Sp+T]",
+      "position": "CollectorConcealment",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "CollectorConcealment[P+Sp+T+M]",
+      "position": "CollectorConcealment",
+      "keyring": [
+        "power",
+        "space",
+        "time",
+        "mind"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "DefensePenetration[P+Sp+T]",
+      "position": "DefensePenetration",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "DefensePenetration[P+Sp+R+T]",
+      "position": "DefensePenetration",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "DefensePenetration[P+Sp+R+So+T]",
+      "position": "DefensePenetration",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "GamoraLeverage[P+Sp+R]",
+      "position": "GamoraLeverage",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "GamoraLeverage[P+Sp+R+T]",
+      "position": "GamoraLeverage",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "GamoraLeverage[P+Sp+R+T+M]",
+      "position": "GamoraLeverage",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time",
+        "mind"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "GardenWithdrawal[P+Sp+R+So+T+M]",
+      "position": "GardenWithdrawal",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time",
+        "mind"
+      ],
+      "progress": "1"
+    },
+    {
+      "label": "GauntletStaging[P]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power"
+      ],
+      "progress": "1/6"
+    },
+    {
+      "label": "GauntletStaging[P+Sp]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+R]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+T]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+R+So]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+R+T]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+T+M]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "time",
+        "mind"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+R+So+T]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+R+T+M]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time",
+        "mind"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "GauntletStaging[P+Sp+R+So+T+M]",
+      "position": "GauntletStaging",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time",
+        "mind"
+      ],
+      "progress": "1"
+    },
+    {
+      "label": "KnowhereApproach[P+Sp]",
+      "position": "KnowhereApproach",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "KnowhereApproach[P+Sp+T]",
+      "position": "KnowhereApproach",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "KnowhereApproach[P+Sp+T+M]",
+      "position": "KnowhereApproach",
+      "keyring": [
+        "power",
+        "space",
+        "time",
+        "mind"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "LokiCoercion[P]",
+      "position": "LokiCoercion",
+      "keyring": [
+        "power"
+      ],
+      "progress": "1/6"
+    },
+    {
+      "label": "MindExtraction[P+Sp+T]",
+      "position": "MindExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "MindExtraction[P+Sp+R+T]",
+      "position": "MindExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "MindExtraction[P+Sp+R+So+T]",
+      "position": "MindExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "RealityExtraction[P+Sp]",
+      "position": "RealityExtraction",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "RealityExtraction[P+Sp+T]",
+      "position": "RealityExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "RealityExtraction[P+Sp+T+M]",
+      "position": "RealityExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "time",
+        "mind"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "RemediationBattle[-]",
+      "position": "RemediationBattle",
+      "keyring": [],
+      "progress": "0"
+    },
+    {
+      "label": "SnapEvent[P+Sp+R+So+T+M]",
+      "position": "SnapEvent",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time",
+        "mind"
+      ],
+      "progress": "1"
+    },
+    {
+      "label": "SoulExtraction[P+Sp+R]",
+      "position": "SoulExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "SoulExtraction[P+Sp+R+T]",
+      "position": "SoulExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "SoulExtraction[P+Sp+R+T+M]",
+      "position": "SoulExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time",
+        "mind"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "SpaceExtraction[P]",
+      "position": "SpaceExtraction",
+      "keyring": [
+        "power"
+      ],
+      "progress": "1/6"
+    },
+    {
+      "label": "StatesmanIntercept[P]",
+      "position": "StatesmanIntercept",
+      "keyring": [
+        "power"
+      ],
+      "progress": "1/6"
+    },
+    {
+      "label": "StrangeBargain[P+Sp]",
+      "position": "StrangeBargain",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "StrangeBargain[P+Sp+R]",
+      "position": "StrangeBargain",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "StrangeBargain[P+Sp+R+So]",
+      "position": "StrangeBargain",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "TimeExtraction[P+Sp]",
+      "position": "TimeExtraction",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "TimeExtraction[P+Sp+R]",
+      "position": "TimeExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "TimeExtraction[P+Sp+R+So]",
+      "position": "TimeExtraction",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "TitanAmbush[P+Sp]",
+      "position": "TitanAmbush",
+      "keyring": [
+        "power",
+        "space"
+      ],
+      "progress": "1/3"
+    },
+    {
+      "label": "TitanAmbush[P+Sp+R]",
+      "position": "TitanAmbush",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "TitanAmbush[P+Sp+R+So]",
+      "position": "TitanAmbush",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "VormirApproach[P+Sp+R]",
+      "position": "VormirApproach",
+      "keyring": [
+        "power",
+        "space",
+        "reality"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "VormirApproach[P+Sp+R+T]",
+      "position": "VormirApproach",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "VormirApproach[P+Sp+R+T+M]",
+      "position": "VormirApproach",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time",
+        "mind"
+      ],
+      "progress": "5/6"
+    },
+    {
+      "label": "WakandaAssault[P+Sp+T]",
+      "position": "WakandaAssault",
+      "keyring": [
+        "power",
+        "space",
+        "time"
+      ],
+      "progress": "1/2"
+    },
+    {
+      "label": "WakandaAssault[P+Sp+R+T]",
+      "position": "WakandaAssault",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "time"
+      ],
+      "progress": "2/3"
+    },
+    {
+      "label": "WakandaAssault[P+Sp+R+So+T]",
+      "position": "WakandaAssault",
+      "keyring": [
+        "power",
+        "space",
+        "reality",
+        "soul",
+        "time"
+      ],
+      "progress": "5/6"
+    }
+  ],
+  "A": [
+    {
+      "name": "a_seek_space",
+      "kind": "offender_action",
+      "description": "open the space acquisition layer \u2014 Sanctuary II takes the Statesman; Loki yields the Tesseract",
+      "requires": null
+    },
+    {
+      "name": "a_seek_reality",
+      "kind": "offender_action",
+      "description": "open the reality acquisition layer \u2014 Knowhere; the Collector's staged vault",
+      "requires": null
+    },
+    {
+      "name": "a_seek_soul",
+      "kind": "offender_action",
+      "description": "open the soul acquisition layer \u2014 Vormir; a soul for the Soul Stone",
+      "requires": null
+    },
+    {
+      "name": "a_seek_time",
+      "kind": "offender_action",
+      "description": "open the time acquisition layer \u2014 Titan; the Time Stone traded for Stark's life",
+      "requires": null
+    },
+    {
+      "name": "a_seek_mind",
+      "kind": "offender_action",
+      "description": "open the mind acquisition layer \u2014 Wakanda; the stone cut from Vision's head",
+      "requires": null
+    },
+    {
+      "name": "a_fleet",
+      "kind": "offender_action",
+      "description": "Sanctuary II / Outrider armies",
+      "requires": null
+    },
+    {
+      "name": "a_black_order",
+      "kind": "offender_action",
+      "description": "delegated acquisition (Children of Thanos)",
+      "requires": null
+    },
+    {
+      "name": "a_engage",
+      "kind": "offender_action",
+      "description": "make contact with the holder and take control of the scene (contact -> conditioning)",
+      "requires": null
+    },
+    {
+      "name": "a_hostage_leverage",
+      "kind": "offender_action",
+      "description": "coerce stone-holder via a hostage (Thor->Loki, Tony->Strange, Gamora->Soul)",
+      "requires": null
+    },
+    {
+      "name": "a_deception",
+      "kind": "offender_action",
+      "description": "staged scene / concealment (Knowhere illusion)",
+      "requires": null
+    },
+    {
+      "name": "a_sacrifice_rite",
+      "kind": "offender_action",
+      "description": "Vormir exchange: a soul for the Soul Stone",
+      "requires": null
+    },
+    {
+      "name": "a_socket",
+      "kind": "offender_action",
+      "description": "mount an acquired stone in the gauntlet (capability accrual)",
+      "requires": null
+    },
+    {
+      "name": "a_snap",
+      "kind": "offender_action",
+      "description": "terminal harm event: erase half of all life",
+      "requires": null
+    },
+    {
+      "name": "a_withdraw",
+      "kind": "offender_action",
+      "description": "retire to the Garden once G is enacted (maintenance)",
+      "requires": null
+    },
+    {
+      "name": "a_stone_destruction",
+      "kind": "offender_action",
+      "description": "destroy the stones to make the harm irreversible",
+      "requires": null
+    },
+    {
+      "name": "a_power_stone",
+      "kind": "affordance",
+      "description": "acquired pre-s0 (Xandar, exogenous)",
+      "requires": null
+    },
+    {
+      "name": "a_space_skip",
+      "kind": "affordance",
+      "description": "portal arrival anywhere (Space Stone)",
+      "requires": "space"
+    },
+    {
+      "name": "a_reality_warp",
+      "kind": "affordance",
+      "description": "rewrite local reality (Reality Stone)",
+      "requires": "reality"
+    },
+    {
+      "name": "a_time_reverse",
+      "kind": "affordance",
+      "description": "rewind events (Time Stone)",
+      "requires": "time"
+    },
+    {
+      "name": "a_time_heist",
+      "kind": "guardian_intervention",
+      "description": "guardian remediation: quantum-tunnel retrieval of past stones",
+      "requires": null
+    },
+    {
+      "name": "a_reverse_snap",
+      "kind": "guardian_intervention",
+      "description": "Hulk snap: restore the erased",
+      "requires": null
+    },
+    {
+      "name": "a_counter_snap",
+      "kind": "guardian_intervention",
+      "description": "Stark snap: erase the 2014 invasion force",
+      "requires": null
+    }
+  ],
+  "T": [
+    {
+      "source": "CampaignInitiation[-]",
+      "action": "a_power_stone",
+      "target": "GauntletStaging[P]",
+      "co_labels": [],
+      "trigger": "Xandar complete (exogenous)",
+      "canon_edge": [
+        "CampaignInitiation",
+        "StatesmanIntercept"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P]",
+      "action": "a_seek_space",
+      "target": "StatesmanIntercept[P]",
+      "co_labels": [
+        "a_fleet"
+      ],
+      "trigger": "Sanctuary II takes the Statesman; Loki yields the Tesseract",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "StatesmanIntercept[P]",
+      "action": "a_engage",
+      "target": "LokiCoercion[P]",
+      "co_labels": [
+        "a_fleet",
+        "a_power_stone",
+        "a_black_order"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "StatesmanIntercept",
+        "LokiCoercion"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "LokiCoercion[P]",
+      "action": "a_hostage_leverage",
+      "target": "SpaceExtraction[P]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "LokiCoercion",
+        "SpaceExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "SpaceExtraction[P]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "SpaceExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp]",
+      "action": "a_seek_reality",
+      "target": "KnowhereApproach[P+Sp]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Knowhere; the Collector's staged vault",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "KnowhereApproach[P+Sp]",
+      "action": "a_engage",
+      "target": "CollectorConcealment[P+Sp]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "KnowhereApproach",
+        "CollectorConcealment"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "CollectorConcealment[P+Sp]",
+      "action": "a_deception",
+      "target": "RealityExtraction[P+Sp]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "CollectorConcealment",
+        "RealityExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "RealityExtraction[P+Sp]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "RealityExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp]",
+      "action": "a_seek_time",
+      "target": "TitanAmbush[P+Sp]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Titan; the Time Stone traded for Stark's life",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "TitanAmbush[P+Sp]",
+      "action": "a_engage",
+      "target": "StrangeBargain[P+Sp]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "TitanAmbush",
+        "StrangeBargain"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "StrangeBargain[P+Sp]",
+      "action": "a_hostage_leverage",
+      "target": "TimeExtraction[P+Sp]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "StrangeBargain",
+        "TimeExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "TimeExtraction[P+Sp]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+T]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "TimeExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+T]",
+      "action": "a_seek_reality",
+      "target": "KnowhereApproach[P+Sp+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Knowhere; the Collector's staged vault",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "KnowhereApproach[P+Sp+T]",
+      "action": "a_engage",
+      "target": "CollectorConcealment[P+Sp+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "KnowhereApproach",
+        "CollectorConcealment"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "CollectorConcealment[P+Sp+T]",
+      "action": "a_deception",
+      "target": "RealityExtraction[P+Sp+T]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "CollectorConcealment",
+        "RealityExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "RealityExtraction[P+Sp+T]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+T]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "RealityExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+T]",
+      "action": "a_seek_mind",
+      "target": "WakandaAssault[P+Sp+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Wakanda; the stone cut from Vision's head",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "WakandaAssault[P+Sp+T]",
+      "action": "a_engage",
+      "target": "DefensePenetration[P+Sp+T]",
+      "co_labels": [
+        "a_space_skip",
+        "a_fleet",
+        "a_black_order"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "WakandaAssault",
+        "DefensePenetration"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "DefensePenetration[P+Sp+T]",
+      "action": "a_fleet",
+      "target": "MindExtraction[P+Sp+T]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "DefensePenetration",
+        "MindExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "MindExtraction[P+Sp+T]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+T+M]",
+      "co_labels": [
+        "a_time_reverse"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "MindExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+T+M]",
+      "action": "a_seek_reality",
+      "target": "KnowhereApproach[P+Sp+T+M]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Knowhere; the Collector's staged vault",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "KnowhereApproach[P+Sp+T+M]",
+      "action": "a_engage",
+      "target": "CollectorConcealment[P+Sp+T+M]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "KnowhereApproach",
+        "CollectorConcealment"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "CollectorConcealment[P+Sp+T+M]",
+      "action": "a_deception",
+      "target": "RealityExtraction[P+Sp+T+M]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "CollectorConcealment",
+        "RealityExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "RealityExtraction[P+Sp+T+M]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+T+M]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "RealityExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+T+M]",
+      "action": "a_seek_soul",
+      "target": "VormirApproach[P+Sp+R+T+M]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Vormir; a soul for the Soul Stone",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "VormirApproach[P+Sp+R+T+M]",
+      "action": "a_engage",
+      "target": "GamoraLeverage[P+Sp+R+T+M]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "VormirApproach",
+        "GamoraLeverage"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "GamoraLeverage[P+Sp+R+T+M]",
+      "action": "a_hostage_leverage",
+      "target": "SoulExtraction[P+Sp+R+T+M]",
+      "co_labels": [
+        "a_reality_warp"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "GamoraLeverage",
+        "SoulExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "-1",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "-1/5"
+    },
+    {
+      "source": "SoulExtraction[P+Sp+R+T+M]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So+T+M]",
+      "co_labels": [
+        "a_sacrifice_rite"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "SoulExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+T]",
+      "action": "a_seek_soul",
+      "target": "VormirApproach[P+Sp+R+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Vormir; a soul for the Soul Stone",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "VormirApproach[P+Sp+R+T]",
+      "action": "a_engage",
+      "target": "GamoraLeverage[P+Sp+R+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "VormirApproach",
+        "GamoraLeverage"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "GamoraLeverage[P+Sp+R+T]",
+      "action": "a_hostage_leverage",
+      "target": "SoulExtraction[P+Sp+R+T]",
+      "co_labels": [
+        "a_reality_warp"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "GamoraLeverage",
+        "SoulExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "-1",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "-1/5"
+    },
+    {
+      "source": "SoulExtraction[P+Sp+R+T]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So+T]",
+      "co_labels": [
+        "a_sacrifice_rite"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "SoulExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+T]",
+      "action": "a_seek_mind",
+      "target": "WakandaAssault[P+Sp+R+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Wakanda; the stone cut from Vision's head",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "WakandaAssault[P+Sp+R+T]",
+      "action": "a_engage",
+      "target": "DefensePenetration[P+Sp+R+T]",
+      "co_labels": [
+        "a_space_skip",
+        "a_fleet",
+        "a_black_order"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "WakandaAssault",
+        "DefensePenetration"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "DefensePenetration[P+Sp+R+T]",
+      "action": "a_fleet",
+      "target": "MindExtraction[P+Sp+R+T]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "DefensePenetration",
+        "MindExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "MindExtraction[P+Sp+R+T]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+T+M]",
+      "co_labels": [
+        "a_time_reverse"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "MindExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+So+T]",
+      "action": "a_seek_mind",
+      "target": "WakandaAssault[P+Sp+R+So+T]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Wakanda; the stone cut from Vision's head",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "WakandaAssault[P+Sp+R+So+T]",
+      "action": "a_engage",
+      "target": "DefensePenetration[P+Sp+R+So+T]",
+      "co_labels": [
+        "a_space_skip",
+        "a_fleet",
+        "a_black_order"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "WakandaAssault",
+        "DefensePenetration"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "DefensePenetration[P+Sp+R+So+T]",
+      "action": "a_fleet",
+      "target": "MindExtraction[P+Sp+R+So+T]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "DefensePenetration",
+        "MindExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "MindExtraction[P+Sp+R+So+T]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So+T+M]",
+      "co_labels": [
+        "a_time_reverse"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "MindExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R]",
+      "action": "a_seek_soul",
+      "target": "VormirApproach[P+Sp+R]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Vormir; a soul for the Soul Stone",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "VormirApproach[P+Sp+R]",
+      "action": "a_engage",
+      "target": "GamoraLeverage[P+Sp+R]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "VormirApproach",
+        "GamoraLeverage"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "GamoraLeverage[P+Sp+R]",
+      "action": "a_hostage_leverage",
+      "target": "SoulExtraction[P+Sp+R]",
+      "co_labels": [
+        "a_reality_warp"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "GamoraLeverage",
+        "SoulExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "-1",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "-1/5"
+    },
+    {
+      "source": "SoulExtraction[P+Sp+R]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So]",
+      "co_labels": [
+        "a_sacrifice_rite"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "SoulExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R]",
+      "action": "a_seek_time",
+      "target": "TitanAmbush[P+Sp+R]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Titan; the Time Stone traded for Stark's life",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "TitanAmbush[P+Sp+R]",
+      "action": "a_engage",
+      "target": "StrangeBargain[P+Sp+R]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "TitanAmbush",
+        "StrangeBargain"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "StrangeBargain[P+Sp+R]",
+      "action": "a_hostage_leverage",
+      "target": "TimeExtraction[P+Sp+R]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "StrangeBargain",
+        "TimeExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "TimeExtraction[P+Sp+R]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+T]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "TimeExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+So]",
+      "action": "a_seek_time",
+      "target": "TitanAmbush[P+Sp+R+So]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "Titan; the Time Stone traded for Stark's life",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "TitanAmbush[P+Sp+R+So]",
+      "action": "a_engage",
+      "target": "StrangeBargain[P+Sp+R+So]",
+      "co_labels": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "canon_edge": [
+        "TitanAmbush",
+        "StrangeBargain"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "StrangeBargain[P+Sp+R+So]",
+      "action": "a_hostage_leverage",
+      "target": "TimeExtraction[P+Sp+R+So]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": [
+        "StrangeBargain",
+        "TimeExtraction"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "TimeExtraction[P+Sp+R+So]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So+T]",
+      "co_labels": [],
+      "trigger": "stone socketed into gauntlet",
+      "canon_edge": [
+        "TimeExtraction",
+        "SnapEvent"
+      ],
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "1/6"
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+So+T+M]",
+      "action": "a_snap",
+      "target": "SnapEvent[P+Sp+R+So+T+M]",
+      "co_labels": [],
+      "trigger": "gauntlet complete; G enacted",
+      "canon_edge": [
+        "SnapEvent",
+        "GardenWithdrawal"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "1"
+      },
+      "utility": "2"
+    },
+    {
+      "source": "SnapEvent[P+Sp+R+So+T+M]",
+      "action": "a_withdraw",
+      "target": "GardenWithdrawal[P+Sp+R+So+T+M]",
+      "co_labels": [],
+      "trigger": "the work is done",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    },
+    {
+      "source": "GardenWithdrawal[P+Sp+R+So+T+M]",
+      "action": "a_stone_destruction",
+      "target": "RemediationBattle[-]",
+      "co_labels": [
+        "a_time_heist",
+        "a_reverse_snap"
+      ],
+      "trigger": "guardian remediation, five years later",
+      "canon_edge": [
+        "GardenWithdrawal",
+        "RemediationBattle"
+      ],
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "1",
+        "goal_attainment": "0"
+      },
+      "utility": "1/2"
+    },
+    {
+      "source": "RemediationBattle[-]",
+      "action": "a_counter_snap",
+      "target": "CampaignRemediated[-]",
+      "co_labels": [],
+      "trigger": "",
+      "canon_edge": null,
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      },
+      "utility": "0"
+    }
+  ],
+  "R_G": {
+    "channels": [
+      "progress",
+      "personal_cost",
+      "lock_in",
+      "goal_attainment"
+    ],
+    "weights": {
+      "progress": "1",
+      "personal_cost": "1/5",
+      "lock_in": "1/2",
+      "goal_attainment": "2"
+    }
+  },
+  "s0": "CampaignInitiation[-]",
+  "F": [
+    {
+      "state": "SnapEvent[P+Sp+R+So+T+M]",
+      "polarity": "completed"
+    },
+    {
+      "state": "CampaignRemediated[-]",
+      "polarity": "remediated"
+    }
+  ],
+  "canon_trajectory": [
+    {
+      "source": "CampaignInitiation[-]",
+      "action": "a_power_stone",
+      "target": "GauntletStaging[P]",
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GauntletStaging[P]",
+      "action": "a_seek_space",
+      "target": "StatesmanIntercept[P]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "StatesmanIntercept[P]",
+      "action": "a_engage",
+      "target": "LokiCoercion[P]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "LokiCoercion[P]",
+      "action": "a_hostage_leverage",
+      "target": "SpaceExtraction[P]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "SpaceExtraction[P]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp]",
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GauntletStaging[P+Sp]",
+      "action": "a_seek_reality",
+      "target": "KnowhereApproach[P+Sp]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "KnowhereApproach[P+Sp]",
+      "action": "a_engage",
+      "target": "CollectorConcealment[P+Sp]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "CollectorConcealment[P+Sp]",
+      "action": "a_deception",
+      "target": "RealityExtraction[P+Sp]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "RealityExtraction[P+Sp]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R]",
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R]",
+      "action": "a_seek_soul",
+      "target": "VormirApproach[P+Sp+R]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "VormirApproach[P+Sp+R]",
+      "action": "a_engage",
+      "target": "GamoraLeverage[P+Sp+R]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GamoraLeverage[P+Sp+R]",
+      "action": "a_hostage_leverage",
+      "target": "SoulExtraction[P+Sp+R]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "-1",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "SoulExtraction[P+Sp+R]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So]",
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+So]",
+      "action": "a_seek_time",
+      "target": "TitanAmbush[P+Sp+R+So]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "TitanAmbush[P+Sp+R+So]",
+      "action": "a_engage",
+      "target": "StrangeBargain[P+Sp+R+So]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "StrangeBargain[P+Sp+R+So]",
+      "action": "a_hostage_leverage",
+      "target": "TimeExtraction[P+Sp+R+So]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "TimeExtraction[P+Sp+R+So]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So+T]",
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+So+T]",
+      "action": "a_seek_mind",
+      "target": "WakandaAssault[P+Sp+R+So+T]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "WakandaAssault[P+Sp+R+So+T]",
+      "action": "a_engage",
+      "target": "DefensePenetration[P+Sp+R+So+T]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "DefensePenetration[P+Sp+R+So+T]",
+      "action": "a_fleet",
+      "target": "MindExtraction[P+Sp+R+So+T]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "MindExtraction[P+Sp+R+So+T]",
+      "action": "a_socket",
+      "target": "GauntletStaging[P+Sp+R+So+T+M]",
+      "R_G": {
+        "progress": "1/6",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GauntletStaging[P+Sp+R+So+T+M]",
+      "action": "a_snap",
+      "target": "SnapEvent[P+Sp+R+So+T+M]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "1"
+      }
+    },
+    {
+      "source": "SnapEvent[P+Sp+R+So+T+M]",
+      "action": "a_withdraw",
+      "target": "GardenWithdrawal[P+Sp+R+So+T+M]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "GardenWithdrawal[P+Sp+R+So+T+M]",
+      "action": "a_stone_destruction",
+      "target": "RemediationBattle[-]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "1",
+        "goal_attainment": "0"
+      }
+    },
+    {
+      "source": "RemediationBattle[-]",
+      "action": "a_counter_snap",
+      "target": "CampaignRemediated[-]",
+      "R_G": {
+        "progress": "0",
+        "personal_cost": "0",
+        "lock_in": "0",
+        "goal_attainment": "0"
+      }
+    }
+  ]
+}

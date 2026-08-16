@@ -7,6 +7,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-08-16
+
+The tuple stops being prose. `M = (S, A, T, R_G, s0, F)` was described in
+FORMALISM §1 and spread across three modules; it is now one executable
+object with a real transition function, a state-indexed action space, and
+`R_G` bound in. Additive — `build_machine()` and the TTL are unchanged.
+
+### Added
+
+- ``formalism.py`` — ``OffenseMachine``, the tuple as a single validated
+  object. States factor as ``(position, keyring)``, so
+  ``T : S × A ⇀ S`` is a partial deterministic *function* and
+  ``A(s) = {a : T(s,a) defined}`` is genuinely state-indexed.
+  ``|S| = 54``, ``|A| = 22``, ``|T| = 57``.
+- Affordance gating: ``req : A_aff ⇀ X`` makes "A grows along the
+  trajectory" (FORMALISM §4.2) a computable precondition rather than a
+  comment. ``validate()`` rejects any edge invoking an unheld capability.
+- Five ``a_seek_<stone>`` actions (the flattening of a parameterized
+  ``seek(x)``), plus ``a_engage``, ``a_socket``, ``a_withdraw``. Without
+  them three socket edges and every approach edge are unlabelled and
+  ``T(s, a)`` cannot be a function.
+- ``GauntletStaging`` — splits the capability accumulator from the harm
+  state, so capability-vs-enactment is drawn in **S** and not only in the
+  reward channels. The keyring shrinks exactly once, at
+  ``a_stone_destruction``: capability spent to buy irreversibility.
+- Trajectory machinery: ``trajectories()`` (all six admissible
+  acquisition orders), ``canon_trajectory()``, ``walk()``,
+  ``sample_trajectory()``, ``necessary_states()``, ``enactment_window()``,
+  ``CampaignTrajectory.ledger()`` (per-transition R_G plus running
+  cumulative).
+- ``verdict()`` — runs the existing SEP predicate on the tuple's
+  goal-realizing edge. Verdict unchanged: ``False``.
+- ``thanos-tuple`` CLI and ``graphs/thanos_tuple.json``
+  (regen: ``scripts/export_tuple.py``) — the shippable spec, for
+  collaborators who will not install the package.
+- ``tests/test_formalism.py`` (38 tests): T is a function, no orphan
+  states, gating holds on every edge, the canon run is an actual walk,
+  reward totals match ``accumulate_rewards()`` exactly, six orders,
+  return invariance, JSON export parity.
+- FORMALISM §6 with the results the executable form makes available:
+  six gating-admissible orders, return invariance across all of them,
+  eleven necessary states (spine + the whole space layer), a unique
+  enactment window, and why offender-side Monte Carlo has zero variance
+  by construction.
+
+### Fixed
+
+- Four states (``KnowhereApproach``, ``VormirApproach``, ``TitanAmbush``,
+  ``WakandaAssault``) had no incoming edge in ``build_machine()`` and were
+  unreachable from s0; ``canon_offender_path()`` was a hand-listed edge
+  sequence with four discontinuities rather than a walk. The tuple is
+  reachable and walkable end to end; ``build_machine()`` is left as-is
+  (it is the TTL's twin) and the defect is pinned by a regression test so
+  it cannot silently change meaning.
+
 ## [2.0.1] - 2026-08-14
 
 ### Fixed

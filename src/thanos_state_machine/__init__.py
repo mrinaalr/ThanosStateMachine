@@ -32,6 +32,17 @@ from .exploitation import (
     validate_against_rewards,
     validate_guardian_interdiction_coverage,
 )
+from .formalism import (
+    STONES,
+    CampaignState,
+    CampaignTrajectory,
+    OffenseMachine,
+    TupleEdge,
+    build_thanos_tuple,
+    tuple_report,
+)
+from .formalism import validate_against_ledger as validate_tuple_against_ledger
+from .formalism import validate_against_machine as validate_tuple_against_machine
 from .machine import Phase, Polarity, StateMachine, Trajectory
 from .reward import (
     DEFAULT_MOTIVATION,
@@ -81,6 +92,15 @@ __all__ = [
     "trajectory_verdict",
     "validate_against_rewards",
     "validate_guardian_interdiction_coverage",
+    "STONES",
+    "CampaignState",
+    "CampaignTrajectory",
+    "OffenseMachine",
+    "TupleEdge",
+    "build_thanos_tuple",
+    "tuple_report",
+    "validate_tuple_against_ledger",
+    "validate_tuple_against_machine",
     "absorbing_outcome_count",
     "failure_modes",
     "interdiction_leverage",
@@ -90,4 +110,4 @@ __all__ = [
     "__version__",
 ]
 
-__version__ = "2.0.1"
+__version__ = "2.1.0"

@@ -39,6 +39,9 @@ P(win | optimal guardian policy) = 324/14,000,605 (~1 in 43,212)
 14,000,605 sampled futures (seed 42) -> observed wins: 1
 ```
 
+Interactive sandbox (campaign graph, guardian search, SPARQL):
+[https://mrinaalr.github.io/ThanosStateMachine/](https://mrinaalr.github.io/ThanosStateMachine/).
+
 Even perfect play leaves the outcome hostage to five chance nodes — four
 coin flips and a rat with a ~1-in-1,350 chance of stepping on the right
 button. Strange's number is a measure over policies, not a prophecy.
@@ -80,27 +83,13 @@ docs/
   FORMALISM.md   the model, the calibration, the four laws vs. canon
   ONTOLOGY.md    CASE/UCO fit assessment (spoiler: traj: only, on purpose)
   campaign.mermaid      machine diagram (regen: scripts/export_mermaid.py)
-SECURITY.md      dual-use threat model for two-sided (offender+defender) ESMs
+web/           interactive Pages sandbox (regen data: scripts/export_web.py)
 CHANGELOG.md     release notes
 tests/
 ```
 
 New here? [docs/RESEARCH_CONTEXT.md](docs/RESEARCH_CONTEXT.md) explains
 the research program this project stress-tests.
-
-## Dual-use note
-
-This repo models both an offender *and* a defender, with the offender
-reaching the harm state — a different posture from the offender-centric
-ESM in the underlying research. [SECURITY.md](SECURITY.md) works through
-whether that creates adversarial risk. Short version: the risk lives in
-*defender-side parameters*, never in the framework or its structure, and
-this repo sits at zero-risk by construction (its defender side is public
-canon, its probabilities calibrated not measured, no real entity
-modeled). The document extends the utility-asymmetry argument from
-*CaseLinker: Scaling Considerations* (Tech Report #3) from aggregation
-risk to two-sided-modeling risk, and fixes the publishable-structure /
-non-publishable-parameterization boundary as a norm.
 
 ## The one line
 

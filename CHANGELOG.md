@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Interactive GitHub Pages sandbox at
+  [mrinaalr.github.io/ThanosStateMachine](https://mrinaalr.github.io/ThanosStateMachine/):
+  campaign graph, guardian search (uniform vs optimal leverage), and
+  in-browser SPARQL over the ``traj:`` graph (`web/`, `scripts/export_web.py`,
+  Pages deploy workflow).
+
 ## [2.1.0] - 2026-08-16
 
 The tuple stops being prose. `M = (S, A, T, R_G, s0, F)` was described in

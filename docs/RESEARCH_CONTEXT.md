@@ -31,9 +31,9 @@ https://casenoesis.up.railway.app/
 aggregating public enforcement records, arguing a *utility asymmetry*:
 defender value grows with corpus size while adversary value does not,
 because public records are successful prosecutions and carry essentially
-no operational signal (no failure modes, no tradecraft). This repo's
-[SECURITY.md](../SECURITY.md) extends that argument from aggregation
-risk to two-sided modeling risk.
+no operational signal (no failure modes, no tradecraft). This repository
+is the zero-sensitivity companion: a fully public fictional case where
+both sides of the machine can be exhibited without touching real records.
 
 ## What "On the Mechanics of Exploitation" is doing
 
@@ -103,6 +103,6 @@ end-to-end with agentic tooling.
 
 Nothing here is derived from, or transferable to, any real
 investigation, agency, platform, or person. All probabilities are
-calibrated to a fictional fact, not measured from data. The dual-use
-boundary this implies — publishable structure versus non-publishable
-parameterization — is spelled out in [SECURITY.md](../SECURITY.md).
+calibrated to a fictional fact, not measured from data. Structure is
+publishable; real defender-side parameterization is not — this case
+keeps both sides on public canon so the sandbox stays showable.

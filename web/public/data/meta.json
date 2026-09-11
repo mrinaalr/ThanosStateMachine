@@ -1,0 +1,15 @@
+{
+  "version": "2.1.0",
+  "title": "ThanosStateMachine",
+  "subtitle": "Zero-sensitivity CaseNoesis ESM sandbox",
+  "quote": "I went forward in time to view alternate futures. To see all the possible outcomes of the coming conflict.",
+  "attribution": "Doctor Strange \u2014 Avengers: Infinity War",
+  "canon": [
+    "Avengers: Infinity War (2018)",
+    "Avengers: Endgame (2019)"
+  ],
+  "research": {
+    "program": "On the Mechanics of Exploitation / CaseNoesis",
+    "role": "Public fictional case record for training and demos \u2014 show the vocabulary here, then show what CaseLinker holds that must stay closed."
+  }
+}

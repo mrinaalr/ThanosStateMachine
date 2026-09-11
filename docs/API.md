@@ -95,5 +95,5 @@ pytest                             # includes TTL↔machine and tuple↔ledger p
   redefined. Two rows are re-attached to the edge that performs the act (the
   exogenous Power grant; the enactment edge into ``SnapEvent``); the totals
   are unchanged and pinned to ``accumulate_rewards()``.
-- Defender-side *parameters* stay canon-calibrated fiction; see SECURITY.md.
+- Defender-side *parameters* stay canon-calibrated fiction.
 """

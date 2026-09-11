@@ -1,0 +1,395 @@
+{
+  "initial": "CampaignInitiation",
+  "states": [
+    {
+      "id": "CampaignInitiation",
+      "phase": "InitialContactPhase",
+      "layer": "campaign",
+      "terminal": null
+    },
+    {
+      "id": "SnapEvent",
+      "phase": "HarmExecutionPhase",
+      "layer": "campaign",
+      "terminal": "completed"
+    },
+    {
+      "id": "GardenWithdrawal",
+      "phase": "MaintenancePhase",
+      "layer": "campaign",
+      "terminal": null
+    },
+    {
+      "id": "RemediationBattle",
+      "phase": null,
+      "layer": "campaign",
+      "terminal": null
+    },
+    {
+      "id": "CampaignRemediated",
+      "phase": null,
+      "layer": "campaign",
+      "terminal": "remediated"
+    },
+    {
+      "id": "StatesmanIntercept",
+      "phase": "InitialContactPhase",
+      "layer": "space",
+      "terminal": null
+    },
+    {
+      "id": "LokiCoercion",
+      "phase": "ConditioningPhase",
+      "layer": "space",
+      "terminal": null
+    },
+    {
+      "id": "SpaceExtraction",
+      "phase": "HarmExecutionPhase",
+      "layer": "space",
+      "terminal": null
+    },
+    {
+      "id": "KnowhereApproach",
+      "phase": "InitialContactPhase",
+      "layer": "reality",
+      "terminal": null
+    },
+    {
+      "id": "CollectorConcealment",
+      "phase": "ConditioningPhase",
+      "layer": "reality",
+      "terminal": null
+    },
+    {
+      "id": "RealityExtraction",
+      "phase": "HarmExecutionPhase",
+      "layer": "reality",
+      "terminal": null
+    },
+    {
+      "id": "VormirApproach",
+      "phase": "InitialContactPhase",
+      "layer": "soul",
+      "terminal": null
+    },
+    {
+      "id": "GamoraLeverage",
+      "phase": "ConditioningPhase",
+      "layer": "soul",
+      "terminal": null
+    },
+    {
+      "id": "SoulExtraction",
+      "phase": "HarmExecutionPhase",
+      "layer": "soul",
+      "terminal": null
+    },
+    {
+      "id": "TitanAmbush",
+      "phase": "InitialContactPhase",
+      "layer": "time",
+      "terminal": null
+    },
+    {
+      "id": "StrangeBargain",
+      "phase": "ConditioningPhase",
+      "layer": "time",
+      "terminal": null
+    },
+    {
+      "id": "TimeExtraction",
+      "phase": "HarmExecutionPhase",
+      "layer": "time",
+      "terminal": null
+    },
+    {
+      "id": "WakandaAssault",
+      "phase": "InitialContactPhase",
+      "layer": "mind",
+      "terminal": null
+    },
+    {
+      "id": "DefensePenetration",
+      "phase": "ConditioningPhase",
+      "layer": "mind",
+      "terminal": null
+    },
+    {
+      "id": "MindExtraction",
+      "phase": "HarmExecutionPhase",
+      "layer": "mind",
+      "terminal": null
+    }
+  ],
+  "actions": [
+    {
+      "id": "a_fleet",
+      "kind": "offender_action",
+      "description": "Sanctuary II / Outrider armies",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_black_order",
+      "kind": "offender_action",
+      "description": "delegated acquisition (Children of Thanos)",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_hostage_leverage",
+      "kind": "offender_action",
+      "description": "coerce stone-holder via a hostage (Thor->Loki, Tony->Strange, Gamora->Soul)",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_deception",
+      "kind": "offender_action",
+      "description": "staged scene / concealment (Knowhere illusion)",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_sacrifice_rite",
+      "kind": "offender_action",
+      "description": "Vormir exchange: a soul for the Soul Stone",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_power_stone",
+      "kind": "affordance",
+      "description": "acquired pre-s0 (Xandar, exogenous)",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_space_skip",
+      "kind": "affordance",
+      "description": "portal arrival anywhere (Space Stone)",
+      "unlockedBy": "SpaceExtraction"
+    },
+    {
+      "id": "a_reality_warp",
+      "kind": "affordance",
+      "description": "rewrite local reality (Reality Stone)",
+      "unlockedBy": "RealityExtraction"
+    },
+    {
+      "id": "a_time_reverse",
+      "kind": "affordance",
+      "description": "rewind events (Time Stone)",
+      "unlockedBy": "TimeExtraction"
+    },
+    {
+      "id": "a_snap",
+      "kind": "offender_action",
+      "description": "terminal harm event: erase half of all life",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_stone_destruction",
+      "kind": "offender_action",
+      "description": "destroy the stones to make the harm irreversible",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_time_heist",
+      "kind": "guardian_intervention",
+      "description": "guardian remediation: quantum-tunnel retrieval of past stones",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_reverse_snap",
+      "kind": "guardian_intervention",
+      "description": "Hulk snap: restore the erased",
+      "unlockedBy": null
+    },
+    {
+      "id": "a_counter_snap",
+      "kind": "guardian_intervention",
+      "description": "Stark snap: erase the 2014 invasion force",
+      "unlockedBy": null
+    }
+  ],
+  "transitions": [
+    {
+      "source": "StatesmanIntercept",
+      "target": "LokiCoercion",
+      "actions": [
+        "a_fleet",
+        "a_power_stone",
+        "a_black_order"
+      ],
+      "trigger": "",
+      "benefitKind": null
+    },
+    {
+      "source": "LokiCoercion",
+      "target": "SpaceExtraction",
+      "actions": [
+        "a_hostage_leverage"
+      ],
+      "trigger": "",
+      "benefitKind": "victim_sourced"
+    },
+    {
+      "source": "SpaceExtraction",
+      "target": "SnapEvent",
+      "actions": [],
+      "trigger": "stone socketed into gauntlet",
+      "benefitKind": null
+    },
+    {
+      "source": "KnowhereApproach",
+      "target": "CollectorConcealment",
+      "actions": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "benefitKind": null
+    },
+    {
+      "source": "CollectorConcealment",
+      "target": "RealityExtraction",
+      "actions": [
+        "a_deception"
+      ],
+      "trigger": "",
+      "benefitKind": "victim_sourced"
+    },
+    {
+      "source": "RealityExtraction",
+      "target": "SnapEvent",
+      "actions": [],
+      "trigger": "stone socketed into gauntlet",
+      "benefitKind": null
+    },
+    {
+      "source": "VormirApproach",
+      "target": "GamoraLeverage",
+      "actions": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "benefitKind": null
+    },
+    {
+      "source": "GamoraLeverage",
+      "target": "SoulExtraction",
+      "actions": [
+        "a_hostage_leverage",
+        "a_reality_warp"
+      ],
+      "trigger": "",
+      "benefitKind": "victim_sourced"
+    },
+    {
+      "source": "SoulExtraction",
+      "target": "SnapEvent",
+      "actions": [
+        "a_sacrifice_rite"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "benefitKind": null
+    },
+    {
+      "source": "TitanAmbush",
+      "target": "StrangeBargain",
+      "actions": [
+        "a_space_skip"
+      ],
+      "trigger": "",
+      "benefitKind": null
+    },
+    {
+      "source": "StrangeBargain",
+      "target": "TimeExtraction",
+      "actions": [
+        "a_hostage_leverage"
+      ],
+      "trigger": "",
+      "benefitKind": "victim_sourced"
+    },
+    {
+      "source": "TimeExtraction",
+      "target": "SnapEvent",
+      "actions": [],
+      "trigger": "stone socketed into gauntlet",
+      "benefitKind": null
+    },
+    {
+      "source": "WakandaAssault",
+      "target": "DefensePenetration",
+      "actions": [
+        "a_space_skip",
+        "a_fleet",
+        "a_black_order"
+      ],
+      "trigger": "",
+      "benefitKind": null
+    },
+    {
+      "source": "DefensePenetration",
+      "target": "MindExtraction",
+      "actions": [
+        "a_fleet"
+      ],
+      "trigger": "",
+      "benefitKind": "victim_sourced"
+    },
+    {
+      "source": "MindExtraction",
+      "target": "SnapEvent",
+      "actions": [
+        "a_time_reverse"
+      ],
+      "trigger": "stone socketed into gauntlet",
+      "benefitKind": null
+    },
+    {
+      "source": "CampaignInitiation",
+      "target": "StatesmanIntercept",
+      "actions": [
+        "a_power_stone"
+      ],
+      "trigger": "Xandar complete (exogenous)",
+      "benefitKind": "none"
+    },
+    {
+      "source": "SnapEvent",
+      "target": "GardenWithdrawal",
+      "actions": [
+        "a_snap"
+      ],
+      "trigger": "",
+      "benefitKind": "victim_targeted"
+    },
+    {
+      "source": "GardenWithdrawal",
+      "target": "RemediationBattle",
+      "actions": [
+        "a_stone_destruction",
+        "a_time_heist",
+        "a_reverse_snap"
+      ],
+      "trigger": "guardian remediation, five years later",
+      "benefitKind": null
+    },
+    {
+      "source": "RemediationBattle",
+      "target": "CampaignRemediated",
+      "actions": [
+        "a_counter_snap"
+      ],
+      "trigger": "",
+      "benefitKind": null
+    }
+  ],
+  "exploitation": {
+    "isExploitation": false,
+    "goalEdge": [
+      "SnapEvent",
+      "GardenWithdrawal"
+    ],
+    "goalEdgeKind": "victim_targeted",
+    "rationale": "Goal-realizing edge is victim-targeted (benefit = removal), so the campaign is an offense/harm trajectory, not an exploitation trajectory. It contains exploitation-shaped sub-patterns at 5 acquisition edge(s), where stones are extracted from specific holders under coercion.",
+    "note": "SEP verdict: the Snap is destructive harm, not exploitation \u2014 victims are targets of elimination, not sources of benefit."
+  }
+}

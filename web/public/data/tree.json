@@ -1,0 +1,1042 @@
+{
+  "futures": 14000605,
+  "pWinUniform": {
+    "n": 1,
+    "d": 14000605,
+    "approx": 7.142548482726282e-08,
+    "label": "1/14000605"
+  },
+  "pWinOptimal": {
+    "n": 324,
+    "d": 14000605,
+    "approx": 2.3141857084033155e-05,
+    "label": "324/14000605"
+  },
+  "winningLine": [
+    {
+      "node": "statesman_response",
+      "label": "heimdall_bifrost_hulk"
+    },
+    {
+      "node": "nidavellir_forge",
+      "label": "stormbreaker_forged"
+    },
+    {
+      "node": "knowhere_response",
+      "label": "confront_thanos"
+    },
+    {
+      "node": "titan_decision",
+      "label": "trade_time_stone_for_stark"
+    },
+    {
+      "node": "wakanda_strike",
+      "label": "aim_for_the_chest"
+    },
+    {
+      "node": "garden_ambush",
+      "label": "decapitate"
+    },
+    {
+      "node": "quantum_rat",
+      "label": "rat_frees_lang"
+    },
+    {
+      "node": "heist_assignment",
+      "label": "canon_assignment"
+    },
+    {
+      "node": "tesseract_recovery",
+      "label": "detour_to_1970"
+    },
+    {
+      "node": "gauntlet_keepaway",
+      "label": "gauntlet_kept_moving"
+    },
+    {
+      "node": "stark_seizure",
+      "label": "i_am_iron_man"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "statesman_response",
+      "kind": "choice",
+      "branches": [
+        {
+          "label": "heimdall_bifrost_hulk",
+          "outcome": "continue",
+          "description": "spend the last of the Bifrost sending the warning to Earth",
+          "surviving": true
+        },
+        {
+          "label": "fight_head_on",
+          "outcome": "loss_unwarned",
+          "description": "no warning reaches Earth; Vision is found unprepared",
+          "surviving": false
+        },
+        {
+          "label": "loki_dagger_gambit",
+          "outcome": "loss_unwarned",
+          "description": "the gambit fails as it did; still no warning",
+          "surviving": false
+        }
+      ],
+      "anchor": {
+        "offenderStates": [
+          "StatesmanIntercept"
+        ],
+        "offenderEdges": [
+          [
+            "CampaignInitiation",
+            "StatesmanIntercept"
+          ]
+        ],
+        "note": "First contact \u2014 space stone layer opens"
+      }
+    },
+    {
+      "name": "nidavellir_forge",
+      "kind": "chance",
+      "pContinue": {
+        "n": 1,
+        "d": 2,
+        "approx": 0.5,
+        "label": "1/2"
+      },
+      "continueLabel": "stormbreaker_forged",
+      "failDescription": "the forge stays cold; no weapon can later confirm the kill",
+      "anchor": {
+        "offenderStates": [],
+        "offenderEdges": [],
+        "note": "Exogenous: Stormbreaker enables garden_ambush confirmation"
+      }
+    },
+    {
+      "name": "knowhere_response",
+      "kind": "choice",
+      "branches": [
+        {
+          "label": "confront_thanos",
+          "outcome": "continue",
+          "description": "Gamora is taken - the only route to Vormir that ends in remediation",
+          "surviving": true
+        },
+        {
+          "label": "ambush_early",
+          "outcome": "loss_regroup",
+          "description": "ambush fails against the Reality Stone",
+          "surviving": false
+        },
+        {
+          "label": "evacuate_gamora",
+          "outcome": "loss_regroup",
+          "description": "Soul Stone denied; Thanos regroups and completes by force",
+          "surviving": false
+        }
+      ],
+      "anchor": {
+        "offenderStates": [
+          "KnowhereApproach",
+          "GamoraLeverage"
+        ],
+        "offenderEdges": [
+          [
+            "KnowhereApproach",
+            "CollectorConcealment"
+          ],
+          [
+            "GamoraLeverage",
+            "SoulExtraction"
+          ]
+        ],
+        "note": "Reality approach + Soul-path leverage"
+      }
+    },
+    {
+      "name": "titan_decision",
+      "kind": "choice",
+      "branches": [
+        {
+          "label": "trade_time_stone_for_stark",
+          "outcome": "continue",
+          "description": "Strange yields the stone; Stark lives - the winning line requires it",
+          "surviving": true
+        },
+        {
+          "label": "withhold_stone",
+          "outcome": "loss_stark_dies",
+          "description": "Thanos kills Stark, takes the stone anyway; no one builds the tunnel",
+          "surviving": false
+        },
+        {
+          "label": "destroy_time_stone",
+          "outcome": "loss_regroup",
+          "description": "stone denied; campaign completes by force in a later, darker line",
+          "surviving": false
+        }
+      ],
+      "anchor": {
+        "offenderStates": [
+          "StrangeBargain"
+        ],
+        "offenderEdges": [
+          [
+            "TitanAmbush",
+            "StrangeBargain"
+          ],
+          [
+            "StrangeBargain",
+            "TimeExtraction"
+          ]
+        ],
+        "note": "Time Stone bargain under hostage leverage"
+      }
+    },
+    {
+      "name": "wakanda_strike",
+      "kind": "choice",
+      "branches": [
+        {
+          "label": "aim_for_the_chest",
+          "outcome": "continue",
+          "description": "the snap completes cleanly; the board stays winnable",
+          "surviving": true
+        },
+        {
+          "label": "aim_for_the_head",
+          "outcome": "loss_dead_hand",
+          "description": "a dying reflex closes the fist; the gauntlet burns with him",
+          "surviving": false
+        }
+      ],
+      "anchor": {
+        "offenderStates": [
+          "MindExtraction",
+          "SnapEvent"
+        ],
+        "offenderEdges": [
+          [
+            "DefensePenetration",
+            "MindExtraction"
+          ],
+          [
+            "MindExtraction",
+            "SnapEvent"
+          ]
+        ],
+        "note": "Final capability socket \u2192 enactment window (Snap pending)"
+      }
+    },
+    {
+      "name": "garden_ambush",
+      "kind": "choice",
+      "branches": [
+        {
+          "label": "decapitate",
+          "outcome": "continue",
+          "description": "Stormbreaker confirms the stones are destroyed; the five years begin",
+          "surviving": true
+        },
+        {
+          "label": "spare_and_interrogate",
+          "outcome": "loss_no_closure",
+          "description": "no confirmation, no closure; the team never re-forms",
+          "surviving": false
+        }
+      ],
+      "anchor": {
+        "offenderStates": [
+          "GardenWithdrawal"
+        ],
+        "offenderEdges": [
+          [
+            "SnapEvent",
+            "GardenWithdrawal"
+          ],
+          [
+            "GardenWithdrawal",
+            "RemediationBattle"
+          ]
+        ],
+        "note": "Post-Snap maintenance / stone destruction"
+      }
+    },
+    {
+      "name": "quantum_rat",
+      "kind": "chance",
+      "pContinue": {
+        "n": 10368,
+        "d": 14000605,
+        "approx": 0.000740539426689061,
+        "label": "10368/14000605"
+      },
+      "continueLabel": "rat_frees_lang",
+      "failDescription": "the van stays shut; nobody learns the tunnel survived",
+      "anchor": {
+        "offenderStates": [],
+        "offenderEdges": [],
+        "note": "Exogenous: five-year gap; tunnel discovery"
+      }
+    },
+    {
+      "name": "heist_assignment",
+      "kind": "choice",
+      "branches": [
+        {
+          "label": "canon_assignment",
+          "outcome": "continue",
+          "description": "2012 NY / 2013 Asgard / 2014 Morag-Vormir",
+          "surviving": true
+        },
+        {
+          "label": "all_hands_to_2012",
+          "outcome": "loss_heist",
+          "description": "three stones, one alarmed timeline; the heist collapses",
+          "surviving": false
+        },
+        {
+          "label": "split_pairs_evenly",
+          "outcome": "loss_heist",
+          "description": "Vormir undermanned; no soul is exchanged",
+          "surviving": false
+        }
+      ],
+      "anchor": {
+        "offenderStates": [
+          "RemediationBattle"
+        ],
+        "offenderEdges": [
+          [
+            "GardenWithdrawal",
+            "RemediationBattle"
+          ]
+        ],
+        "note": "Guardian remediation \u2014 time-heist team assignment"
+      }
+    },
+    {
+      "name": "tesseract_recovery",
+      "kind": "chance",
+      "pContinue": {
+        "n": 1,
+        "d": 2,
+        "approx": 0.5,
+        "label": "1/2"
+      },
+      "continueLabel": "detour_to_1970",
+      "failDescription": "the 2012 mishap stands; Pym particles are spent",
+      "anchor": {
+        "offenderStates": [],
+        "offenderEdges": [],
+        "note": "Exogenous: 2012 heist mishap / Pym particles"
+      }
+    },
+    {
+      "name": "gauntlet_keepaway",
+      "kind": "chance",
+      "pContinue": {
+        "n": 1,
+        "d": 4,
+        "approx": 0.25,
+        "label": "1/4"
+      },
+      "continueLabel": "gauntlet_kept_moving",
+      "failDescription": "the second snap is universal",
+      "anchor": {
+        "offenderStates": [
+          "RemediationBattle"
+        ],
+        "offenderEdges": [],
+        "note": "Battlefield keepaway before the counter-snap"
+      }
+    },
+    {
+      "name": "stark_seizure",
+      "kind": "chance",
+      "pContinue": {
+        "n": 1,
+        "d": 2,
+        "approx": 0.5,
+        "label": "1/2"
+      },
+      "continueLabel": "i_am_iron_man",
+      "failDescription": "the stones stay socketed; the 2014 fleet ends the line",
+      "anchor": {
+        "offenderStates": [
+          "CampaignRemediated"
+        ],
+        "offenderEdges": [
+          [
+            "RemediationBattle",
+            "CampaignRemediated"
+          ]
+        ],
+        "note": "Terminal counter-snap \u2014 campaign remediated"
+      }
+    }
+  ],
+  "failureModes": [
+    {
+      "node": "statesman_response",
+      "branch": "fight_head_on",
+      "description": "no warning reaches Earth; Vision is found unprepared",
+      "massUniform": {
+        "n": 1,
+        "d": 3,
+        "approx": 0.3333333333333333,
+        "label": "1/3"
+      }
+    },
+    {
+      "node": "statesman_response",
+      "branch": "loki_dagger_gambit",
+      "description": "the gambit fails as it did; still no warning",
+      "massUniform": {
+        "n": 1,
+        "d": 3,
+        "approx": 0.3333333333333333,
+        "label": "1/3"
+      }
+    },
+    {
+      "node": "nidavellir_forge",
+      "branch": "chance_fails",
+      "description": "the forge stays cold; no weapon can later confirm the kill",
+      "massUniform": {
+        "n": 1,
+        "d": 6,
+        "approx": 0.16666666666666666,
+        "label": "1/6"
+      }
+    },
+    {
+      "node": "knowhere_response",
+      "branch": "ambush_early",
+      "description": "ambush fails against the Reality Stone",
+      "massUniform": {
+        "n": 1,
+        "d": 18,
+        "approx": 0.05555555555555555,
+        "label": "1/18"
+      }
+    },
+    {
+      "node": "knowhere_response",
+      "branch": "evacuate_gamora",
+      "description": "Soul Stone denied; Thanos regroups and completes by force",
+      "massUniform": {
+        "n": 1,
+        "d": 18,
+        "approx": 0.05555555555555555,
+        "label": "1/18"
+      }
+    },
+    {
+      "node": "titan_decision",
+      "branch": "withhold_stone",
+      "description": "Thanos kills Stark, takes the stone anyway; no one builds the tunnel",
+      "massUniform": {
+        "n": 1,
+        "d": 54,
+        "approx": 0.018518518518518517,
+        "label": "1/54"
+      }
+    },
+    {
+      "node": "titan_decision",
+      "branch": "destroy_time_stone",
+      "description": "stone denied; campaign completes by force in a later, darker line",
+      "massUniform": {
+        "n": 1,
+        "d": 54,
+        "approx": 0.018518518518518517,
+        "label": "1/54"
+      }
+    },
+    {
+      "node": "wakanda_strike",
+      "branch": "aim_for_the_head",
+      "description": "a dying reflex closes the fist; the gauntlet burns with him",
+      "massUniform": {
+        "n": 1,
+        "d": 108,
+        "approx": 0.009259259259259259,
+        "label": "1/108"
+      }
+    },
+    {
+      "node": "garden_ambush",
+      "branch": "spare_and_interrogate",
+      "description": "no confirmation, no closure; the team never re-forms",
+      "massUniform": {
+        "n": 1,
+        "d": 216,
+        "approx": 0.004629629629629629,
+        "label": "1/216"
+      }
+    },
+    {
+      "node": "quantum_rat",
+      "branch": "chance_fails",
+      "description": "the van stays shut; nobody learns the tunnel survived",
+      "massUniform": {
+        "n": 13990237,
+        "d": 3024130680,
+        "approx": 0.004626201206357921,
+        "label": "13990237/3024130680"
+      }
+    },
+    {
+      "node": "heist_assignment",
+      "branch": "all_hands_to_2012",
+      "description": "three stones, one alarmed timeline; the heist collapses",
+      "massUniform": {
+        "n": 16,
+        "d": 14000605,
+        "approx": 1.142807757236205e-06,
+        "label": "16/14000605"
+      }
+    },
+    {
+      "node": "heist_assignment",
+      "branch": "split_pairs_evenly",
+      "description": "Vormir undermanned; no soul is exchanged",
+      "massUniform": {
+        "n": 16,
+        "d": 14000605,
+        "approx": 1.142807757236205e-06,
+        "label": "16/14000605"
+      }
+    },
+    {
+      "node": "tesseract_recovery",
+      "branch": "chance_fails",
+      "description": "the 2012 mishap stands; Pym particles are spent",
+      "massUniform": {
+        "n": 8,
+        "d": 14000605,
+        "approx": 5.714038786181025e-07,
+        "label": "8/14000605"
+      }
+    },
+    {
+      "node": "gauntlet_keepaway",
+      "branch": "chance_fails",
+      "description": "the second snap is universal",
+      "massUniform": {
+        "n": 6,
+        "d": 14000605,
+        "approx": 4.285529089635769e-07,
+        "label": "6/14000605"
+      }
+    },
+    {
+      "node": "stark_seizure",
+      "branch": "chance_fails",
+      "description": "the stones stay socketed; the 2014 fleet ends the line",
+      "massUniform": {
+        "n": 1,
+        "d": 14000605,
+        "approx": 7.142548482726282e-08,
+        "label": "1/14000605"
+      }
+    }
+  ],
+  "leverage": {
+    "uniform": [
+      {
+        "node": "statesman_response",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 1,
+          "approx": 1.0,
+          "label": "1/1"
+        },
+        "loss": {
+          "n": 2,
+          "d": 3,
+          "approx": 0.6666666666666666,
+          "label": "2/3"
+        },
+        "continue": {
+          "n": 1,
+          "d": 3,
+          "approx": 0.3333333333333333,
+          "label": "1/3"
+        }
+      },
+      {
+        "node": "nidavellir_forge",
+        "kind": "chance",
+        "reach": {
+          "n": 1,
+          "d": 3,
+          "approx": 0.3333333333333333,
+          "label": "1/3"
+        },
+        "loss": {
+          "n": 1,
+          "d": 6,
+          "approx": 0.16666666666666666,
+          "label": "1/6"
+        },
+        "continue": {
+          "n": 1,
+          "d": 6,
+          "approx": 0.16666666666666666,
+          "label": "1/6"
+        }
+      },
+      {
+        "node": "knowhere_response",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 6,
+          "approx": 0.16666666666666666,
+          "label": "1/6"
+        },
+        "loss": {
+          "n": 1,
+          "d": 9,
+          "approx": 0.1111111111111111,
+          "label": "1/9"
+        },
+        "continue": {
+          "n": 1,
+          "d": 18,
+          "approx": 0.05555555555555555,
+          "label": "1/18"
+        }
+      },
+      {
+        "node": "titan_decision",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 18,
+          "approx": 0.05555555555555555,
+          "label": "1/18"
+        },
+        "loss": {
+          "n": 1,
+          "d": 27,
+          "approx": 0.037037037037037035,
+          "label": "1/27"
+        },
+        "continue": {
+          "n": 1,
+          "d": 54,
+          "approx": 0.018518518518518517,
+          "label": "1/54"
+        }
+      },
+      {
+        "node": "wakanda_strike",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 54,
+          "approx": 0.018518518518518517,
+          "label": "1/54"
+        },
+        "loss": {
+          "n": 1,
+          "d": 108,
+          "approx": 0.009259259259259259,
+          "label": "1/108"
+        },
+        "continue": {
+          "n": 1,
+          "d": 108,
+          "approx": 0.009259259259259259,
+          "label": "1/108"
+        }
+      },
+      {
+        "node": "garden_ambush",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 108,
+          "approx": 0.009259259259259259,
+          "label": "1/108"
+        },
+        "loss": {
+          "n": 1,
+          "d": 216,
+          "approx": 0.004629629629629629,
+          "label": "1/216"
+        },
+        "continue": {
+          "n": 1,
+          "d": 216,
+          "approx": 0.004629629629629629,
+          "label": "1/216"
+        }
+      },
+      {
+        "node": "quantum_rat",
+        "kind": "chance",
+        "reach": {
+          "n": 1,
+          "d": 216,
+          "approx": 0.004629629629629629,
+          "label": "1/216"
+        },
+        "loss": {
+          "n": 13990237,
+          "d": 3024130680,
+          "approx": 0.004626201206357921,
+          "label": "13990237/3024130680"
+        },
+        "continue": {
+          "n": 48,
+          "d": 14000605,
+          "approx": 3.4284232717086154e-06,
+          "label": "48/14000605"
+        }
+      },
+      {
+        "node": "heist_assignment",
+        "kind": "choice",
+        "reach": {
+          "n": 48,
+          "d": 14000605,
+          "approx": 3.4284232717086154e-06,
+          "label": "48/14000605"
+        },
+        "loss": {
+          "n": 32,
+          "d": 14000605,
+          "approx": 2.28561551447241e-06,
+          "label": "32/14000605"
+        },
+        "continue": {
+          "n": 16,
+          "d": 14000605,
+          "approx": 1.142807757236205e-06,
+          "label": "16/14000605"
+        }
+      },
+      {
+        "node": "tesseract_recovery",
+        "kind": "chance",
+        "reach": {
+          "n": 16,
+          "d": 14000605,
+          "approx": 1.142807757236205e-06,
+          "label": "16/14000605"
+        },
+        "loss": {
+          "n": 8,
+          "d": 14000605,
+          "approx": 5.714038786181025e-07,
+          "label": "8/14000605"
+        },
+        "continue": {
+          "n": 8,
+          "d": 14000605,
+          "approx": 5.714038786181025e-07,
+          "label": "8/14000605"
+        }
+      },
+      {
+        "node": "gauntlet_keepaway",
+        "kind": "chance",
+        "reach": {
+          "n": 8,
+          "d": 14000605,
+          "approx": 5.714038786181025e-07,
+          "label": "8/14000605"
+        },
+        "loss": {
+          "n": 6,
+          "d": 14000605,
+          "approx": 4.285529089635769e-07,
+          "label": "6/14000605"
+        },
+        "continue": {
+          "n": 2,
+          "d": 14000605,
+          "approx": 1.4285096965452563e-07,
+          "label": "2/14000605"
+        }
+      },
+      {
+        "node": "stark_seizure",
+        "kind": "chance",
+        "reach": {
+          "n": 2,
+          "d": 14000605,
+          "approx": 1.4285096965452563e-07,
+          "label": "2/14000605"
+        },
+        "loss": {
+          "n": 1,
+          "d": 14000605,
+          "approx": 7.142548482726282e-08,
+          "label": "1/14000605"
+        },
+        "continue": {
+          "n": 1,
+          "d": 14000605,
+          "approx": 7.142548482726282e-08,
+          "label": "1/14000605"
+        }
+      }
+    ],
+    "optimal": [
+      {
+        "node": "statesman_response",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 1,
+          "approx": 1.0,
+          "label": "1/1"
+        },
+        "loss": {
+          "n": 0,
+          "d": 1,
+          "approx": 0.0,
+          "label": "0/1"
+        },
+        "continue": {
+          "n": 1,
+          "d": 1,
+          "approx": 1.0,
+          "label": "1/1"
+        }
+      },
+      {
+        "node": "nidavellir_forge",
+        "kind": "chance",
+        "reach": {
+          "n": 1,
+          "d": 1,
+          "approx": 1.0,
+          "label": "1/1"
+        },
+        "loss": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        },
+        "continue": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        }
+      },
+      {
+        "node": "knowhere_response",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        },
+        "loss": {
+          "n": 0,
+          "d": 1,
+          "approx": 0.0,
+          "label": "0/1"
+        },
+        "continue": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        }
+      },
+      {
+        "node": "titan_decision",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        },
+        "loss": {
+          "n": 0,
+          "d": 1,
+          "approx": 0.0,
+          "label": "0/1"
+        },
+        "continue": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        }
+      },
+      {
+        "node": "wakanda_strike",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        },
+        "loss": {
+          "n": 0,
+          "d": 1,
+          "approx": 0.0,
+          "label": "0/1"
+        },
+        "continue": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        }
+      },
+      {
+        "node": "garden_ambush",
+        "kind": "choice",
+        "reach": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        },
+        "loss": {
+          "n": 0,
+          "d": 1,
+          "approx": 0.0,
+          "label": "0/1"
+        },
+        "continue": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        }
+      },
+      {
+        "node": "quantum_rat",
+        "kind": "chance",
+        "reach": {
+          "n": 1,
+          "d": 2,
+          "approx": 0.5,
+          "label": "1/2"
+        },
+        "loss": {
+          "n": 13990237,
+          "d": 28001210,
+          "approx": 0.49962973028665547,
+          "label": "13990237/28001210"
+        },
+        "continue": {
+          "n": 5184,
+          "d": 14000605,
+          "approx": 0.0003702697133445305,
+          "label": "5184/14000605"
+        }
+      },
+      {
+        "node": "heist_assignment",
+        "kind": "choice",
+        "reach": {
+          "n": 5184,
+          "d": 14000605,
+          "approx": 0.0003702697133445305,
+          "label": "5184/14000605"
+        },
+        "loss": {
+          "n": 0,
+          "d": 1,
+          "approx": 0.0,
+          "label": "0/1"
+        },
+        "continue": {
+          "n": 5184,
+          "d": 14000605,
+          "approx": 0.0003702697133445305,
+          "label": "5184/14000605"
+        }
+      },
+      {
+        "node": "tesseract_recovery",
+        "kind": "chance",
+        "reach": {
+          "n": 5184,
+          "d": 14000605,
+          "approx": 0.0003702697133445305,
+          "label": "5184/14000605"
+        },
+        "loss": {
+          "n": 2592,
+          "d": 14000605,
+          "approx": 0.00018513485667226524,
+          "label": "2592/14000605"
+        },
+        "continue": {
+          "n": 2592,
+          "d": 14000605,
+          "approx": 0.00018513485667226524,
+          "label": "2592/14000605"
+        }
+      },
+      {
+        "node": "gauntlet_keepaway",
+        "kind": "chance",
+        "reach": {
+          "n": 2592,
+          "d": 14000605,
+          "approx": 0.00018513485667226524,
+          "label": "2592/14000605"
+        },
+        "loss": {
+          "n": 1944,
+          "d": 14000605,
+          "approx": 0.00013885114250419893,
+          "label": "1944/14000605"
+        },
+        "continue": {
+          "n": 648,
+          "d": 14000605,
+          "approx": 4.628371416806631e-05,
+          "label": "648/14000605"
+        }
+      },
+      {
+        "node": "stark_seizure",
+        "kind": "chance",
+        "reach": {
+          "n": 648,
+          "d": 14000605,
+          "approx": 4.628371416806631e-05,
+          "label": "648/14000605"
+        },
+        "loss": {
+          "n": 324,
+          "d": 14000605,
+          "approx": 2.3141857084033155e-05,
+          "label": "324/14000605"
+        },
+        "continue": {
+          "n": 324,
+          "d": 14000605,
+          "approx": 2.3141857084033155e-05,
+          "label": "324/14000605"
+        }
+      }
+    ]
+  },
+  "monteCarlo": {
+    "seed": 42,
+    "samples": 14000605,
+    "observedWins": 1,
+    "note": "Full enumeration with seed 42 observes exactly one win \u2014 matching the calibrated uniform measure."
+  }
+}
